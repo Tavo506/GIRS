@@ -1,0 +1,72 @@
+.navbar-brand{
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 40px;
+    padding: 0%;
+    color: white;
+}
+
+nav{
+    padding: 0%;
+}
+
+.collapse{
+    justify-content: right;
+}
+
+.dropdown-toggle::after {
+    display:none;
+}
+
+.dropdown-button{
+    padding-bottom: 9px !important;
+}
+
+.icon{
+    font-size: 35px;
+    line-height: 20px;
+}
+
+.nav-link{
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.active{
+    text-decoration: underline solid white 2px;
+    background: var(--selectedBlue);
+}
+
+.bell{
+    color: var(--myRed);
+}
+
+
+.navbar-girs{
+    background: var(--mainBlue);
+}
+
+
+.hover-danger:hover{
+    background: var(--myRed);
+    color: white;
+}
+
+.dropdown-menu a{
+    font-size: 18px;
+}
+
+// Responsive
+@media only screen and (max-width: 992px){
+    .nav-link{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .dropdown-button{
+        padding-top: 15px !important;
+    }
+}

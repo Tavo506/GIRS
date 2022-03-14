@@ -12,4 +12,13 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  get isLoggedIn(): boolean{
+    return false;
+  }
+
+  // Para manejar si mostrar o no la campana de notificaciones
+  get haySolicitudes(): boolean{
+    return true;
+  }
+
 }

@@ -2,3 +2,17 @@
 
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
+
+
+:root {
+    --mainBlue: #002855;
+    --selectedBlue: #003673;
+    --secondBlue: #44749D;
+    --grayBG: #EFF1F6;
+    --modalBG: #F1F1F1;
+    --tableBlue1: #EFF1F6;
+    --tableBlue2: #E4E7EF;
+    --buttonBG: #3D556A;
+    --myRed: #B30A0A;
+    --myGreen: #00B507;
+}

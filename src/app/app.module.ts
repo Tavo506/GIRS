@@ -18,7 +18,8 @@ import { ReportesUsuarioComponent } from './pages/reportes-usuario/reportes-usua
 import { MisReportesComponent } from './pages/mis-reportes/mis-reportes.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { NavbarComponent } from './widgets/navbar/navbar.component';
-import { NavbarAdminComponent } from './widgets/navbar-admin/navbar-admin.component';
+import { MdbCollapseModule } from "mdb-angular-ui-kit/collapse";
+import { MdbDropdownModule } from "mdb-angular-ui-kit/dropdown";
 
 @NgModule({
   declarations: [
@@ -36,13 +37,14 @@ import { NavbarAdminComponent } from './widgets/navbar-admin/navbar-admin.compon
     ReportesUsuarioComponent,
     MisReportesComponent,
     PerfilComponent,
-    NavbarComponent,
-    NavbarAdminComponent
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    MdbCollapseModule,
+    MdbDropdownModule
   ],
   providers: [],
   bootstrap: [AppComponent]

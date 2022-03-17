@@ -1,3 +1,25 @@
 <div class="container mt-5">
-    <app-tabla [builder]="tableBuilder"></app-tabla>
-</div>
+    <table class="table girs-table">
+        <thead>
+            <tr>
+                <th class="text-center" scope="col">Nombre</th>
+                <th class="text-center" scope="col">PPC</th>
+                <th class="text-center" scope="col">Programa de reciclaje</th>
+                <th class="text-center" scope="col">Recolección de residuos sólidos valorizables</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="table-elem" *ngFor="let dato of municipalidades">
+                <td class="text-center">{{dato.nombre}}</td>
+                <td class="text-center">{{dato.ppc}}</td>
+                <td class="text-center">
+                    <!-- Manejo de iconos en lugar de True o False -->
+                    <i class="fa-solid" [ngClass]="{'fa-circle-check true-icon': dato.reciclaje, 'fa-circle-xmark false-icon': !dato.reciclaje}"></i>
+                </td>
+                <td class="text-center">
+                    <!-- Manejo de iconos en lugar de True o False -->
+                    <i class="fa-solid" [ngClass]="{'fa-circle-check true-icon': dato.rsv, 'fa-circle-xmark false-icon': !dato.rsv}"></i>
+                </td>
+            </tr>
+        </tbody>
+    </table></div>

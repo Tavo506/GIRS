@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { TableBuilder } from 'src/app/builders/TableBuilder';
 
 @Component({
   selector: 'app-home',
@@ -37,38 +36,9 @@ export class HomeComponent implements OnInit {
     }
   ];
 
-  tableBuilder!: TableBuilder;
-  builderReady: boolean = false;
-
-  prepararDatosDeTabla(): void {
-
-    this.tableBuilder = new TableBuilder(this.municipalidades, [
-      {
-        name: "nombre",
-        sortable: true,
-      },
-      {
-        name: "PPC",
-        sortable: true,
-      },
-      {
-        name: "Programa de reciclaje",
-        sortable: true,
-      },
-      {
-        name: "Recolección de residuos sólidos valorizables",
-        sortable: true,
-      }
-    ])
-    .setTrueFalseColumn(2)
-    .setTrueFalseColumn(3)
-    .setYesNoButton((item: any) => {console.log(item.nombre)}, () => {console.log("No")}, "Aceptar/Rechazar")
-    this.builderReady = true;
-  }
-
+  
 
   ngOnInit(): void {
-    this.prepararDatosDeTabla();
   }
 
 }

@@ -14,7 +14,11 @@
     --tableBlue2: #E4E7EF;
     --buttonBG: #3D556A;
     --myRed: #B30A0A;
+    --myRedHover: #ac0606;
+    --myRedActive: #990808;
     --myGreen: #00B507;
+    --myGreenHover: #08aa0d;
+    --myGreenActive: #019406;
 }
 
 
@@ -24,16 +28,75 @@
 
 
 
-// Estilos para el TableBuilder
+// Estilos para las tablas
+
+.girs-table, th, td{
+    border: 1px solid black;
+}
+
+.girs-table th{
+    color: white;
+    background: var(--mainBlue);
+}
+
+.table-elem{
+    background-color: var(--tableBlue1);
+}
+
+tr:nth-child(even) {
+    background-color: var(--tableBlue2);
+}
 
 
 .true-icon{
     color: var(--myGreen);
-    font-size: 32px;
+    font-size: 34px;
 }
 
 
 .false-icon{
     color: var(--myRed);
-    font-size: 32px;
+    font-size: 34px;
+}
+
+
+.btn-yes-no{
+    color: white;
+    border-radius: 0px;
+    border: none;
+    font-size: 22px;
+    width: 5vw;
+}
+
+.btn-yes-no:active{
+    border: none;
+}
+
+.btn-accept{
+    background: var(--myGreen);
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.btn-accept:hover{
+    background: var(--myGreenHover);
+}
+
+.btn-accept:active{
+    background: var(--myGreenActive);
+}
+
+
+.btn-denny{
+    background: var(--myRed);
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.btn-denny:hover{
+    background: var(--myRedHover);
+}
+
+.btn-denny:active{
+    background: var(--myRedActive);
 }

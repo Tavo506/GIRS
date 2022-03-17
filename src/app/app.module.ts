@@ -20,6 +20,7 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
 import { NavbarComponent } from './widgets/navbar/navbar.component';
 import { MdbCollapseModule } from "mdb-angular-ui-kit/collapse";
 import { MdbDropdownModule } from "mdb-angular-ui-kit/dropdown";
+import { SortDirective } from './directives/sort.directive';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { MdbDropdownModule } from "mdb-angular-ui-kit/dropdown";
     ReportesUsuarioComponent,
     MisReportesComponent,
     PerfilComponent,
-    NavbarComponent
+    NavbarComponent,
+    SortDirective
     ],
   imports: [
     BrowserModule,

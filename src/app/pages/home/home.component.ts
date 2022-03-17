@@ -18,19 +18,19 @@ export class HomeComponent implements OnInit {
     },
     {
       nombre: "Municipalidad Naranjo",
-      ppc: 0.53,
+      ppc: 0.76,
       reciclaje: false,
       rsv: false
     },
     {
       nombre: "Municipalidad 3",
-      ppc: 0.53,
+      ppc: 0.58,
       reciclaje: true,
       rsv: true
     },
     {
       nombre: "Municipalidad 4",
-      ppc: 0.53,
+      ppc: 0.91,
       reciclaje: false,
       rsv: true
     }
@@ -39,6 +39,25 @@ export class HomeComponent implements OnInit {
   
 
   ngOnInit(): void {
+  }
+
+
+  /*
+   * Funciones sobre el ordenamiento de la tabla
+   */
+
+  isSelected(elem: HTMLElement){
+    const selected = elem.getAttribute("selected");
+    return selected === "true"
+  }
+
+  isDesc(elem: HTMLElement){
+    const selected = elem.getAttribute("data-order");
+    return selected === "desc"
+  }
+
+  getSortIcon(): string{
+    return "a"
   }
 
 }

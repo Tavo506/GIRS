@@ -23,8 +23,30 @@
 
 
 
+// Clase para que un texto no se pueda seleccionar
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+}
 
 
+
+
+// Estilos para textos
+
+.titulo-1{
+    font-weight: 700;
+    font-size: 40px;
+}
+
+.nota{
+    font-size: 14px;
+}
 
 
 
@@ -37,12 +59,18 @@
 .girs-table th{
     color: white;
     background: var(--mainBlue);
+    cursor: pointer;
+}
+
+.sorting-icon{
+    margin-left: 2px;
 }
 
 .table-elem{
     background-color: var(--tableBlue1);
 }
 
+// Cambiar el color cada 2 filas
 tr:nth-child(even) {
     background-color: var(--tableBlue2);
 }
@@ -100,3 +128,43 @@ tr:nth-child(even) {
 .btn-denny:active{
     background: var(--myRedActive);
 }
+
+
+
+.medium-screen, .small-screen{
+    visibility: hidden;
+    display: none;
+}
+
+
+// Vistas de teléfono
+
+// Pantalla mediana
+@media only screen and (max-width: 991px){
+    .large-screen{
+        visibility: hidden;
+        display: none;
+    }
+    
+    .medium-screen, .large-medium-screen{
+        visibility: visible;
+        display: block;
+    }
+}
+
+
+// Pantalla mediana
+@media only screen and (max-width: 575px){
+    .large-screen, .medium-screen, .large-medium-screen{
+        visibility: hidden;
+        display: none;
+    }
+
+
+    .small-screen{
+        visibility: visible;
+        display: block;
+    }
+    
+}
+

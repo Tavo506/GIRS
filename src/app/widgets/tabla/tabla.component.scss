@@ -1,0 +1,17 @@
+
+.girs-table, th, td{
+    border: 1px solid black;
+}
+
+.girs-table th{
+    color: white;
+    background: var(--mainBlue);
+}
+
+.table-elem{
+    background-color: var(--tableBlue1);
+}
+
+tr:nth-child(even) {
+    background-color: var(--tableBlue2);
+}

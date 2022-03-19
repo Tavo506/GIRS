@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { AngularFireModule } from "@angular/fire/compat";
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +22,8 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
 import { NavbarComponent } from './widgets/navbar/navbar.component';
 import { MdbCollapseModule } from "mdb-angular-ui-kit/collapse";
 import { MdbDropdownModule } from "mdb-angular-ui-kit/dropdown";
+//import { NavbarAdminComponent } from './widgets/navbar-admin/navbar-admin.component';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -44,7 +48,9 @@ import { MdbDropdownModule } from "mdb-angular-ui-kit/dropdown";
     AppRoutingModule,
     NgbModule,
     MdbCollapseModule,
-    MdbDropdownModule
+    MdbDropdownModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]

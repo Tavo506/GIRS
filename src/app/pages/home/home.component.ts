@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MunicipalidadService } from 'src/app/services/municipalidad.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  private municipalidades : any[] = [];
+
+  constructor(private MunicipalidadService:MunicipalidadService) {
+
+    console.log(MunicipalidadService.getMunicipalidades())
+
+  }
 
   ngOnInit(): void {
+    this.MunicipalidadService.getMunicipalidades().subscribe(
+      dataMunicipalidad =>{
+        this.municipalidades = dataMunicipalidad;
+      }
+    );
+  }
+
+  DummyPrint():void{
+    console.log(this.municipalidades)
   }
 
 }

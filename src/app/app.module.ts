@@ -24,6 +24,10 @@ import { MdbCollapseModule } from "mdb-angular-ui-kit/collapse";
 import { MdbDropdownModule } from "mdb-angular-ui-kit/dropdown";
 //import { NavbarAdminComponent } from './widgets/navbar-admin/navbar-admin.component';
 import { environment } from 'src/environments/environment';
+import { FontAwesomeModule  } from '@fortawesome/angular-fontawesome';
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
+import { faStar as fasStar } from '@fortawesome/free-solid-svg-icons';
 
 @NgModule({
   declarations: [
@@ -41,7 +45,7 @@ import { environment } from 'src/environments/environment';
     ReportesUsuarioComponent,
     MisReportesComponent,
     PerfilComponent,
-    NavbarComponent
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,9 +54,15 @@ import { environment } from 'src/environments/environment';
     MdbCollapseModule,
     MdbDropdownModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(library: FaIconLibrary) {
+    library.addIcons(fasStar, farStar);
+  }
+
+ }

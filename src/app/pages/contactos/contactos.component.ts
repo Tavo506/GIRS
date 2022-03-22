@@ -28,9 +28,9 @@ export class ContactosComponent implements OnInit {
     );
   }
 
-
+//Función que 
   getSortIcon(elem: HTMLElement){
-    getSortIcon(elem);
+    return getSortIcon(elem);
   }
 
 

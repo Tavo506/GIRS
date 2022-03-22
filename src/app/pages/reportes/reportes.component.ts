@@ -12,12 +12,14 @@ export class ReportesComponent implements OnInit {
   private reports: any[] = [];
   private components_workflow: any[] = [];
   private filters: any = { 'municipalidades': {}, 'annos': {} };
+  reportes: any[] = [];
 
   constructor(private reportService: ReportesService) { }
 
   ngOnInit(): void {
     this.reportService.getReportes().subscribe(
       report => {
+        this.reportes = report;
         this.reports = report.map(el => {
           this.addElementWorkflow(el)
           return el
@@ -84,6 +86,7 @@ export class ReportesComponent implements OnInit {
     div.style.textAlign = 'center';
     div.style.marginTop = '10px';
     var h5 = document.createElement('h5');
+    h5.classList.add("content-text")
     h5.innerText = data;
     h5.style.color = '#4A4A4A';
     div.appendChild(h5);

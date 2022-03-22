@@ -13,5 +13,5 @@ export interface Municipalidad{
     recoleccionDeResiduosSolidosValorizables: string | boolean;
     totalIngresoServicioAseoDeVias: number;
     unidadesHabitacionalesAtendidas: number;
-    unidadesHabitacioanlesCanton: number;
+    unidadesHabitacionalesCanton: number;
 }

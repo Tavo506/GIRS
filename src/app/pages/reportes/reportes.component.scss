@@ -11,9 +11,29 @@
 }
 
 
+.column{
+    text-align: center;
+    margin-top: 10px;
+}
+
+
+
+.content-text{
+    color: #4A4A4A;
+}
+
+
 @media only screen and (max-width: 992px){
 
     h4{
-        font-size: medium;
+        font-size: 14px;
+    }
+
+    .content-text {
+        font-size: 14px;
+    }
+
+    .container{
+        padding: 0%;
     }
 }

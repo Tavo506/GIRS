@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Municipalidad } from 'src/app/models/municipalidad.model';
 import { MunicipalidadService } from 'src/app/services/municipalidad.service';
+import { getSortIcon} from "src/app/util/sortIcons";
 
 @Component({
   selector: 'app-home',
@@ -17,7 +18,9 @@ export class HomeComponent implements OnInit {
 
   }
 
-  
+  getSortIcon(elem: HTMLElement){
+    getSortIcon(elem);
+  }
 
   ngOnInit(): void {
     this.MunicipalidadService.getMunicipalidades().subscribe(
@@ -49,34 +52,6 @@ export class HomeComponent implements OnInit {
       }
     );
   }
-
-
-
-  /*
-   * Funciones sobre el ordenamiento de la tabla
-   */
-
-  isSelected(elem: HTMLElement){
-    const selected = elem.getAttribute("selected");
-    return selected === "true"
-  }
-
-  isDesc(elem: HTMLElement){
-    const selected = elem.getAttribute("data-order");
-    return selected === "desc"
-  }
-  
-  getSortIcon(elem: HTMLElement): string{
-    const esDescendiente = this.isDesc(elem);
-    const estaSeleccionado = this.isSelected(elem);
-
-    if (!estaSeleccionado) {
-      return "fa-sort"
-    }else{
-      return esDescendiente ? 'fa-sort-down' : 'fa-sort-up'
-    }
-  }
-
 
 
 

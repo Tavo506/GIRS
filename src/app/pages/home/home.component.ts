@@ -12,14 +12,10 @@ export class HomeComponent implements OnInit {
 
   municipalidades : Municipalidad[] = [];
 
-  constructor(private MunicipalidadService:MunicipalidadService) {
-
-    console.log(MunicipalidadService.getMunicipalidades())
-
-  }
+  constructor(private MunicipalidadService:MunicipalidadService) {}
 
   getSortIcon(elem: HTMLElement){
-    getSortIcon(elem);
+    return getSortIcon(elem);
   }
 
   ngOnInit(): void {

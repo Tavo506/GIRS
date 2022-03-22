@@ -16,9 +16,10 @@
     --myRed: #B30A0A;
     --myRedHover: #ac0606;
     --myRedActive: #990808;
-    --myGreen: #00B507;
-    --myGreenHover: #08aa0d;
-    --myGreenActive: #019406;
+    --myGreen: #008A05;
+    --myGreenHover: #018105;
+    --myGreenActive: #007904;
+    --MyPurple: #3a00a7;
 }
 
 
@@ -84,6 +85,12 @@ tr:nth-child(even) {
 
 .false-icon{
     color: var(--myRed);
+    font-size: 34px;
+}
+
+
+.neutral-icon{
+    color: var(--MyPurple);
     font-size: 34px;
 }
 

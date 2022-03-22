@@ -1,16 +1,16 @@
 export interface Municipalidad{
     anno: number;
-    canto: string;
+    canton: string;
     formaDisposicion: string;
     gastoServicioRecoleccionResiduos: number;
     gastosServicioAseoDeVias:number;
     ingresoServicioRecoleccionRSM:number;
     lugarDisposicion: string;
-    perosnasHabitacion: number;
+    personasHabitacion: number;
     ppc: number;
-    programaDeRecliclaje: string;
-    provinicia: string;
-    recoleccionDeResiduosSolidosValorizables: string;
+    programaDeReciclaje: string | boolean;
+    provincia: string;
+    recoleccionDeResiduosSolidosValorizables: string | boolean;
     totalIngresoServicioAseoDeVias: number;
     unidadesHabitacionalesAtendidas: number;
     unidadesHabitacioanlesCanton: number;

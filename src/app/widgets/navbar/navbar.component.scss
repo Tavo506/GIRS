@@ -1,10 +1,15 @@
 .navbar-brand{
     font-size: 40px;
     font-weight: 700;
-    line-height: 40px;
+    line-height: 56px;
     padding: 0%;
     color: white;
 }
+
+.navbar-toggler:focus{
+    box-shadow: none;
+}
+
 
 nav{
     padding: 0%;
@@ -60,7 +65,7 @@ nav{
 }
 
 // Responsive
-@media only screen and (max-width: 992px){
+@media only screen and (max-width: 991px){
     .nav-link{
         padding-top: 5px;
         padding-bottom: 5px;
@@ -68,5 +73,9 @@ nav{
 
     .dropdown-button{
         padding-top: 15px !important;
+    }
+
+    li{
+        width: 100%;
     }
 }

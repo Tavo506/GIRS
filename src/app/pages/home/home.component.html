@@ -1,1 +1,60 @@
-<p>home works!</p>
+<div class="container mt-5">
+
+
+
+
+
+
+    <!-- Tabla de las municipalidades -->
+
+    <h1 class="titulo-1">Municipalidades</h1>
+
+    <br>
+
+    <span class="nota">*PPC = Producción Per Cápita</span>
+    <span class="nota small-screen">*RSV = Recolección de residuos sólidos valorizables</span>
+
+    <table class="table girs-table">
+        <thead>
+            <tr>
+                <!-- Los atributos selected, data-order, data-name y data-type son para el ordenamiento de las tablas, dado por la directiva appSort -->
+                <!-- Se debe poder el ID (#colN) para poder ser identificados en las funciones isSelected e isDesc -->
+                <!-- Estas funciones son para saber qué icono colocar para identificar el ordenamiento -->
+                <th #col1 class="text-center noselect" [appSort]="municipalidades" selected="false" data-order="asc" data-name="canton" scope="col">
+                    <span>Nombre</span>
+                    <i [ngClass]="{'fa-solid sorting-icon': true, 'fa-sort': !isSelected(col1), 'fa-sort-down': isSelected(col1) && isDesc(col1), 'fa-sort-up': isSelected(col1) && !isDesc(col1)}"></i>
+                </th>
+                <th #col2 class="text-center noselect" [appSort]="municipalidades" selected="false" data-order="asc" data-name="ppc" scope="col">
+                    <span>PPC</span>
+                    <i [ngClass]="{'fa-solid sorting-icon': true, 'fa-sort': !isSelected(col2), 'fa-sort-down': isSelected(col2) && isDesc(col2), 'fa-sort-up': isSelected(col2) && !isDesc(col2)}"></i>
+                </th>
+                <th #col3 class="text-center noselect" [appSort]="municipalidades" selected="false" data-order="asc" data-name="programaDeReciclaje" scope="col">
+                    <span class="large-medium-screen">Programa de reciclaje</span>  <!--Para que se vea bien en pantallas pequeñas hay dos versiones de la columna-->
+                    <span class="small-screen">Reciclaje</span>
+                    <i [ngClass]="{'fa-solid sorting-icon': true, 'fa-sort': !isSelected(col3), 'fa-sort-down': isSelected(col3) && isDesc(col3), 'fa-sort-up': isSelected(col3) && !isDesc(col3)}"></i>
+                </th>
+                <th #col4 class="text-center noselect" [appSort]="municipalidades" selected="false" data-order="asc" data-name="recoleccionDeResiduosSolidosValorizables" scope="col">
+                    <span class="large-medium-screen">Recolección de residuos sólidos valorizables</span>  <!--Para que se vea bien en pantallas pequeñas hay dos versiones de la columna-->
+                    <span class="small-screen">RSV</span>
+                    <i [ngClass]="{'fa-solid sorting-icon': true, 'fa-sort': !isSelected(col4), 'fa-sort-down': isSelected(col4) && isDesc(col4), 'fa-sort-up': isSelected(col4) && !isDesc(col4)}"></i>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="table-elem" *ngFor="let dato of municipalidades">
+                <td class="text-center">Municipalidad de {{dato.canton}}</td>
+                <td class="text-center">{{dato.ppc}}</td>
+                <td class="text-center">
+                    <!-- Manejo de iconos en lugar de True o False -->
+                    <i class="fa-solid {{getStateIcon(dato.programaDeReciclaje)}}"></i>
+                </td>
+                <td class="text-center">
+                    <!-- Manejo de iconos en lugar de True o False -->
+                    <i class="fa-solid {{getStateIcon(dato.recoleccionDeResiduosSolidosValorizables)}}" ></i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</div>

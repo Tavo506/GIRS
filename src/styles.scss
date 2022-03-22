@@ -14,6 +14,164 @@
     --tableBlue2: #E4E7EF;
     --buttonBG: #3D556A;
     --myRed: #B30A0A;
-    --myGreen: #00B507;
+    --myRedHover: #ac0606;
+    --myRedActive: #990808;
+    --myGreen: #008A05;
+    --myGreenHover: #018105;
+    --myGreenActive: #007904;
+    --MyPurple: #3a00a7;
+}
+
+
+
+// Clase para que un texto no se pueda seleccionar
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+}
+
+
+
+
+// Estilos para textos
+
+.titulo-1{
+    font-weight: 700;
+    font-size: 40px;
+}
+
+.nota{
+    font-size: 14px;
+}
+
+
+
+// Estilos para las tablas
+
+.girs-table, th, td{
+    border: 1px solid black;
+}
+
+.girs-table th{
+    color: white;
+    background: var(--mainBlue);
+    cursor: pointer;
+}
+
+.sorting-icon{
+    margin-left: 2px;
+}
+
+.table-elem{
+    background-color: var(--tableBlue1);
+}
+
+// Cambiar el color cada 2 filas
+tr:nth-child(even) {
+    background-color: var(--tableBlue2);
+}
+
+
+.true-icon{
+    color: var(--myGreen);
+    font-size: 34px;
+}
+
+
+.false-icon{
+    color: var(--myRed);
+    font-size: 34px;
+}
+
+
+.neutral-icon{
+    color: var(--MyPurple);
+    font-size: 34px;
+}
+
+
+.btn-yes-no{
+    color: white;
+    border-radius: 0px;
+    border: none;
+    font-size: 22px;
+    width: 5vw;
+}
+
+.btn-yes-no:active{
+    border: none;
+}
+
+.btn-accept{
+    background: var(--myGreen);
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.btn-accept:hover{
+    background: var(--myGreenHover);
+}
+
+.btn-accept:active{
+    background: var(--myGreenActive);
+}
+
+
+.btn-denny{
+    background: var(--myRed);
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.btn-denny:hover{
+    background: var(--myRedHover);
+}
+
+.btn-denny:active{
+    background: var(--myRedActive);
+}
+
+
+
+.medium-screen, .small-screen{
+    visibility: hidden;
+    display: none;
+}
+
+
+// Vistas de teléfono
+
+// Pantalla mediana
+@media only screen and (max-width: 991px){
+    .large-screen{
+        visibility: hidden;
+        display: none;
+    }
+    
+    .medium-screen, .large-medium-screen{
+        visibility: visible;
+        display: block;
+    }
+}
+
+
+// Pantalla mediana
+@media only screen and (max-width: 575px){
+    .large-screen, .medium-screen, .large-medium-screen{
+        visibility: hidden;
+        display: none;
+    }
+
+
+    .small-screen{
+        visibility: visible;
+        display: block;
+    }
+    
 }
 

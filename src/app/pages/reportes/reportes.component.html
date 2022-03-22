@@ -75,15 +75,17 @@
                                 <h4 style="margin-top: 35px;">Descargar</h4>
                             </div>
                         </div>
-                        <div *ngFor="let reporte of reportes" class="row" style="background: '#F8F8F8'; margin: '10px'; min-height: '60px'; height: 'auto';">
-                            <div class="col-4 content-text column">
-                                <h5 class="content-text">{{reporte.anno}}</h5>
-                            </div>
-                            <div class="col-4 content-text column">
-                                <h5 class="content-text">{{reporte.datosGenerales.municipalidad}}</h5>
-                            </div>
-                            <div class="col-4 content-text column">
-                                <i class="fas fa-arrow-alt-circle-down fa-lg" style="color: #4A4A4A;"></i>
+                        <div id="groupRows">
+                            <div *ngFor="let reporte of reportes" class="row" style="background: '#F8F8F8'; margin: '10px'; min-height: '60px'; height: 'auto';">
+                                <div class="col-4 content-text column">
+                                    <h5 class="content-text">{{reporte.anno}}</h5>
+                                </div>
+                                <div class="col-4 content-text column">
+                                    <h5 class="content-text">{{reporte.datosGenerales.municipalidad}}</h5>
+                                </div>
+                                <div class="col-4 content-text column">
+                                    <i class="fas fa-arrow-alt-circle-down fa-lg" style="color: #4A4A4A;"></i>
+                                </div>
                             </div>
                         </div>
                     </div>

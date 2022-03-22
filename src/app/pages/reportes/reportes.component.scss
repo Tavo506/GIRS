@@ -9,8 +9,11 @@
 #main_title{
     text-align: center;
 }
+
+
 @media only screen and (max-width: 992px){
-    #main_title{
-        text-align: center;
+
+    h4{
+        font-size: medium;
     }
 }

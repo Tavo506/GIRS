@@ -8,11 +8,11 @@
         <div class="container-fluid" style="margin-top: 2%;">
 
             <div class="row">
-                <div class="col-4"></div>
-                <div class="col-8"><h1 id="main_title">Registro de residuos sólidos</h1></div>
+                <div class="col-md-4 col-sm-0"></div>
+                <div class="col-md-8  col-sm-12"><h1 id="main_title">Registro de residuos sólidos</h1></div>
             </div>
             <div class="row" style="margin-top: 25px;">
-                <div class="col-3" style="margin-left: 2%;">
+                <div class="col-md-3 col-sm-12" style="margin-left: 2%;">
                     <div class="container">
                         <div class="row">
                             <div class="col"><h1 id="filter_title">Filtros</h1></div>
@@ -26,11 +26,8 @@
                                     </div>
                                     
                                     <div class="row">
-                                        <select class="form-select default_margin" aria-label="Default select example" id="filter_municipality" style="background-color: #F8F8F8;">
-                                            
-                                            <option value="1">Municipalidad de Zarcero</option>
-                                            <option value="2">Municipalidad de Oreamuno</option>
-                                            <option value="3">Municipalidad de Curridabat</option>
+                                        <select class="form-select default_margin" aria-label="Default select example" id="filter_municipality" style="background-color: #F8F8F8;" (change)="filter()">
+                                            <option>Ninguno</option>
                                         </select>
                     
                                     </div>
@@ -38,11 +35,8 @@
                                         <div class="col"><h4 class="default_margin">Años</h4></div>
                                     </div>
                                     <div class="row">
-                                        <select class="form-select default_margin" aria-label="Default select example" id="filter_year" style="background-color: #F8F8F8;">
-                                            
-                                            <option value="1">2009</option>
-                                            <option value="2">2000</option>
-                                            <option value="3">2018</option>
+                                        <select class="form-select default_margin" aria-label="Default select example" id="filter_year" style="background-color: #F8F8F8;" (change)="filter()">
+                                            <option>Ninguno</option>
                                         </select>
                     
                                     </div>
@@ -54,13 +48,14 @@
                     </div>
         
                 </div></div>
-                
-                <div class="col-7 offset-1"><div class="shadow-lg p-3 mb-5 bg-white rounded">
+
+                <div class="col-md-1 col-sm-0"></div>
+                <div class="col-sm-12 col-md-7 "><div class="shadow-lg p-3 mb-5 bg-white rounded">
                     <div class="container" style="height: 77vh; overflow-y: scroll;" id="workflow_forms">
                         <div class="row" style="text-align: center;">
-                            <div class="col"><h4 style="margin-top: 35px;">Año</h4></div>
-                            <div class="col"><h4 style="margin-top: 35px;">Municipalidad</h4></div>
-                            <div class="col "><h4 style="margin-top: 35px;">Descargar</h4></div>
+                            <div class="col-4"><h4 style="margin-top: 35px;">Año</h4></div>
+                            <div class="col-4"><h4 style="margin-top: 35px;">Municipalidad</h4></div>
+                            <div class="col-4 "><h4 style="margin-top: 35px;">Descargar</h4></div>
                         </div>
                     </div>
                     

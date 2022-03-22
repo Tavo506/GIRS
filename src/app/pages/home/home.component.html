@@ -22,21 +22,21 @@
                 <!-- Estas funciones son para saber qué icono colocar para identificar el ordenamiento -->
                 <th #col1 class="text-center noselect" [appSort]="municipalidades" selected="false" data-order="asc" data-name="canton" scope="col">
                     <span>Nombre</span>
-                    <i [ngClass]="{'fa-solid sorting-icon': true, 'fa-sort': !isSelected(col1), 'fa-sort-down': isSelected(col1) && isDesc(col1), 'fa-sort-up': isSelected(col1) && !isDesc(col1)}"></i>
+                    <i class="fa-solid sorting-icon {{getSortIcon(col1)}}"></i>
                 </th>
                 <th #col2 class="text-center noselect" [appSort]="municipalidades" selected="false" data-order="asc" data-name="ppc" scope="col">
                     <span>PPC</span>
-                    <i [ngClass]="{'fa-solid sorting-icon': true, 'fa-sort': !isSelected(col2), 'fa-sort-down': isSelected(col2) && isDesc(col2), 'fa-sort-up': isSelected(col2) && !isDesc(col2)}"></i>
+                    <i class="fa-solid sorting-icon {{getSortIcon(col2)}}"></i>
                 </th>
                 <th #col3 class="text-center noselect" [appSort]="municipalidades" selected="false" data-order="asc" data-name="programaDeReciclaje" scope="col">
                     <span class="large-medium-screen">Programa de reciclaje</span>  <!--Para que se vea bien en pantallas pequeñas hay dos versiones de la columna-->
                     <span class="small-screen">Reciclaje</span>
-                    <i [ngClass]="{'fa-solid sorting-icon': true, 'fa-sort': !isSelected(col3), 'fa-sort-down': isSelected(col3) && isDesc(col3), 'fa-sort-up': isSelected(col3) && !isDesc(col3)}"></i>
+                    <i class="fa-solid sorting-icon {{getSortIcon(col3)}}"></i>
                 </th>
                 <th #col4 class="text-center noselect" [appSort]="municipalidades" selected="false" data-order="asc" data-name="recoleccionDeResiduosSolidosValorizables" scope="col">
                     <span class="large-medium-screen">Recolección de residuos sólidos valorizables</span>  <!--Para que se vea bien en pantallas pequeñas hay dos versiones de la columna-->
                     <span class="small-screen">RSV</span>
-                    <i [ngClass]="{'fa-solid sorting-icon': true, 'fa-sort': !isSelected(col4), 'fa-sort-down': isSelected(col4) && isDesc(col4), 'fa-sort-up': isSelected(col4) && !isDesc(col4)}"></i>
+                    <i class="fa-solid sorting-icon {{getSortIcon(col4)}}"></i>
                 </th>
             </tr>
         </thead>

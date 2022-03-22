@@ -65,9 +65,16 @@ export class HomeComponent implements OnInit {
     const selected = elem.getAttribute("data-order");
     return selected === "desc"
   }
+  
+  getSortIcon(elem: HTMLElement): string{
+    const esDescendiente = this.isDesc(elem);
+    const estaSeleccionado = this.isSelected(elem);
 
-  getSortIcon(): string{
-    return "a"
+    if (!estaSeleccionado) {
+      return "fa-sort"
+    }else{
+      return esDescendiente ? 'fa-sort-down' : 'fa-sort-up'
+    }
   }
 
 

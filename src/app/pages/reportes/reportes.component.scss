@@ -1,0 +1,16 @@
+// Responsive
+
+.default_margin{
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+#main_title{
+    text-align: center;
+}
+@media only screen and (max-width: 992px){
+    #main_title{
+        text-align: center;
+    }
+}

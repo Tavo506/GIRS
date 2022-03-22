@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Municipalidad } from 'src/app/models/municipalidad.model';
+import { MunicipalidadService } from 'src/app/services/municipalidad.service';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  private municipalidades : Municipalidad[] = [];
+
+  constructor(private MunicipalidadService:MunicipalidadService) {
+
+    console.log(MunicipalidadService.getMunicipalidades())
+
+  }
 
   municipalidades: {nombre: string, ppc: number, reciclaje: boolean, rsv: boolean}[] = [
     {
@@ -39,6 +47,15 @@ export class HomeComponent implements OnInit {
   
 
   ngOnInit(): void {
+    this.MunicipalidadService.getMunicipalidades().subscribe(
+      dataMunicipalidad =>{
+        this.municipalidades = dataMunicipalidad as Municipalidad[];
+      }
+    );
+  }
+
+  DummyPrint():void{
+    console.log(this.municipalidades)
   }
 
 

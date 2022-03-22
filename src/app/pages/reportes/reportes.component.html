@@ -1,1 +1,77 @@
-<p>reportes works!</p>
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <body>
+            
+        
+
+        <div class="container-fluid" style="margin-top: 2%;">
+
+            <div class="row">
+                <div class="col-4"></div>
+                <div class="col-8"><h1 id="main_title">Registro de residuos sólidos</h1></div>
+            </div>
+            <div class="row" style="margin-top: 25px;">
+                <div class="col-3" style="margin-left: 2%;">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col"><h1 id="filter_title">Filtros</h1></div>
+                        </div>
+                        <div class="row">
+                            <div class="col" style="margin-top: 20px;"><div class="shadow-lg p-3 mb-5 bg-white rounded">
+        
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col"><h4 class="default_margin">Municipalidades</h4></div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <select class="form-select default_margin" aria-label="Default select example" id="filter_municipality" style="background-color: #F8F8F8;">
+                                            
+                                            <option value="1">Municipalidad de Zarcero</option>
+                                            <option value="2">Municipalidad de Oreamuno</option>
+                                            <option value="3">Municipalidad de Curridabat</option>
+                                        </select>
+                    
+                                    </div>
+                                    <div class="row">
+                                        <div class="col"><h4 class="default_margin">Años</h4></div>
+                                    </div>
+                                    <div class="row">
+                                        <select class="form-select default_margin" aria-label="Default select example" id="filter_year" style="background-color: #F8F8F8;">
+                                            
+                                            <option value="1">2009</option>
+                                            <option value="2">2000</option>
+                                            <option value="3">2018</option>
+                                        </select>
+                    
+                                    </div>
+                    
+                                </div>
+                    
+                            </div>
+                        </div>
+                    </div>
+        
+                </div></div>
+                
+                <div class="col-7 offset-1"><div class="shadow-lg p-3 mb-5 bg-white rounded">
+                    <div class="container" style="height: 77vh; overflow-y: scroll;" id="workflow_forms">
+                        <div class="row" style="text-align: center;">
+                            <div class="col"><h4 style="margin-top: 35px;">Año</h4></div>
+                            <div class="col"><h4 style="margin-top: 35px;">Municipalidad</h4></div>
+                            <div class="col "><h4 style="margin-top: 35px;">Descargar</h4></div>
+                        </div>
+                    </div>
+                    
+                </div></div>
+                
+            
+            
+            </div>
+        
+        </div>
+
+    </body>
+</html>
+

@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { AngularFireModule } from "@angular/fire/compat";
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +23,12 @@ import { NavbarComponent } from './widgets/navbar/navbar.component';
 import { MdbCollapseModule } from "mdb-angular-ui-kit/collapse";
 import { MdbDropdownModule } from "mdb-angular-ui-kit/dropdown";
 import { SortDirective } from './directives/sort.directive';
+//import { NavbarAdminComponent } from './widgets/navbar-admin/navbar-admin.component';
+import { environment } from 'src/environments/environment';
+import { FontAwesomeModule  } from '@fortawesome/angular-fontawesome';
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
+import { faStar as fasStar } from '@fortawesome/free-solid-svg-icons';
 
 @NgModule({
   declarations: [
@@ -46,9 +54,17 @@ import { SortDirective } from './directives/sort.directive';
     AppRoutingModule,
     NgbModule,
     MdbCollapseModule,
-    MdbDropdownModule
+    MdbDropdownModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(library: FaIconLibrary) {
+    library.addIcons(fasStar, farStar);
+  }
+
+ }

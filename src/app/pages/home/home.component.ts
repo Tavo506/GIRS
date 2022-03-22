@@ -37,7 +37,6 @@ export class HomeComponent implements OnInit {
           }else if (reciclaje == "No") {
             m.programaDeReciclaje = false;
           }
-          
 
           const rsv = m.recoleccionDeResiduosSolidosValorizables;
 

@@ -6,6 +6,9 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+
+// Pages start --
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
@@ -19,16 +22,36 @@ import { FormularioComponent } from './pages/formulario/formulario.component';
 import { ReportesUsuarioComponent } from './pages/reportes-usuario/reportes-usuario.component';
 import { MisReportesComponent } from './pages/mis-reportes/mis-reportes.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
+// -- Pages end
+
+
+// Widgets start --
 import { NavbarComponent } from './widgets/navbar/navbar.component';
+import { MapComponent } from './widgets/map/map.component';
+// -- Widgets end
+
+
+// Services start --
+import { AuthService } from './services/auth.service';
+import { ContactosService } from './services/contactos.service';
+import { MunicipalidadService } from './services/municipalidad.service';
+import { ReportesService } from './services/reportes.service';
+import { UsuariosService } from './services/usuarios.service';
+import { MarkerService } from './services/mapServices/marker.service';
+import { PopupService } from './services/mapServices/popup.service';
+// -- Services end
+
+
 import { MdbCollapseModule } from "mdb-angular-ui-kit/collapse";
 import { MdbDropdownModule } from "mdb-angular-ui-kit/dropdown";
 import { SortDirective } from './directives/sort.directive';
-//import { NavbarAdminComponent } from './widgets/navbar-admin/navbar-admin.component';
 import { environment } from 'src/environments/environment';
-import { FontAwesomeModule  } from '@fortawesome/angular-fontawesome';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
 import { faStar as fasStar } from '@fortawesome/free-solid-svg-icons';
+
+
 
 @NgModule({
   declarations: [
@@ -47,8 +70,9 @@ import { faStar as fasStar } from '@fortawesome/free-solid-svg-icons';
     MisReportesComponent,
     PerfilComponent,
     NavbarComponent,
-    SortDirective
-    ],
+    SortDirective,
+    MapComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -59,7 +83,15 @@ import { faStar as fasStar } from '@fortawesome/free-solid-svg-icons';
     AngularFirestoreModule,
     FontAwesomeModule
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    ContactosService,
+    MunicipalidadService, 
+    ReportesService, 
+    UsuariosService,
+    MarkerService,
+    PopupService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
@@ -67,4 +99,4 @@ export class AppModule {
     library.addIcons(fasStar, farStar);
   }
 
- }
+}

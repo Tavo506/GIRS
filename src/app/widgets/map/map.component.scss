@@ -1,0 +1,26 @@
+.map-container {
+    position: relative;
+    height: 50vw;
+    max-height: 550px;
+    min-height: 300px;
+    margin: 40px;
+}
+
+.map-frame {
+    border: 2px solid black;
+    height: 100%;
+}
+
+#map {
+    height: 100%;
+}
+
+
+
+// Pantalla pequeña
+@media only screen and (max-width: 575px){
+    .map-container{
+        margin: 0px;
+    }
+    
+}

@@ -14,10 +14,12 @@ export class NavbarComponent implements OnInit {
 
   get isLoggedIn(): boolean{
     return false;
+    return true;
   }
 
   // Para manejar si mostrar o no la campana de notificaciones
   get haySolicitudes(): boolean{
+    return false;
     return true;
   }
 

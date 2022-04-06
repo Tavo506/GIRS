@@ -8,9 +8,9 @@ export interface Municipalidad{
     lugarDisposicion: string;
     personasHabitacion: number;
     ppc: number;
-    programaDeReciclaje: string | boolean;
+    programaDeReciclaje: string;
     provincia: string;
-    recoleccionDeResiduosSolidosValorizables: string | boolean;
+    recoleccionDeResiduosSolidosValorizables: string;
     totalIngresoServicioAseoDeVias: number;
     unidadesHabitacionalesAtendidas: number;
     unidadesHabitacionalesCanton: number;

@@ -15,7 +15,7 @@ export class MarkerService {
     for (const c of municipalidades) {
       const lon = c.longitud;
       const lat = c.latitud;
-      const circle = L.circleMarker([lat, lon]);
+      const circle = L.circleMarker([lat, lon], {color: 'red', fillColor: '#f03', fillOpacity: 0.5});
 
       const data = {
         displayName: c.displayName

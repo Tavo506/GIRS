@@ -1,5 +1,6 @@
 import { ReturnStatement } from '@angular/compiler';
 import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Reporte } from 'src/app/models/reporte.model';
 import { ReportesService } from 'src/app/services/reportes.service';
 
 @Component({
@@ -9,16 +10,16 @@ import { ReportesService } from 'src/app/services/reportes.service';
 })
 export class ReportesComponent implements OnInit{
 
-  private reportsBackUp: any[] = [];
+  private reportsBackUp: Reporte[] = [];
   private filters: any = { 'municipalidades': [], 'annos': [] };
-  public reportes: any[] = [];
+  public reportes: Reporte[] = [];
 
   constructor(private reportService: ReportesService) { }
 
   ngOnInit(): void {
     this.reportService.getReportes().subscribe(
       report => {
-        this.reportsBackUp = report;
+        this.reportsBackUp = report as Reporte[];
         this.reportes = [...this.reportsBackUp];
         for(let i=0; i<this.reportes.length;i++){
           this.addOptionFilter('municipalidades', this.reportsBackUp[i].datosGenerales.municipalidad);

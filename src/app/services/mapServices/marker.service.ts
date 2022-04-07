@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as L from 'leaflet';
+import { MuniMapa } from 'src/app/models/muniMapa.model';
 import { municipalidades } from "../../../assets/data/municipalidades";
 import { PopupService } from './popup.service';
 
@@ -10,18 +11,15 @@ export class MarkerService {
 
   constructor(private popupService: PopupService) { }
 
-  makeCapitalCircleMarkers(map: L.Map): void {
+  makeCapitalCircleMarkers(map: L.Map, datos: MuniMapa[]): void {
 
-    for (const c of municipalidades) {
+    for (const c of datos) {
       const lon = c.longitud;
       const lat = c.latitud;
       const circle = L.circleMarker([lat, lon], {color: 'red', fillColor: '#f03', fillOpacity: 0.5});
 
-      const data = {
-        displayName: c.displayName
-      }
 
-      circle.bindPopup(this.popupService.makeCapitalPopup(data));
+      circle.bindPopup(this.popupService.makeCapitalPopup(c));
       
       circle.addTo(map);
     }

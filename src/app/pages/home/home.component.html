@@ -6,7 +6,7 @@
     <!-- Mapa de municipalidades -->
     <h1 class="titulo-1">Mapa de las municipalidades</h1>
 
-    <app-map></app-map>
+    <app-map *ngIf="municipalidadesMapa" [datos]="municipalidadesMapa"></app-map>
 
 
     <!-- Tabla de las municipalidades -->

@@ -1,5 +1,6 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, Input } from '@angular/core';
 import * as L from 'leaflet';
+import { MuniMapa } from 'src/app/models/muniMapa.model';
 import { MarkerService } from 'src/app/services/mapServices/marker.service';
 
 
@@ -19,7 +20,6 @@ const iconDefault = L.icon({
 });
 L.Marker.prototype.options.icon = iconDefault;
 
-
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
@@ -28,6 +28,9 @@ L.Marker.prototype.options.icon = iconDefault;
 
 //Tutorial: https://www.digitalocean.com/community/tutorials/angular-angular-and-leaflet
 export class MapComponent implements AfterViewInit {
+
+  @Input() datos! : MuniMapa[];
+
   // Variable que contiene el mapa
   private map!: L.Map;
 
@@ -51,6 +54,6 @@ export class MapComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.initMap();
-    this.markerService.makeCapitalCircleMarkers(this.map);
+    this.markerService.makeCapitalCircleMarkers(this.map, this.datos);
   }
 }

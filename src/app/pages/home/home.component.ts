@@ -6,6 +6,7 @@ import { getSortIcon} from "src/app/util/sortIcons";
 import { sortDate } from "src/app/util/sort";
 import { municipalidades as muni } from "../../../assets/data/municipalidades";
 import { Reporte } from 'src/app/models/reporte.model';
+import { MuniMapa } from 'src/app/models/muniMapa.model';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +16,7 @@ import { Reporte } from 'src/app/models/reporte.model';
 export class HomeComponent implements OnInit {
 
   municipalidadesTabla : Municipalidad[] = [];
-  municipalidadesMapa : any[] = [];
+  municipalidadesMapa! : MuniMapa[];
 
 
   constructor(private MunicipalidadService:MunicipalidadService, private reportesService:ReportesService) {}
@@ -28,9 +29,7 @@ export class HomeComponent implements OnInit {
 
     // Carga los datos de los reportes para el mapa
     this.reportesService.getReportes().subscribe( (data: any[]) => {
-      this.municipalidadesMapa = this.getMunicipalidadesParaMapa(data, muni);
-      console.log(this.municipalidadesMapa);
-      
+      this.municipalidadesMapa = this.getMunicipalidadesParaMapa(data, muni);     
     })
 
     // Carga los datos de las municipalidades para la tabla
@@ -47,7 +46,7 @@ export class HomeComponent implements OnInit {
    * @param LatLonMunicipalidades Datos de las ubicaciones de las municipalidades
    * @returns Lista con cada municipalidad y su ubicación
    */
-  getMunicipalidadesParaMapa(reportes: Reporte[], LatLonMunicipalidades: any[]){
+  getMunicipalidadesParaMapa(reportes: Reporte[], LatLonMunicipalidades: MuniMapa[]){
     let ultimosReportes = sortDate(reportes); //Ordena los datos por fecha para que los reportes más recientes estén de primeros
     ultimosReportes = this.getUniqueMuni(ultimosReportes);  //Filtra los datos para obtener un solo reporte por municipalidad
     ultimosReportes = this.joinMunicipalidades(ultimosReportes, LatLonMunicipalidades)
@@ -61,9 +60,9 @@ export class HomeComponent implements OnInit {
    * @param muni La lista de reportes de las municipalidades
    * @returns Lista con los reportes más nuevos por cada municipalidad
    */
-  getUniqueMuni(muni: any[]) : any[] {
+  getUniqueMuni(muni: Reporte[]) : Reporte[] {
     const listaNombres: string[] = [];
-    const listaMunis: any[] = [];
+    const listaMunis: Reporte[] = [];
 
     muni.forEach(e => {
       const dato = e["datosGenerales"]["municipalidad"];
@@ -78,12 +77,28 @@ export class HomeComponent implements OnInit {
   }
 
 
-  //TODO Arreglar esto
-  joinMunicipalidades(muni: any[], ubicaciones: any[]){
-    const r = muni.filter(({ canton: canton1 }) => ubicaciones.every(({ canton: canton2 }) => canton1 !== canton2));
-    console.log(r);
+  /**
+   * Función para realizar un join a los reportes y las ubicaciones,
+   * para que así cada punto en el mapa muestre información del último reporte registrado
+   * @param reportes Lista de reportes con los reportes ya únicos por municipalidad
+   * @param ubicaciones Lista de ubicaciones
+   * @returns Una sola lista convinada (join)
+   */
+  joinMunicipalidades(reportes: Reporte[], ubicaciones: MuniMapa[]){
     
-    const newArr = ubicaciones.concat(r).map((v) => {return {...v, latitud: v.latitud ? v : null, longitud: v.longitud ? v : null}});
+    // IMPORTANTE: Para debbuging, estas líneas es para ver en consola los reportes que no coincidieron con una ubicación !!!!
+    // const r = reportes.filter(({ canton: canton1 }) => ubicaciones.every(({ canton: canton2 }) => canton1 !== canton2));
+    // console.log(r);
+    
+    const newArr = ubicaciones.map(u => {
+      const muni:Reporte = reportes.filter(m => m.canton === u.canton)[0];
+      return {
+        ...u,
+        viviendas: muni ? muni.datosGenerales.cantidadViviendas : "NA",
+        generacion: muni ? muni.informacionCalculada.indiceGeneracion : "NA",
+        anno: muni ? muni.anno : "NA"
+      }
+    })
     return newArr;
   }
 

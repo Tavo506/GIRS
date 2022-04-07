@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { MuniMapa } from 'src/app/models/muniMapa.model';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,7 @@ export class PopupService {
 
   constructor() { }
 
-  makeCapitalPopup(data: any): string {
+  makeCapitalPopup(data: MuniMapa): string {
     return `` +
       `<b>${ data.displayName }</b>` +
       `<div>Cantidad de viviendas : ${ data.viviendas }</div>` +

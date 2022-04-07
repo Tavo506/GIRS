@@ -33,13 +33,19 @@ export class MapComponent implements AfterViewInit {
 
   // Variable que contiene el mapa
   private map!: L.Map;
+  private ubicacionCR = {latitud: 9.7, longitud: -83.9548, zoom: 8.2}
+  private zoomMunicipalidad = 15;
+  private zoomAnimationOptions: L.ZoomPanOptions = {animate: true, duration: 1}
 
   private initMap(): void {
+
+    // Creación del mapa, se le asigna el centro y el zoom inicial
     this.map = L.map('map', {
-      center: [ 9.7,-83.9548 ],
-      zoom: 8.2
+      center: [ this.ubicacionCR.latitud, this.ubicacionCR.longitud ],
+      zoom: this.ubicacionCR.zoom
     });
 
+    // Se le asigna la imagen de mapa
     const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 18,
       minZoom: 3,
@@ -49,6 +55,21 @@ export class MapComponent implements AfterViewInit {
     tiles.addTo(this.map);
   }
   
+
+  /**
+   * Función para moverse en el mapa según el filtro de municipalidades
+   * @param seleccion Opción marcada en el select
+   */
+  goToMuni(seleccion: string): void {
+    if (seleccion === "CR") {
+      this.map.setView([ this.ubicacionCR.latitud, this.ubicacionCR.longitud ], this.ubicacionCR.zoom, this.zoomAnimationOptions);
+    }else{
+      const municipalidad = this.datos.filter(e => e.canton == seleccion)[0];
+      this.map.setView([ municipalidad.latitud, municipalidad.longitud ], this.zoomMunicipalidad, this.zoomAnimationOptions);
+    }
+    
+  }
+
   
   constructor(private markerService: MarkerService) { }
 

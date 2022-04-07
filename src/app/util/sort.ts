@@ -37,14 +37,18 @@ export class Sort {
 
 /**
  * 
- * @param data Lista de datos con un campo de fecha
- * @param campo Nombre del campo con la fecha por el cual se quiere ordenar
- * @returns La lista ordenada por la fecha
+ * @param data Lista de datos
+ * @param campo Nombre del campo por el cual se quiere ordenar
+ * @param order 1 para ascendente, -1 para descendente
+ * @returns La lista ordenada
  */
-export function sortDate(data: any[], campo : string = "anno"): any[] {
+export function sortJson(data: any[], campo : string, order : 1 | -1 = 1): any[] {
     return data.sort((a: any, b: any): number => {
-        if (a[campo] > b[campo]) return -1;
-        else if (a[campo] < b[campo]) return 1;
-        else return 0;
+        let res;
+        if (a[campo] > b[campo]) res = -1;
+        else if (a[campo] < b[campo]) res = 1;
+        else res = 0;
+        return res * order;
     });
 }
+

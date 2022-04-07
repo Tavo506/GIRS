@@ -1,6 +1,24 @@
 <!--Tutorial de mapa: https://www.digitalocean.com/community/tutorials/angular-angular-and-leaflet -->
-<div class="map-container">
-    <div class="map-frame">
-        <div id="map"></div>
+<div class="map-margin">
+    
+    
+    <!-- Select de municipalidades -->
+    <div>
+        <p>En esta sección se puede escoger una municipalidad deseada, para poder ver un pequeño resumen de <b>cantidad de viviendas</b> e <b>índice de generacion</b> del último año con reporte en caso de tener.</p>
+        <b>Seleccionar municipalidad:</b>
+    </div>
+    <div class="my-2">
+        <select class="form-select default_margin" aria-label="Municipalidades" #selectMuni
+            (change)="goToMuni(selectMuni.value)">
+            <option value="CR">Ninguno</option>
+            <option *ngFor="let muni of datos" value="{{muni.canton}}">{{muni.displayName}}</option>
+        </select>
+    </div>
+
+    <!-- Contenido del mapa -->
+    <div class="map-container">
+        <div class="map-frame">
+            <div id="map"></div>
+        </div>
     </div>
 </div>

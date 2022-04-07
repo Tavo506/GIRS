@@ -3,7 +3,7 @@ import { Municipalidad } from 'src/app/models/municipalidad.model';
 import { MunicipalidadService } from 'src/app/services/municipalidad.service';
 import { ReportesService } from 'src/app/services/reportes.service';
 import { getSortIcon} from "src/app/util/sortIcons";
-import { sortDate } from "src/app/util/sort";
+import { sortJson } from "src/app/util/sort";
 import { municipalidades as muni } from "../../../assets/data/municipalidades";
 import { Reporte } from 'src/app/models/reporte.model';
 import { MuniMapa } from 'src/app/models/muniMapa.model';
@@ -29,6 +29,10 @@ export class HomeComponent implements OnInit {
 
     // Carga los datos de los reportes para el mapa
     this.reportesService.getReportes().subscribe( (data: any[]) => {
+      
+      // Línea para mostrar reportes que no cumplen con la estructura definida
+      console.warn(data.filter(e => !e.canton));
+      
       this.municipalidadesMapa = this.getMunicipalidadesParaMapa(data, muni);     
     })
 
@@ -41,16 +45,18 @@ export class HomeComponent implements OnInit {
 
 
   /**
-   * Función para preparar la lista de las municipalidades con su ubicación de Longitud y Latitud, dada la lista de los reportes y la lista de ubicaciones
+   * Función para preparar la lista de las municipalidades con su ubicación de Longitud y Latitud, 
+   * dada la lista de los reportes y la lista de ubicaciones
    * @param reportes Lista de reportes de las municipalidades
    * @param LatLonMunicipalidades Datos de las ubicaciones de las municipalidades
    * @returns Lista con cada municipalidad y su ubicación
    */
   getMunicipalidadesParaMapa(reportes: Reporte[], LatLonMunicipalidades: MuniMapa[]){
-    let ultimosReportes = sortDate(reportes); //Ordena los datos por fecha para que los reportes más recientes estén de primeros
+    let ultimosReportes = sortJson(reportes, "anno"); //Ordena los datos por fecha para que los reportes más recientes estén de primeros
     ultimosReportes = this.getUniqueMuni(ultimosReportes);  //Filtra los datos para obtener un solo reporte por municipalidad
-    ultimosReportes = this.joinMunicipalidades(ultimosReportes, LatLonMunicipalidades)
-    return ultimosReportes;
+    let municipalidadesConUbicacion = this.joinMunicipalidades(ultimosReportes, LatLonMunicipalidades) //Une las municipalidades con su ubicación en el mapa
+    municipalidadesConUbicacion = sortJson(municipalidadesConUbicacion, "displayName", -1); //Vuelve a ordenar los datos en orden alfabético
+    return municipalidadesConUbicacion;
   }
 
 
@@ -65,7 +71,7 @@ export class HomeComponent implements OnInit {
     const listaMunis: Reporte[] = [];
 
     muni.forEach(e => {
-      const dato = e["datosGenerales"]["municipalidad"];
+      const dato = e.canton;
       
       if (!listaNombres.includes(dato)) {
         listaNombres.push(dato);

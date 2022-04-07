@@ -4,19 +4,18 @@
 
 
     <!-- Mapa de municipalidades -->
-    <h1 class="titulo-1">Mapa de las municipalidades</h1>
+    <h1 class="titulo-1 mb-3">Mapa de las municipalidades</h1>
 
     <app-map *ngIf="municipalidadesMapa" [datos]="municipalidadesMapa"></app-map>
 
 
     <!-- Tabla de las municipalidades -->
 
-    <h1 class="titulo-1">Municipalidades</h1>
-
-    <br>
-
-    <span class="nota">*PPC = Producción Per Cápita</span>
-    <span class="nota small-screen">*RSV = Recolección de residuos sólidos valorizables</span>
+    <h1 class="titulo-1 mt-5 mb-3">Municipalidades</h1>
+    
+    <p>En esta sección se pueden visualizar todas las municipalidades y ordenarlas según su <b>nombre</b>, <b>PPC</b>, si posee <b>programa de reciclaje</b> y si posee <b>recolección de residuos sólidos valorizables</b>.</p>
+    <b class="nota">*PPC = Producción Per Cápita</b>
+    <b class="nota small-screen">*RSV = Recolección de residuos sólidos valorizables</b>
 
     <table class="table girs-table">
         <thead>

@@ -2,6 +2,7 @@ import { ReturnStatement } from '@angular/compiler';
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Reporte } from 'src/app/models/reporte.model';
 import { ReportesService } from 'src/app/services/reportes.service';
+import { sortJson } from 'src/app/util/sort';
 
 @Component({
   selector: 'app-reportes',
@@ -19,7 +20,7 @@ export class ReportesComponent implements OnInit{
   ngOnInit(): void {
     this.reportService.getReportes().subscribe(
       report => {
-        this.reportsBackUp = report as Reporte[];
+        this.reportsBackUp = sortJson(report, "anno");
         this.reportes = [...this.reportsBackUp];
         for(let i=0; i<this.reportes.length;i++){
           this.addOptionFilter('municipalidades', this.reportsBackUp[i].datosGenerales.municipalidad);

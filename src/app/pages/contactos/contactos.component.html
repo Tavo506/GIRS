@@ -1,1 +1,46 @@
-<p>contactos works!</p>
+<div class="container mt-5">
+
+    <h1 class="titulo-1">Contactos</h1>
+
+
+    <table class="table girs-table">
+
+        <thead>
+            <tr>
+                <th #col1 class="text-center noselect" [appSort]="contactos" selected="false" data-order="asc" data-name="nombre" scope="col">
+                    <span>Nombre</span>
+                    <i class="fa-solid sorting-icon {{getSortIcon(col1)}}"></i>
+                </th>
+                <th #col2 class="text-center noselect" [appSort]="contactos" selected="false" data-order="asc" data-name="apellido_1">
+                    <span>Apellidos</span>
+                    <i class="fa-solid sorting-icon {{getSortIcon(col2)}}"></i>
+                </th>
+                <th class="text-center noselect" scope="col">
+                    <span>Teléfono</span>
+                </th>
+                <th class="text-center noselect" scope="col">
+                    <span>Correo</span>
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr class="table-elem" *ngFor="let dato of contactos">
+                <td class="text-center">
+                    {{dato.nombre}}
+                </td>
+                <td class="text-center">
+                    {{dato.apellido_1}} {{dato.apellido_2}}
+                </td>
+                <td class="text-center">
+                    {{dato.correo}}
+                </td>
+                <td class="text-center">
+                    {{dato.telefono}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</div>

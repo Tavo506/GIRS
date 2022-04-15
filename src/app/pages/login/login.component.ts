@@ -1,23 +1,55 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Usuario } from 'src/app/models/usuario.model';
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
+
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  //Modules
+  form : FormGroup;
+  //Variables
+  isLoggedIn = false;
+  isLoginFailed = false;
+  errorMessage = '';
+  usuario: Usuario = this.Usuario();
+
+  constructor(private formBuilder: FormBuilder, private router: Router,) 
+  {
+    this.form = this.formBuilder.group({
+      usuario: ['',[Validators.required, Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$")]],
+      password: ['',Validators.required]
+    });
+  }
 
   ngOnInit(): void {
   }
 
+  /*Función que realiza el inicio de sesión
+    Parameters:
+    usuario : String
+    password: String
+  */
+      
+  logIn() {
+    this.usuario.usuario = this.form?.get('usuario')?.value;
+    this.usuario.password = this.form?.get('password')?.value;
 
-  //Función que realiza el inicio de sesión
+  }
 
-
-
-
+  Usuario(){
+    return {
+      usuario : "",
+      password : "",
+    }
+  }
 }
 
 

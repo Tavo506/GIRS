@@ -23,6 +23,7 @@ import { NavbarComponent } from './widgets/navbar/navbar.component';
 import { MdbCollapseModule } from "mdb-angular-ui-kit/collapse";
 import { MdbDropdownModule } from "mdb-angular-ui-kit/dropdown";
 import { SortDirective } from './directives/sort.directive';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //import { NavbarAdminComponent } from './widgets/navbar-admin/navbar-admin.component';
 import { environment } from 'src/environments/environment';
 import { FontAwesomeModule  } from '@fortawesome/angular-fontawesome';
@@ -57,7 +58,9 @@ import { faStar as fasStar } from '@fortawesome/free-solid-svg-icons';
     MdbDropdownModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule,
+    ReactiveFormsModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

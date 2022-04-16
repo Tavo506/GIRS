@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Usuario } from 'src/app/models/usuario.model';
+import { logInUsuario } from 'src/app/models/logInUsuario.model';
 
 
 @Component({
@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
-  usuario: Usuario = this.Usuario();
+  usuario: logInUsuario = this.Usuario();
 
   constructor(private formBuilder: FormBuilder, private router: Router,) 
   {

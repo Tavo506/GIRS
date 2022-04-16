@@ -5,21 +5,54 @@
         <div class="overlay">
             <h1>Bienvenido a tu inscripción en GIRS</h1>
             <p>¿Ya tienes una cuenta?</p>
-            <button class="common-bttn" >Iniciar sesión</button>
+            <button class="common-bttn" [routerLink]="['/login']" >Iniciar sesión</button>
         </div>
     </div>
     
     <!-- Register -->
     <div class="form-container">
-        <form>
+        <form 
+        (ngSubmit)="register()"
+        [formGroup]="form"
+        >
             <h1> Inscribirse </h1>
-            <input class="input" type="text" placeholder="Nombre">
-            <input class="input" type="text" placeholder="Apellido">
-            <input class="input" type="text" placeholder="Municipalidad">
-            <input class="input" type="email" placeholder="E-mail">
-            <input class="input" type="text" placeholder="Teléfono">
+            <input 
+                class="input" 
+                type="text" 
+                placeholder="Nombre"
+                formControlName="nombre"
+                required
+            >
+            <input 
+                class="input" 
+                type="text" 
+                placeholder="Apellido"
+                formControlName="apellido"
+                required
+            >
+            <select name="municipalidad" id="municipalidad" class="input" required formControlName="municipalidad">
 
-            <button class="common-bttn" >Inscribirse</button>
+                <option *ngFor="let dato of municipalidades" [value]="dato.canton"> Municipalidad de {{dato.canton}} </option>
+
+            </select>
+
+            <input 
+                class="input" 
+                type="email" 
+                placeholder="E-mail"
+                formControlName="email"
+                required
+            >
+            <input 
+                class="input" 
+                type="text" 
+                placeholder="Teléfono"
+                formControlName="telefono"
+                required
+            >
+
+            <button class="common-bttn"  >Inscribirse</button>
+
         </form>
     </div>
 

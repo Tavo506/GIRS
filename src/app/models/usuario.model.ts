@@ -1,4 +1,7 @@
 export interface Usuario {
-    usuario: String,
-    password: String
+    nombre: String, 
+    apellido: String,
+    municipalidad: String,
+    email: String,
+    telefono: String
 }

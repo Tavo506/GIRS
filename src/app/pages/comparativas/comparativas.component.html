@@ -1,1 +1,49 @@
-<p>comparativas works!</p>
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" type="text/css"
+    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+<body>
+    <div class="container-fluid" style="margin-top: 2%;">
+        <div class="text-center">
+            <h1 id="main_title">Comparativa de reportes</h1>
+        </div>
+
+        <!-- Este es el div de los títulos -->
+        <div class="shadow rounded p-3 mb-5">
+            <div class="row" style="width: 100%;">
+                <div class="col">
+                    <h4>Municipalidades</h4>
+                </div>
+                <div class="col text-center">
+                    <h4>Año</h4>
+                </div>
+                <div class="col text-end">
+                    <h4>Agregar</h4>
+                </div>
+
+            </div>
+            <div class="row">
+                <select class="form-select col" name="Select Municipalidad" #select_reporte_municipalidad
+                    (change)="filtrarAnnos(select_reporte_municipalidad.value)">
+                    <option value="Ninguno">Ninguno</option>
+                    <option *ngFor="let reporte of municipalidades" value="{{reporte}}">{{reporte}}</option>
+                </select>
+                <select class="form-select col"  name="Select Anno" #select_reporte_annos>
+                    <option value="Ninguno">Ninguno</option>
+                    <option *ngFor="let anno of annos" value="{{anno}}">{{anno}}</option>
+                </select>
+                <div class="col text-end">
+                    <button class="btn btn-success" style="width: 50%;">Boton mieo</button>
+                </div>
+            </div>
+                
+
+        </div>
+
+    </div>
+
+</body>
+
+
+</html>

@@ -34,9 +34,31 @@
                     <option *ngFor="let anno of annos" value="{{anno}}">{{anno}}</option>
                 </select>
                 <div class="col text-end">
-                    <button class="btn btn-success" style="width: 50%;">Boton mieo</button>
+                    <button class="btn btn-success" style="width: 50%;" (click)="AgregarReporteATabla(select_reporte_municipalidad.value, select_reporte_annos.value)">Boton mieo</button>
                 </div>
             </div>
+            <div class="row p-3 mb-5">
+                <table class="Table text-center">
+                    <thead>
+                        <tr>
+                            <th scope="col">Municipalidad</th>
+                            <th scope="col">Año</th>
+                            <th scope="col" style="width: 20%;">Eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let reporte of selectedReports; let i = index" scope="row">
+                            <td>{{reporte.canton}}</td>
+                            <td>{{reporte.anno}}</td>
+                            <td>
+                                <button class="fas fa-trash-o fa-lg btn btn-danger" (click)="DeleteMe(i)"> Eliminar</button>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+            </div>
+            
                 
 
         </div>

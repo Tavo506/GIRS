@@ -31,7 +31,6 @@ export class ReportesComponent implements OnInit{
   };
 
   sendReportToService(document: any): void {
-    console.log(document)
     this.excelService.exportAsExcelFile(document, 'reporte')
   }
 

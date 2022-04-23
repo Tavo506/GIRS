@@ -1,6 +1,7 @@
 import { ReturnStatement } from '@angular/compiler';
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ReportesService } from 'src/app/services/reportes.service';
+import { ExcelService } from 'src/app/services/excel.service'; 
 
 @Component({
   selector: 'app-reportes',
@@ -13,7 +14,7 @@ export class ReportesComponent implements OnInit{
   private filters: any = { 'municipalidades': [], 'annos': [] };
   public reportes: any[] = [];
 
-  constructor(private reportService: ReportesService) { }
+  constructor(private reportService: ReportesService, private excelService: ExcelService) { }
 
   ngOnInit(): void {
     this.reportService.getReportes().subscribe(
@@ -28,6 +29,11 @@ export class ReportesComponent implements OnInit{
       }
     );
   };
+
+  sendReportToService(document: any): void {
+    console.log(document)
+    this.excelService.exportAsExcelFile(document, 'reporte')
+  }
 
  
 

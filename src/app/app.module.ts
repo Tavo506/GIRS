@@ -29,6 +29,7 @@ import { FontAwesomeModule  } from '@fortawesome/angular-fontawesome';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
 import { faStar as fasStar } from '@fortawesome/free-solid-svg-icons';
+import { ExcelService } from './services/excel.service';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,7 @@ import { faStar as fasStar } from '@fortawesome/free-solid-svg-icons';
     AngularFirestoreModule,
     FontAwesomeModule
   ],
-  providers: [],
+  providers: [ExcelService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

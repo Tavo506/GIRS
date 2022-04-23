@@ -12,4 +12,9 @@ export class ReportesService {
     const reports = this.db.collection('formularios').valueChanges();
     return reports;
   }
+
+  getReporte(id: string){
+    const reports = this.db.collection('formularios').valueChanges({uuid: "86BRWuAPJXcvDHf8fmwKfBYQBWI3"});
+    return reports;
+  }
 }

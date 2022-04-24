@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Usuario } from 'src/app/models/usuario.model';
-import { Router } from '@angular/router';
 
 import { Municipalidad } from 'src/app/models/municipalidad.model';
 import { MunicipalidadService } from 'src/app/services/municipalidad.service';
+
+import { AuthService } from 'src/app/services/auth.service';
+
 
 @Component({
   selector: 'app-register',
@@ -15,17 +17,22 @@ export class RegisterComponent implements OnInit {
 
   //Modules
   form : FormGroup;
-
+  //Variables
   usuario : Usuario = this.Usuario();
   municipalidades : Municipalidad[] = [];
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private MunicipalidadService:MunicipalidadService) 
+  constructor(
+    private formBuilder: FormBuilder, 
+    private MunicipalidadService:MunicipalidadService,
+    private auth: AuthService
+  ) 
   {
     this.form = this.formBuilder.group({
       nombre: ['', Validators.required],
       apellido: ['',Validators.required],
       municipalidad: ['', Validators.required],
       email: ['', Validators.required],
+      password: ['', Validators.required],
       telefono: ['', Validators.required]
     });
   }
@@ -41,24 +48,28 @@ export class RegisterComponent implements OnInit {
 
 
   register(){
+
+    //Get User Inputs
     this.usuario.nombre = this.form?.get('nombre')?.value;
     this.usuario.apellido = this.form?.get('apellido')?.value;
     this.usuario.municipalidad = this.form?.get('municipalidad')?.value;
     this.usuario.email = this.form?.get('email')?.value;
+    this.usuario.password = this.form?.get('password')?.value;
     this.usuario.telefono = this.form?.get('telefono')?.value;
 
-    console.log(this.usuario)
+    //Sign In User
+    this.auth.newUser(this.usuario);
   }
 
-
-
-
+  //User Model
   Usuario(){
     return {
+      uid: "",
       nombre : "",
       apellido: "",
       municipalidad: "",
       email: "",
+      password: "",
       telefono: ""
     }
   }

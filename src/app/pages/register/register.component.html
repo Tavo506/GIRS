@@ -16,6 +16,23 @@
         [formGroup]="form"
         >
             <h1> Inscribirse </h1>
+
+            <input 
+                class="input" 
+                type="email" 
+                placeholder="E-mail"
+                formControlName="email"
+                required
+            >
+
+            <input 
+                class="input" 
+                type="password" 
+                placeholder="Contraseña"
+                formControlName="password"
+                required
+            >
+
             <input 
                 class="input" 
                 type="text" 
@@ -35,14 +52,6 @@
                 <option *ngFor="let dato of municipalidades" [value]="dato.canton"> Municipalidad de {{dato.canton}} </option>
 
             </select>
-
-            <input 
-                class="input" 
-                type="email" 
-                placeholder="E-mail"
-                formControlName="email"
-                required
-            >
             <input 
                 class="input" 
                 type="text" 
@@ -55,6 +64,4 @@
 
         </form>
     </div>
-
-    
 </div>

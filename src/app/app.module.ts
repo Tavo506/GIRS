@@ -51,6 +51,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
 import { faStar as fasStar } from '@fortawesome/free-solid-svg-icons';
+import { ExcelService } from './services/excel.service';
 
 
 
@@ -93,7 +94,8 @@ import { faStar as fasStar } from '@fortawesome/free-solid-svg-icons';
     ReportesService, 
     UsuariosService,
     MarkerService,
-    PopupService
+    PopupService,
+    ExcelService
   ],
   bootstrap: [AppComponent]
 })

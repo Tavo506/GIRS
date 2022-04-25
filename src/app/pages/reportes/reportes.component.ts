@@ -3,6 +3,7 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Reporte } from 'src/app/models/reporte.model';
 import { ReportesService } from 'src/app/services/reportes.service';
 import { sortJson } from 'src/app/util/sort';
+import { ExcelService } from 'src/app/services/excel.service'; 
 
 @Component({
   selector: 'app-reportes',
@@ -15,7 +16,7 @@ export class ReportesComponent implements OnInit{
   private filters: any = { 'municipalidades': [], 'annos': [] };
   public reportes: Reporte[] = [];
 
-  constructor(private reportService: ReportesService) { }
+  constructor(private reportService: ReportesService, private excelService: ExcelService) { }
 
   ngOnInit(): void {
     this.reportService.getReportes().subscribe(
@@ -30,6 +31,10 @@ export class ReportesComponent implements OnInit{
       }
     );
   };
+
+  sendReportToService(document: any): void {
+    this.excelService.exportAsExcelFile(document, 'reporte')
+  }
 
  
 

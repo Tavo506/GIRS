@@ -1,0 +1,84 @@
+.container {
+	background-color: #fff;
+	border-radius: 7px;
+  	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+			0 10px 10px rgba(0,0,0,0.22);
+	overflow: hidden;
+	width: 768px;
+	height: 520px;
+    display: flex;
+    flex-direction: row;
+	padding: 0%;
+}
+
+.form-container{
+	min-height: 480px;
+    width: 100%;
+}
+
+form{    
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 50px;
+	height: 100%;	
+	text-align: center;
+}
+
+
+.overlay-container {
+	transition: transform 0.6s ease-in-out;
+    width: 100%;
+}
+
+.overlay {
+	background: #44749D;
+	background: -webkit-linear-gradient(to right, #44749D, #3b5b78);
+	background: linear-gradient(to right, #44749D, #5197d4);
+	background-repeat: no-repeat;
+	background-size: cover;
+	color: #FFFFFF;
+  	transform: translateX(0);
+	transition: transform 0.6s ease-in-out;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 40px;
+	text-align: center;
+	height: 100%;
+}
+
+//Other
+
+.input{
+	background-color: #F8F8F8;
+	border: 2px solid #e3e3e3;
+	width: 100%;
+	margin: 10px;
+	padding: 8px;
+}
+
+a{
+	color: black;
+	margin: 10px;
+}
+
+.common-bttn{
+	border-radius: 8px;
+	border: 1px solid #3D556A;
+	background-color: #3D556A;
+	color: #FFFFFF;
+	font-size: 16px;
+	font-weight: bold;
+	width: 70%;
+	padding: 4px;
+	letter-spacing: 1px;
+    margin: 10px;
+}
+
+.common-bttn:active {
+	transform: scale(0.95);
+	transition: 1s;
+}

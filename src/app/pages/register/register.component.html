@@ -1,1 +1,67 @@
-<p>register works!</p>
+<div id="container"  class="container mt-5">
+    
+    <!-- Overlay -->
+    <div class="overlay-container">
+        <div class="overlay">
+            <h1>Bienvenido a tu inscripción en GIRS</h1>
+            <p>¿Ya tienes una cuenta?</p>
+            <button class="common-bttn" [routerLink]="['/login']" >Iniciar sesión</button>
+        </div>
+    </div>
+    
+    <!-- Register -->
+    <div class="form-container">
+        <form 
+        (ngSubmit)="register()"
+        [formGroup]="form"
+        >
+            <h1> Inscribirse </h1>
+
+            <input 
+                class="input" 
+                type="email" 
+                placeholder="E-mail"
+                formControlName="email"
+                required
+            >
+
+            <input 
+                class="input" 
+                type="password" 
+                placeholder="Contraseña"
+                formControlName="password"
+                required
+            >
+
+            <input 
+                class="input" 
+                type="text" 
+                placeholder="Nombre"
+                formControlName="nombre"
+                required
+            >
+            <input 
+                class="input" 
+                type="text" 
+                placeholder="Apellido"
+                formControlName="apellido"
+                required
+            >
+            <select name="municipalidad" id="municipalidad" class="input" required formControlName="municipalidad">
+
+                <option *ngFor="let dato of municipalidades" [value]="dato.canton"> Municipalidad de {{dato.canton}} </option>
+
+            </select>
+            <input 
+                class="input" 
+                type="text" 
+                placeholder="Teléfono"
+                formControlName="telefono"
+                required
+            >
+
+            <button class="common-bttn"  >Inscribirse</button>
+
+        </form>
+    </div>
+</div>

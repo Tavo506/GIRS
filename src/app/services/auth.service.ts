@@ -5,6 +5,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import {UsuariosService} from './usuarios.service';
 import { logInUsuario } from 'src/app/models/logInUsuario.model';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -14,7 +15,7 @@ export class AuthService {
 
   userData: any; // Save logged in user data
 
-  constructor(public afAuth: AngularFireAuth, public userService : UsuariosService){
+  constructor(public afAuth: AngularFireAuth, public userService : UsuariosService, private router : Router){
     //Guardar en LocalStorage
     this.afAuth.authState.subscribe((user) => {
       if (user) {
@@ -70,13 +71,8 @@ export class AuthService {
   return this.afAuth
     .signInWithEmailAndPassword(userInput.email, userInput.password)
     .then((result) => {
-      Swal.fire({
-        allowOutsideClick: false,
-        icon: 'success',
-        text: '¡Ha iniciado sesión con éxito!'
-      });
-
       //Routing
+      this.router.navigate(['/home']);
       
     })
     .catch((error) => {
@@ -97,7 +93,7 @@ export class AuthService {
   }
 
   // Returns true when user is looged in and email is verified
-  get isLoggedIn(): boolean {
+  public get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user')!);
     return user !== null ;
   }

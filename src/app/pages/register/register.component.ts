@@ -7,6 +7,7 @@ import { MunicipalidadService } from 'src/app/services/municipalidad.service';
 
 import { AuthService } from 'src/app/services/auth.service';
 
+import { sortJson } from "src/app/util/sort";
 
 @Component({
   selector: 'app-register',
@@ -41,7 +42,7 @@ export class RegisterComponent implements OnInit {
     //Obtengo las municipalidades
     this.MunicipalidadService.getMunicipalidades().subscribe(
       dataMunicipalidad =>{
-        this.municipalidades = dataMunicipalidad as Municipalidad[];
+        this.municipalidades = sortJson(dataMunicipalidad as Municipalidad[], 'canton', -1);
       }
     );
   }

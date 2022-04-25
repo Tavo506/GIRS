@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,14 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
   }
 
+  logOut(): void {
+    this.authService.logOut();
+  }
+
   get isLoggedIn(): boolean{
-    return false;
-    return true;
+    return this.authService.isLoggedIn;
   }
 
   // Para manejar si mostrar o no la campana de notificaciones

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuardGuard } from './guards/auth-guard.guard';
 import { CalculadoraComponent } from './pages/calculadora/calculadora.component';
 import { ComparativasComponent } from './pages/comparativas/comparativas.component';
 import { ContactosComponent } from './pages/contactos/contactos.component';
@@ -14,20 +15,22 @@ import { ReportesComponent } from './pages/reportes/reportes.component';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 
+
 const routes: Routes = [
   {path: "calculadora", component: CalculadoraComponent},
   {path: "comparativas", component: ComparativasComponent},
   {path: "contactos", component: ContactosComponent},
-  {path: "formulario/:idForm", component: FormularioComponent},
   {path: "home", component: HomeComponent},
   {path: "login", component: LoginComponent},
-  {path: "misReportes", component: MisReportesComponent},
-  {path: "perfil", component: PerfilComponent},
   {path: "register", component: RegisterComponent},
   {path: "reportes", component: ReportesComponent},
-  {path: "reportesUsuario/:idUser", component: ReportesUsuarioComponent},
-  {path: "usuarios", component: UsuariosComponent},
   {path: "welcome", component: WelcomeComponent},
+  
+  {path: "formulario/:idForm", component: FormularioComponent, canActivate: [AuthGuardGuard]},
+  {path: "misReportes", component: MisReportesComponent, canActivate: [AuthGuardGuard]},
+  {path: "perfil", component: PerfilComponent, canActivate: [AuthGuardGuard]},
+  {path: "reportesUsuario/:idUser", component: ReportesUsuarioComponent, canActivate: [AuthGuardGuard]},
+  {path: "usuarios", component: UsuariosComponent, canActivate: [AuthGuardGuard]},
   
   {path: "**", pathMatch:"full", redirectTo: "home"}
 ];

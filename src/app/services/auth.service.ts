@@ -12,68 +12,93 @@ import Swal from 'sweetalert2';
 })
 export class AuthService {
 
-  constructor(public afAuth: AngularFireAuth, public userService : UsuariosService){
+  userData: any; // Save logged in user data
 
+  constructor(public afAuth: AngularFireAuth, public userService : UsuariosService){
+    //Guardar en LocalStorage
+    this.afAuth.authState.subscribe((user) => {
+      if (user) {
+        this.userData = user;
+        localStorage.setItem('user', JSON.stringify(this.userData));
+        JSON.parse(localStorage.getItem('user')!);
+      } else {
+        localStorage.setItem('user', 'null');
+        JSON.parse(localStorage.getItem('user')!);
+      }
+    });
   }
-    //Register Nuevo Usuario
-    newUser( userInput : Usuario ) {
-      
+  //Register Nuevo Usuario
+  newUser( userInput : Usuario ) {
+    Swal.fire({
+      allowOutsideClick: false,
+      icon: 'info',
+      text: 'Espere por favor...'
+    });
+    Swal.showLoading();
+
+    return this.afAuth
+    .createUserWithEmailAndPassword(userInput.email, userInput.password)
+    .then((result) => {
+      this.setUserData(result.user, userInput);
+      Swal.close();
       Swal.fire({
         allowOutsideClick: false,
-        icon: 'info',
-        text: 'Espere por favor...'
+        icon: 'success',
+        text: '¡Se ha registrado con éxito!'
       });
-      Swal.showLoading();
 
-      return this.afAuth
-      .createUserWithEmailAndPassword(userInput.email, userInput.password)
-      .then((result) => {
-        this.setUserData(result.user, userInput);
-        Swal.close();
-        Swal.fire({
-          allowOutsideClick: false,
-          icon: 'success',
-          text: '¡Se ha registrado con éxito!'
-        });
-
-      })
-      .catch((error) => {
-        Swal.close();
-        Swal.fire({
-          icon: 'error',
-          title: 'Error al autenticar',
-          text: error.message
-        });
+    })
+    .catch((error) => {
+      Swal.close();
+      Swal.fire({
+        icon: 'error',
+        title: 'Error al autenticar',
+        text: error.message
       });
-    }
+    });
+  }
 
-    //Insertar Usuario en la tabla
-    setUserData(regisInfo: any, userInput: Usuario) {
-      userInput.uid = regisInfo.uid;
-      this.userService.insertUser(userInput);
-    }
+  //Insertar Usuario en la tabla
+  setUserData(regisInfo: any, userInput: Usuario) {
+    userInput.uid = regisInfo.uid;
+    this.userService.insertUser(userInput);
+  }
 
-    
-    // Sign in with email/password
-    signIn(userInput : logInUsuario) {
-    return this.afAuth
-      .signInWithEmailAndPassword(userInput.email, userInput.password)
-      .then((result) => {
-        Swal.fire({
-          allowOutsideClick: false,
-          icon: 'success',
-          text: '¡Ha iniciado sesión con éxito!'
-        });
-
-        //Routing
-        
-      })
-      .catch((error) => {
-        Swal.fire({
-          icon: 'error',
-          title: 'Error al autenticar',
-          text: error.message
-        });
+  
+  // Sign in with email/password
+  signIn(userInput : logInUsuario) {
+  return this.afAuth
+    .signInWithEmailAndPassword(userInput.email, userInput.password)
+    .then((result) => {
+      Swal.fire({
+        allowOutsideClick: false,
+        icon: 'success',
+        text: '¡Ha iniciado sesión con éxito!'
       });
+
+      //Routing
+      
+    })
+    .catch((error) => {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error al autenticar',
+        text: error.message
+      });
+    });
+  }
+
+  // Logout
+  logOut() {
+    return this.afAuth.signOut().then(() => {
+      localStorage.removeItem('user');
+      //Route
+    });
+  }
+
+  // Returns true when user is looged in and email is verified
+  get isLoggedIn(): boolean {
+    const user = JSON.parse(localStorage.getItem('user')!);
+    return user !== null ;
   }
 }

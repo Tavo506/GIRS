@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { logInUsuario } from 'src/app/models/logInUsuario.model';
@@ -18,7 +17,6 @@ export class LoginComponent implements OnInit {
   form : FormGroup;
   //Variables
   isLoggedIn = false;
-  isLoginFailed = false;
   errorMessage = '';
   usuario: logInUsuario = this.Usuario();
 
@@ -30,8 +28,13 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+
+      if ( localStorage.getItem('email') ) {
+        this.isLoggedIn = true;
+      }
+
+    }
 
   /*Función que realiza el inicio de sesión
     Parameters:

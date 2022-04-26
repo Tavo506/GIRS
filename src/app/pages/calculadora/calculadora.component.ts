@@ -11,11 +11,7 @@ export class CalculadoraComponent implements OnInit {
   constructor(private reportService: ReportesService) { }
 
   ngOnInit(): void {
-    this.reportService.getReporte('uuid = "86BRWuAPJXcvDHf8fmwKfBYQBWI3"').subscribe(
-      report => {
-        console.log(report);
-      }
-    );
+    
   }
 
 }

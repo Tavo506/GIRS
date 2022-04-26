@@ -14,10 +14,7 @@ export class ContactosComponent implements OnInit {
 
   contactos : Contacto[] = [];
 
-  constructor(private ContactosService:ContactosService) {
-
-    console.log(ContactosService.getContactos())
-  }
+  constructor(private ContactosService:ContactosService) { }
 
   ngOnInit(): void {
 

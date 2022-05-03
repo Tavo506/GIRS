@@ -16,9 +16,12 @@ export class GraficoPlotComponent implements DoCheck {
   @Input() plotType: "bar" | "line" = "bar";
   @Input() column!: string;
   @Input() segment!: string;
+  @Input() titulo!: string;
   lastLength: number = 0;
   
-  constructor() {}
+  constructor() {
+
+  }
 
   
 
@@ -26,13 +29,15 @@ export class GraficoPlotComponent implements DoCheck {
     scaleShowVerticalLines: false,
     responsive: true
   };
-  public barChartLabels : string[] = ["Reportes"];
+  public barChartLabels : string[] = [];
   public barChartType = this.plotType as keyof ChartTypeRegistry;
   public barChartLegend = true;
   public barChartData : any[] = [];
 
+  
 
   ngDoCheck(): void {
+    this.barChartLabels[0] = this.titulo;
 
     // Si la lista cambió de longitud actualiza
     if (this.data.length !== this.lastLength) {
@@ -49,6 +54,7 @@ export class GraficoPlotComponent implements DoCheck {
         let dato = subElem![key2] + '';
         
         dato = dato.replace(" ", "");
+        dato = dato.replace(",", ".");
         
         this.barChartData.push({
           data: [dato],

@@ -60,11 +60,33 @@
             </div>
             
                 <div class="row" *ngIf="selectedReports.length > 0">
-                    <div class="col-md-6 col-12">
-                        <app-grafico-plot [data]="selectedReports" [plotType]="'bar'" [column]="'datosGenerales'" [segment]="'cantidadViviendas'"></app-grafico-plot>
+                    <div class="col-md-6 col-12 mb-4 text-center">
+                        <span  class="texto">Poblacion atendida</span>
+                        <app-grafico-plot [data]="selectedReports" [plotType]="'bar'" [column]="'datosGenerales'" [segment]="'poblacionAtendida'" [titulo]="'Población Atendida'"></app-grafico-plot>
                     </div>
-                    <div class="col-md-6 col-12">
-                        <app-grafico-plot [data]="selectedReports" [plotType]="'bar'" [column]="'datosGenerales'" [segment]="'cantidadViviendas'"></app-grafico-plot>
+                    <div class="col-md-6 col-12 mb-4 text-center">
+                        <span  class="texto">Cantidad viviendas</span>
+                        <app-grafico-plot [data]="selectedReports" [plotType]="'bar'" [column]="'datosGenerales'" [segment]="'cantidadViviendas'" [titulo]="'Cantidad de viviendas'"></app-grafico-plot>
+                    </div>
+                    <div class="col-md-6 col-12 mb-4 text-center">
+                        <span  class="texto">Porcentaje de recoleccion</span>
+                        <app-grafico-plot [data]="selectedReports" [plotType]="'line'" [column]="'caracteristicasServicio'" [segment]="'porcentajeRecoleccion'" [titulo]="'Porcentaje de Recoleccion'"></app-grafico-plot>
+                    </div>
+                    <div class="col-md-6 col-12 mb-4 text-center">
+                        <span  class="texto">Cantidad mensual recolectada y enviada a disposicion</span>
+                        <app-grafico-plot [data]="selectedReports" [plotType]="'bar'" [column]="'caracteristicasServicio'" [segment]="'cantidadMensualDisposicion'" [titulo]="'Cantidad mensual a recolatada en toneladas'"></app-grafico-plot>
+                    </div>
+                    <div class="col-md-6 col-12 mb-4 text-center">
+                        <span  class="texto">Cantidad de cambiones</span>
+                        <app-grafico-plot [data]="selectedReports" [plotType]="'bar'" [column]="'caracteristicasServicio'" [segment]="'cantidadCamiones'" [titulo]="'Cantidad de caminoes'"></app-grafico-plot>
+                    </div>
+                    <div class="col-md-6 col-12 mb-4 text-center">
+                        <span  class="texto">Cantidad de viajes por camion</span>
+                        <app-grafico-plot [data]="selectedReports" [plotType]="'bar'" [column]="'disposicion'" [segment]="'cantidadViajesMes'" [titulo]="'Cantidad viajes al mes'"></app-grafico-plot>
+                    </div>
+                    <div class="col-md-6 col-12 mb-4 text-center">
+                        <span  class="texto">Consumo de combustible por camion</span>
+                        <app-grafico-plot [data]="selectedReports" [plotType]="'bar'" [column]="'disposicion'" [segment]="'consumoCombustibleCamion'" [titulo]="'Consumo de combustible por camión'"></app-grafico-plot>
                     </div>
                 </div>
 

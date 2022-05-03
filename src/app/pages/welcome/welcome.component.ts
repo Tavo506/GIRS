@@ -14,7 +14,7 @@ export class WelcomeComponent implements OnInit {
   ngOnInit(): void {}
 
   setLocalStorage() : void {
-    this.localStorageService.setLocalStorage("welcome", "true")
+    this.localStorageService.setLocalStorage("welcome", true);
   }
 
   

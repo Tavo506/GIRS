@@ -13,8 +13,7 @@ export class WelcomeGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    console.log(this.localStorageService.getLocalStorage("welcome") == "true")
-    if (this.localStorageService.getLocalStorage("welcome") == "true") {
+    if (this.localStorageService.getLocalStorage("welcome")) {
       return this.router.navigate(['/home']).then(() => false);
     }
     return true;

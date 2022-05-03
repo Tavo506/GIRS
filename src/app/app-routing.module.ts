@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuardGuard } from './guards/auth-guard.guard';
+import { WelcomeGuard } from './guards/welcome.guard';
 import { CalculadoraComponent } from './pages/calculadora/calculadora.component';
 import { ComparativasComponent } from './pages/comparativas/comparativas.component';
 import { ContactosComponent } from './pages/contactos/contactos.component';
@@ -24,7 +25,7 @@ const routes: Routes = [
   {path: "login", component: LoginComponent},
   {path: "register", component: RegisterComponent},
   {path: "reportes", component: ReportesComponent},
-  {path: "welcome", component: WelcomeComponent},
+  {path: "welcome", component: WelcomeComponent, canActivate: [WelcomeGuard]},
   
   {path: "formulario/:idForm", component: FormularioComponent, canActivate: [AuthGuardGuard]},
   {path: "misReportes", component: MisReportesComponent, canActivate: [AuthGuardGuard]},

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router'; 
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
   selector: 'app-welcome',
@@ -9,26 +9,13 @@ import { Router } from '@angular/router';
 export class WelcomeComponent implements OnInit {
 
 
-  constructor(private router : Router) { }
+  constructor(private localStorageService: LocalStorageService) { }
 
-  ngOnInit(): void {
-    var welcome = this.getLocalStorage();
-    if(welcome === 'true') {
-      window.location.href = this.router.url + '/home';
-    }
+  ngOnInit(): void {}
+
+  setLocalStorage() : void {
+    this.localStorageService.setLocalStorage("welcome", "true")
   }
 
-  setLocalStorage(): void {
-    localStorage.setItem('welcome', 'true');
-  }
-
-  getLocalStorage(): any{
-    
-    var res = localStorage.getItem('welcome');
-    return res
-  }
-
-  removeLocalStorage(): void {
-    localStorage.removeItem('welcome');
-  }
+  
 }

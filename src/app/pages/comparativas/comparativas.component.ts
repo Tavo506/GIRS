@@ -16,10 +16,11 @@ export class ComparativasComponent implements OnInit {
   reportes : Reporte[] = [];
   municipalidades : string[] = [];
   annos : number[] = [];
-
   selectedReports : Reporte[] = [];
-
+  
+  
   constructor(private reportesService: ReportesService) { }
+
 
   ngOnInit(): void {
     let getR = this.reportesService.getReportes().subscribe(res => {
@@ -49,7 +50,11 @@ export class ComparativasComponent implements OnInit {
   }
 
   AgregarReporteATabla(Municipalidad:string, Anno:string) {
-    this.selectedReports = this.selectedReports.concat(this.reportes.filter(e => e.canton == Municipalidad && e.anno == parseInt(Anno)));
+    let aux = this.reportes.filter(e => e.canton == Municipalidad && e.anno == parseInt(Anno))
+    if(!this.selectedReports.includes(aux[0])){
+      this.selectedReports = this.selectedReports.concat(aux); 
+    }
+    
   }
 
   DeleteMe(index:number){

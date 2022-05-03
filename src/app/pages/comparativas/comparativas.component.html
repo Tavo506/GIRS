@@ -34,7 +34,7 @@
                     <option *ngFor="let anno of annos" value="{{anno}}">{{anno}}</option>
                 </select>
                 <div class="col text-end">
-                    <button class="btn btn-success" style="width: 50%;" (click)="AgregarReporteATabla(select_reporte_municipalidad.value, select_reporte_annos.value)">Boton mieo</button>
+                    <button class="btn btn-success" style="width: 50%;" (click)="AgregarReporteATabla(select_reporte_municipalidad.value, select_reporte_annos.value)">Agregar</button>
                 </div>
             </div>
             <div class="row p-3 mb-5">
@@ -51,7 +51,7 @@
                             <td>{{reporte.canton}}</td>
                             <td>{{reporte.anno}}</td>
                             <td>
-                                <button class="fas fa-trash-o fa-lg btn btn-danger" (click)="DeleteMe(i)"> Eliminar</button>
+                                <button class="btn btn-danger" (click)="DeleteMe(i)"><span class="fas fa-trash-o"></span> Eliminar</button>
                             </td>
                         </tr>
                     </tbody>
@@ -59,7 +59,36 @@
                 </table>
             </div>
             
-                
+                <div class="row" *ngIf="selectedReports.length > 0">
+                    <div class="col-md-6 col-12 mb-4 text-center">
+                        <span  class="texto">Poblacion atendida</span>
+                        <app-grafico-plot [data]="selectedReports" [plotType]="'bar'" [column]="'datosGenerales'" [segment]="'poblacionAtendida'" [titulo]="'Población Atendida'"></app-grafico-plot>
+                    </div>
+                    <div class="col-md-6 col-12 mb-4 text-center">
+                        <span  class="texto">Cantidad viviendas</span>
+                        <app-grafico-plot [data]="selectedReports" [plotType]="'bar'" [column]="'datosGenerales'" [segment]="'cantidadViviendas'" [titulo]="'Cantidad de viviendas'"></app-grafico-plot>
+                    </div>
+                    <div class="col-md-6 col-12 mb-4 text-center">
+                        <span  class="texto">Porcentaje de recoleccion</span>
+                        <app-grafico-plot [data]="selectedReports" [plotType]="'line'" [column]="'caracteristicasServicio'" [segment]="'porcentajeRecoleccion'" [titulo]="'Porcentaje de Recoleccion'"></app-grafico-plot>
+                    </div>
+                    <div class="col-md-6 col-12 mb-4 text-center">
+                        <span  class="texto">Cantidad mensual recolectada y enviada a disposicion</span>
+                        <app-grafico-plot [data]="selectedReports" [plotType]="'bar'" [column]="'caracteristicasServicio'" [segment]="'cantidadMensualDisposicion'" [titulo]="'Cantidad mensual a recolatada en toneladas'"></app-grafico-plot>
+                    </div>
+                    <div class="col-md-6 col-12 mb-4 text-center">
+                        <span  class="texto">Cantidad de cambiones</span>
+                        <app-grafico-plot [data]="selectedReports" [plotType]="'bar'" [column]="'caracteristicasServicio'" [segment]="'cantidadCamiones'" [titulo]="'Cantidad de caminoes'"></app-grafico-plot>
+                    </div>
+                    <div class="col-md-6 col-12 mb-4 text-center">
+                        <span  class="texto">Cantidad de viajes por camion</span>
+                        <app-grafico-plot [data]="selectedReports" [plotType]="'bar'" [column]="'disposicion'" [segment]="'cantidadViajesMes'" [titulo]="'Cantidad viajes al mes'"></app-grafico-plot>
+                    </div>
+                    <div class="col-md-6 col-12 mb-4 text-center">
+                        <span  class="texto">Consumo de combustible por camion</span>
+                        <app-grafico-plot [data]="selectedReports" [plotType]="'bar'" [column]="'disposicion'" [segment]="'consumoCombustibleCamion'" [titulo]="'Consumo de combustible por camión'"></app-grafico-plot>
+                    </div>
+                </div>
 
         </div>
 

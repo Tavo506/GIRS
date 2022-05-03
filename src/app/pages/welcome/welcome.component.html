@@ -1,35 +1,36 @@
 <!DOCTYPE html>
 <html style="height: 100%;">
+
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Werlcome Gits</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
 </head>
+
 <body>
-    <div class="çontainer-fluid" style="height: 100%; padding: 0;" >
-        <div class="row" style="height: 100%;">
-            <div class="col-12" style="height: 100%;">
-               <img src="assets/images/Bienvenida.png" style="height: 100%; width: 100%; position: relative;" class="pic"/>
-                <div class='container-fluid' style="position: absolute;">
-                    <div class="row" style="position: absolute;">
-                        <div class="col-12 position-up" style="font-style: Roboto;  font-weight: bold; color: white; text-align: center;">TE PRESENTAMOS GIRS</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 position-center" style="font-style: Roboto; color: white; text-align: center;">Esta es una plataforma para la Gestión Integral de Residuos Sólidos (GIRS) que nace de la iniciativa del Instituto Tecnológico de Costa Rica, específicamente la escuela de química. Se desea brindar una manera para que colaborativamente se complete la información de residuos sólidos del país y que las personas interesadas puedan consultar dicha información para el desarrollo de activdades ambientalistas o la toma de decisiones informadas.</div>
-                    </div>
-                    <div class="row">
-                            <button class="col-12 position-button" [routerLink]="['home']" (click)="setLocalStorage()">Iniciar<i class="fas fa-arrow-right" style="color: #002855; margin-left: 3%;"></i></button>
-                    </div>
+
+        <div class="bg container" style="height: 100%;">
+            <!-- <img src="assets/images/Bienvenida.png" style="height: 100%; width: 100%; position: relative;"
+                    class="pic" /> -->
+                <div class="text-center">
+                    <p class="position-up"
+                        style="font-style: Roboto;  font-weight: bold; color: white; text-align: center;">TE
+                        PRESENTAMOS GIRS</p>
+                    <p class="position-center" style="font-style: Roboto; color: white; text-align: center;">Esta
+                        es una plataforma para la
+                        Gestión Integral de Residuos Sólidos (GIRS) que nace de la iniciativa del Instituto
+                        Tecnológico de Costa Rica, específicamente la escuela de química. Se desea brindar una
+                        manera para que colaborativamente se complete la información de residuos sólidos del país y
+                        que las personas interesadas puedan consultar dicha información para el desarrollo de
+                        activdades ambientalistas o la toma de decisiones informadas.</p>
+                    <button class="position-button mt-4" [routerLink]="['home']" (click)="setLocalStorage()">
+                        Iniciar
+                        <i class="fas fa-arrow-right" style="color: #002855; margin-left: 3%;"></i>
+                    </button>
                 </div>
-                        
-                
-              
-            </div>
-            
-            
-        </div>
+
     </div>
-     
 </body>
+
 </html>

@@ -7,22 +7,14 @@
 :host ::ng-deep html,
 :host ::ng-deep body{
     background-color: #002855;
+    background-image: url("../../../assets/images/Bienvenida.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
-.pic {
-  filter: blur(0px);
-
-  @media only screen and (max-width: 992px){
-
-    filter: blur(0px);
-    }
-}
 
 .position-up{
-    position: fixed;
-    top: 15%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     font-size: 700%;
 
     @media only screen and (max-width: 1800px) {
@@ -34,31 +26,24 @@
     @media only screen and (max-width: 992px){
 
         font-size: 280%;
-        left: 30%;
-        transform: translate(-30%, -30%);
+        
     }
 
     @media only screen and (max-width: 500px){
 
         font-size: 200%;
-        left: 30%;
-        transform: translate(-30%, -30%);
+        
     }
 
     @media only screen and (max-width: 360px){
 
         font-size: 150%;
-        left: 30%;
-        transform: translate(-30%, -30%);
+        
     }
 }
 
 
 .position-center{
-    position: fixed;
-    top: 30%;
-    left: 15%;
-    transform: translate(-15%, -15%);
     font-size: 300%;
 
     @media only screen and (max-width: 1700px) {
@@ -84,16 +69,12 @@
 }
 
 .position-button{
-    position: fixed;
     color: #002855;
     font-style: 'Roboto';
     font-weight: bold;
     border-radius: 20px;
     width: 35%;
     height: 13%;
-    top: 70%;
-    left: 35%;
-    transform: translate(-10%, -10%);
     font-size: 350%;
 
 
@@ -102,6 +83,13 @@
         width: 40%;
         height: 13%;
         font-size: 300%;
+    }
+
+    @media only screen and (max-width: 767px){
+
+        width: 40%;
+        height: 13%;
+        font-size: 250%;
     }
 
     @media only screen and (max-width: 600px){

@@ -28,6 +28,7 @@ import { PerfilComponent } from './pages/perfil/perfil.component';
 // Widgets start --
 import { NavbarComponent } from './widgets/navbar/navbar.component';
 import { MapComponent } from './widgets/map/map.component';
+import { GraficoPlotComponent } from './widgets/grafico-plot/grafico-plot.component';
 // -- Widgets end
 
 
@@ -52,8 +53,7 @@ import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
 import { faStar as fasStar } from '@fortawesome/free-solid-svg-icons';
 import { ExcelService } from './services/excel.service';
-
-
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -73,7 +73,8 @@ import { ExcelService } from './services/excel.service';
     PerfilComponent,
     NavbarComponent,
     SortDirective,
-    MapComponent
+    MapComponent,
+    GraficoPlotComponent
   ],
   imports: [
     BrowserModule,
@@ -85,7 +86,8 @@ import { ExcelService } from './services/excel.service';
     AngularFirestoreModule,
     FontAwesomeModule,
     FormsModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule,
+    NgChartsModule
   ],
   providers: [
     AuthService,

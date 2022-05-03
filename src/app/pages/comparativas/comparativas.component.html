@@ -34,7 +34,7 @@
                     <option *ngFor="let anno of annos" value="{{anno}}">{{anno}}</option>
                 </select>
                 <div class="col text-end">
-                    <button class="btn btn-success" style="width: 50%;" (click)="AgregarReporteATabla(select_reporte_municipalidad.value, select_reporte_annos.value)">Boton mieo</button>
+                    <button class="btn btn-success" style="width: 50%;" (click)="AgregarReporteATabla(select_reporte_municipalidad.value, select_reporte_annos.value)">Agregar</button>
                 </div>
             </div>
             <div class="row p-3 mb-5">
@@ -51,7 +51,7 @@
                             <td>{{reporte.canton}}</td>
                             <td>{{reporte.anno}}</td>
                             <td>
-                                <button class="fas fa-trash-o fa-lg btn btn-danger" (click)="DeleteMe(i)"> Eliminar</button>
+                                <button class="btn btn-danger" (click)="DeleteMe(i)"><span class="fas fa-trash-o"></span> Eliminar</button>
                             </td>
                         </tr>
                     </tbody>
@@ -59,7 +59,14 @@
                 </table>
             </div>
             
-                
+                <div class="row" *ngIf="selectedReports.length > 0">
+                    <div class="col-md-6 col-12">
+                        <app-grafico-plot [data]="selectedReports" [plotType]="'bar'" [column]="'datosGenerales'" [segment]="'cantidadViviendas'"></app-grafico-plot>
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <app-grafico-plot [data]="selectedReports" [plotType]="'bar'" [column]="'datosGenerales'" [segment]="'cantidadViviendas'"></app-grafico-plot>
+                    </div>
+                </div>
 
         </div>
 

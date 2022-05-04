@@ -85,8 +85,44 @@
                         <app-grafico-plot [data]="selectedReports" [plotType]="'bar'" [column]="'disposicion'" [segment]="'cantidadViajesMes'" [titulo]="'Cantidad viajes al mes'"></app-grafico-plot>
                     </div>
                     <div class="col-md-6 col-12 mb-4 text-center">
-                        <span  class="texto">Consumo de combustible por camion</span>
+                        <span  class="texto">Distancia promedio recorrida por camión</span>
+                        <app-grafico-plot [data]="selectedReports" [plotType]="'bar'" [column]="'disposicion'" [segment]="'distanciaPromedioSitio'" [titulo]="'Distancia KM promedio por camión'"></app-grafico-plot>
+                    </div>
+                    <div class="col-md-6 col-12 mb-4 text-center">
+                        <span  class="texto">Carga útil por camión</span>
+                        <app-grafico-plot [data]="selectedReports" [plotType]="'bar'" [column]="'disposicion'" [segment]="'cargoUtilCamionViaje'" [titulo]="'Carga útil por camión en KG'"></app-grafico-plot>
+                    </div>
+                    <div class="col-md-6 col-12 mb-4 text-center">
+                        <span  class="texto">Consumo de combustible por cambión</span>
                         <app-grafico-plot [data]="selectedReports" [plotType]="'bar'" [column]="'disposicion'" [segment]="'consumoCombustibleCamion'" [titulo]="'Consumo de combustible por camión'"></app-grafico-plot>
+                    </div>
+                    <div class="col-md-6 col-12 mb-4 text-center">
+                        <span  class="texto">Presupuesto invertido en gesitón integral de residuos solidos</span>
+                        <app-grafico-plot [data]="selectedReports" [plotType]="'bar'" [column]="'aspectosFinancieros'" [segment]="'presupuestoInvertidoGirs'" [titulo]="'Presupuesto invertido en GIRS'"></app-grafico-plot>
+                    </div>
+                    <div class="col-md-6 col-12 mb-4 text-center">
+                        <span  class="texto">Presupuesto invertido en areas comunes</span>
+                        <app-grafico-plot [data]="selectedReports" [plotType]="'bar'" [column]="'aspectosFinancieros'" [segment]="'presupuestoInvertidoLimpieza'" [titulo]="'Presupuesto para limpieza de calles, parques...'"></app-grafico-plot>
+                    </div>
+                    <div class="col-md-6 col-12 mb-4 text-center">
+                        <span  class="texto">Porcentaje de morosidad</span>
+                        <app-grafico-plot [data]="selectedReports" [plotType]="'bar'" [column]="'aspectosFinancieros'" [segment]="'porcentajeMorosidad'" [titulo]="'Porcentaje de morosidad en municipalidades'"></app-grafico-plot>
+                    </div>
+                    <div class="col-md-6 col-12 mb-4 text-center">
+                        <span  class="texto">Inversión en campañas de educación ambiental</span>
+                        <app-grafico-plot [data]="selectedReports" [plotType]="'bar'" [column]="'aspectosFinancieros'" [segment]="'inversionCampanasEducacion'" [titulo]="'Inversión en campañas ambientales'"></app-grafico-plot>
+                    </div>
+                    <div class="col-md-6 col-12 mb-4 text-center">
+                        <span  class="texto">Indice de generación por habitante</span>
+                        <app-grafico-plot [data]="selectedReports" [plotType]="'bar'" [column]="'informacionCalculada'" [segment]="'indiceGeneracion'" [titulo]="'Indice de generación por habitante'"></app-grafico-plot>
+                    </div>
+                    <div class="col-md-6 col-12 mb-4 text-center">
+                        <span  class="texto">Gastos por aseo</span>
+                        <app-grafico-plot [data]="selectedReports" [plotType]="'bar'" [column]="'informacionCalculada'" [segment]="'gastoPorAseo'" [titulo]="'Gastos por aseo'"></app-grafico-plot>
+                    </div>
+                    <div class="col-md-6 col-12 mb-4 text-center">
+                        <span  class="texto">Gastos por vivienda</span>
+                        <app-grafico-plot [data]="selectedReports" [plotType]="'bar'" [column]="'informacionCalculada'" [segment]="'gastoPorVivienda'" [titulo]="'Gastos por vivienda'"></app-grafico-plot>
                     </div>
                 </div>
 

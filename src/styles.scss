@@ -60,6 +60,12 @@ select{
 
 
 
+.clickeable {
+    cursor: pointer;
+}
+
+
+
 // Estilos para las tablas
 
 .girs-table, th, td{
@@ -69,7 +75,6 @@ select{
 .girs-table th{
     color: white;
     background: var(--mainBlue);
-    cursor: pointer;
 }
 
 .sorting-icon{

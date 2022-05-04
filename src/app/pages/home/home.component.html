@@ -23,20 +23,20 @@
                 <!-- Los atributos selected, data-order, data-name y data-type son para el ordenamiento de las tablas, dado por la directiva appSort -->
                 <!-- Se debe poder el ID (#colN) para poder ser identificados en las funciones isSelected e isDesc -->
                 <!-- Estas funciones son para saber qué icono colocar para identificar el ordenamiento -->
-                <th #col1 class="text-center noselect" [appSort]="municipalidadesTabla" selected="false" data-order="asc" data-name="canton" scope="col">
+                <th #col1 class="text-center noselect clickeable" [appSort]="municipalidadesTabla" selected="false" data-order="asc" data-name="canton" scope="col">
                     <span>Nombre</span>
                     <i class="fa-solid sorting-icon {{getSortIcon(col1)}}"></i>
                 </th>
-                <th #col2 class="text-center noselect" [appSort]="municipalidadesTabla" selected="false" data-order="asc" data-name="ppc" scope="col">
+                <th #col2 class="text-center noselect clickeable" [appSort]="municipalidadesTabla" selected="false" data-order="asc" data-name="ppc" scope="col">
                     <span>PPC</span>
                     <i class="fa-solid sorting-icon {{getSortIcon(col2)}}"></i>
                 </th>
-                <th #col3 class="text-center noselect" [appSort]="municipalidadesTabla" selected="false" data-order="asc" data-name="programaDeReciclaje" scope="col">
+                <th #col3 class="text-center noselect clickeable" [appSort]="municipalidadesTabla" selected="false" data-order="asc" data-name="programaDeReciclaje" scope="col">
                     <span class="large-medium-screen">Programa de reciclaje</span>  <!--Para que se vea bien en pantallas pequeñas hay dos versiones de la columna-->
                     <span class="small-screen">Reciclaje</span>
                     <i class="fa-solid sorting-icon {{getSortIcon(col3)}}"></i>
                 </th>
-                <th #col4 class="text-center noselect" [appSort]="municipalidadesTabla" selected="false" data-order="asc" data-name="recoleccionDeResiduosSolidosValorizables" scope="col">
+                <th #col4 class="text-center noselect clickeable" [appSort]="municipalidadesTabla" selected="false" data-order="asc" data-name="recoleccionDeResiduosSolidosValorizables" scope="col">
                     <span class="large-medium-screen">Recolección de residuos sólidos valorizables</span>  <!--Para que se vea bien en pantallas pequeñas hay dos versiones de la columna-->
                     <span class="small-screen">RSV</span>
                     <i class="fa-solid sorting-icon {{getSortIcon(col4)}}"></i>

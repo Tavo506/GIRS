@@ -2,16 +2,19 @@
 
     <h1 class="titulo-1">Contactos</h1>
 
+    <button class="common-bttn" *ngIf="showAdmin" (click)="crearContacto()">Nuevo contacto</button>
 
-    <table class="table girs-table">
+    <table class="table girs-table reduce-sm">
 
         <thead>
             <tr>
-                <th #col1 class="text-center noselect clickeable" [appSort]="contactos" selected="false" data-order="asc" data-name="nombre" scope="col">
+                <th #col1 class="text-center noselect clickeable" [appSort]="contactos" selected="false"
+                    data-order="asc" data-name="nombre" scope="col">
                     <span>Nombre</span>
                     <i class="fa-solid sorting-icon {{getSortIcon(col1)}}"></i>
                 </th>
-                <th #col2 class="text-center noselect clickeable" [appSort]="contactos" selected="false" data-order="asc" data-name="apellido_1">
+                <th #col2 class="text-center noselect clickeable" [appSort]="contactos" selected="false"
+                    data-order="asc" data-name="apellido_1">
                     <span>Apellidos</span>
                     <i class="fa-solid sorting-icon {{getSortIcon(col2)}}"></i>
                 </th>
@@ -20,6 +23,9 @@
                 </th>
                 <th class="text-center noselect" scope="col">
                     <span>Correo</span>
+                </th>
+                <th *ngIf="showAdmin" class="text-center noselect" scope="col">
+                    <span>Acciones</span>
                 </th>
             </tr>
         </thead>
@@ -33,14 +39,25 @@
                     {{dato.apellido_1}} {{dato.apellido_2}}
                 </td>
                 <td class="text-center">
-                    {{dato.correo}}
+                    {{dato.telefono}}
                 </td>
                 <td class="text-center">
-                    {{dato.telefono}}
+                    {{dato.correo}}
+                </td>
+                <td *ngIf="showAdmin" class="text-center">
+                    <div ngbDropdown display="dynamic" placement="bottom">
+                        <div class="btn-option " tabindex="0" ngbDropdownToggle id="navbarDropdown3" role="button">
+                            <i class="fa-solid fa-ellipsis"></i>
+                        </div>
+                        <div ngbDropdownMenu aria-labelledby="navbarDropdown3" class="dropdown-menu">
+                            <a ngbDropdownItem (click)="editarContacto(dato)">Editar</a>
+                            <div class="dropdown-divider"></div>
+                            <a ngbDropdownItem class="hover-danger dropdown-delete" (click)="eliminarContacto(dato.$key)">Eliminar</a>
+                        </div>
+                    </div>
                 </td>
             </tr>
         </tbody>
     </table>
-
 
 </div>

@@ -61,7 +61,7 @@
             
                 <div class="row" *ngIf="selectedReports.length > 0">
                     <div class="col-md-6 col-12 mb-4 text-center">
-                        <span  class="texto">Poblacion atendida</span>
+                        <span  class="texto">Población atendida</span>
                         <app-grafico-plot [data]="selectedReports" [plotType]="'bar'" [column]="'datosGenerales'" [segment]="'poblacionAtendida'" [titulo]="'Población Atendida'"></app-grafico-plot>
                     </div>
                     <div class="col-md-6 col-12 mb-4 text-center">
@@ -69,19 +69,19 @@
                         <app-grafico-plot [data]="selectedReports" [plotType]="'bar'" [column]="'datosGenerales'" [segment]="'cantidadViviendas'" [titulo]="'Cantidad de viviendas'"></app-grafico-plot>
                     </div>
                     <div class="col-md-6 col-12 mb-4 text-center">
-                        <span  class="texto">Porcentaje de recoleccion</span>
+                        <span  class="texto">Porcentaje de recolección</span>
                         <app-grafico-plot [data]="selectedReports" [plotType]="'line'" [column]="'caracteristicasServicio'" [segment]="'porcentajeRecoleccion'" [titulo]="'Porcentaje de Recoleccion'"></app-grafico-plot>
                     </div>
                     <div class="col-md-6 col-12 mb-4 text-center">
-                        <span  class="texto">Cantidad mensual recolectada y enviada a disposicion</span>
+                        <span  class="texto">Cantidad mensual recolectada y enviada a disposición</span>
                         <app-grafico-plot [data]="selectedReports" [plotType]="'bar'" [column]="'caracteristicasServicio'" [segment]="'cantidadMensualDisposicion'" [titulo]="'Cantidad mensual a recolatada en toneladas'"></app-grafico-plot>
                     </div>
                     <div class="col-md-6 col-12 mb-4 text-center">
-                        <span  class="texto">Cantidad de cambiones</span>
+                        <span  class="texto">Cantidad de camiones</span>
                         <app-grafico-plot [data]="selectedReports" [plotType]="'bar'" [column]="'caracteristicasServicio'" [segment]="'cantidadCamiones'" [titulo]="'Cantidad de caminoes'"></app-grafico-plot>
                     </div>
                     <div class="col-md-6 col-12 mb-4 text-center">
-                        <span  class="texto">Cantidad de viajes por camion</span>
+                        <span  class="texto">Cantidad de viajes por camión</span>
                         <app-grafico-plot [data]="selectedReports" [plotType]="'bar'" [column]="'disposicion'" [segment]="'cantidadViajesMes'" [titulo]="'Cantidad viajes al mes'"></app-grafico-plot>
                     </div>
                     <div class="col-md-6 col-12 mb-4 text-center">
@@ -93,15 +93,15 @@
                         <app-grafico-plot [data]="selectedReports" [plotType]="'bar'" [column]="'disposicion'" [segment]="'cargoUtilCamionViaje'" [titulo]="'Carga útil por camión en KG'"></app-grafico-plot>
                     </div>
                     <div class="col-md-6 col-12 mb-4 text-center">
-                        <span  class="texto">Consumo de combustible por cambión</span>
+                        <span  class="texto">Consumo de combustible por camión</span>
                         <app-grafico-plot [data]="selectedReports" [plotType]="'bar'" [column]="'disposicion'" [segment]="'consumoCombustibleCamion'" [titulo]="'Consumo de combustible por camión'"></app-grafico-plot>
                     </div>
                     <div class="col-md-6 col-12 mb-4 text-center">
-                        <span  class="texto">Presupuesto invertido en gesitón integral de residuos solidos</span>
+                        <span  class="texto">Presupuesto invertido en gesitión integral de residuos sólidos</span>
                         <app-grafico-plot [data]="selectedReports" [plotType]="'bar'" [column]="'aspectosFinancieros'" [segment]="'presupuestoInvertidoGirs'" [titulo]="'Presupuesto invertido en GIRS'"></app-grafico-plot>
                     </div>
                     <div class="col-md-6 col-12 mb-4 text-center">
-                        <span  class="texto">Presupuesto invertido en areas comunes</span>
+                        <span  class="texto">Presupuesto invertido en áreas comunes</span>
                         <app-grafico-plot [data]="selectedReports" [plotType]="'bar'" [column]="'aspectosFinancieros'" [segment]="'presupuestoInvertidoLimpieza'" [titulo]="'Presupuesto para limpieza de calles, parques...'"></app-grafico-plot>
                     </div>
                     <div class="col-md-6 col-12 mb-4 text-center">
@@ -113,7 +113,7 @@
                         <app-grafico-plot [data]="selectedReports" [plotType]="'bar'" [column]="'aspectosFinancieros'" [segment]="'inversionCampanasEducacion'" [titulo]="'Inversión en campañas ambientales'"></app-grafico-plot>
                     </div>
                     <div class="col-md-6 col-12 mb-4 text-center">
-                        <span  class="texto">Indice de generación por habitante</span>
+                        <span  class="texto">Índice de generación por habitante</span>
                         <app-grafico-plot [data]="selectedReports" [plotType]="'bar'" [column]="'informacionCalculada'" [segment]="'indiceGeneracion'" [titulo]="'Indice de generación por habitante'"></app-grafico-plot>
                     </div>
                     <div class="col-md-6 col-12 mb-4 text-center">

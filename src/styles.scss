@@ -13,6 +13,7 @@
     --tableBlue1: #EFF1F6;
     --tableBlue2: #E4E7EF;
     --buttonBG: #3D556A;
+    --buttonHover: #374d60;
     --myRed: #B30A0A;
     --myRedHover: #ac0606;
     --myRedActive: #990808;
@@ -26,12 +27,18 @@
 
 // Clase para que un texto no se pueda seleccionar
 .noselect {
-    -webkit-touch-callout: none; /* iOS Safari */
-      -webkit-user-select: none; /* Safari */
-       -khtml-user-select: none; /* Konqueror HTML */
-         -moz-user-select: none; /* Old versions of Firefox */
-          -ms-user-select: none; /* Internet Explorer/Edge */
-              user-select: none; /* Non-prefixed version, currently
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
                                     supported by Chrome, Edge, Opera and Firefox */
 }
 
@@ -40,21 +47,27 @@
 
 // Estilos para textos
 
-.titulo-1{
+.titulo-1 {
     font-weight: 700;
     font-size: 40px;
     color: var(--mainBlue);
 }
 
-.nota{
+.nota {
     font-size: 14px;
+}
+
+
+.col-form-label {
+    font-weight: 600;
+    font-size: 18px;
 }
 
 
 
 // Estilos para inputs
 
-select{
+select {
     background-color: #F8F8F8;
 }
 
@@ -66,22 +79,38 @@ select{
 
 
 
-// Estilos para las tablas
+.swal2-html-container {
+    margin: 0px !important;
+}
 
-.girs-table, th, td{
+.swal2-html-container input{
+    width: 70%;
+}
+
+
+
+// ##############################################
+// #
+// #        Estilos para las tablas
+// #
+// ##############################################
+
+.girs-table,
+th,
+td {
     border: 1px solid black;
 }
 
-.girs-table th{
+.girs-table th {
     color: white;
     background: var(--mainBlue);
 }
 
-.sorting-icon{
+.sorting-icon {
     margin-left: 2px;
 }
 
-.table-elem{
+.table-elem {
     background-color: var(--tableBlue1);
 }
 
@@ -90,26 +119,84 @@ tr:nth-child(even) {
     background-color: var(--tableBlue2);
 }
 
+// Hace la tabla más pequeña en teléfono
+.reduce-sm {
+    @media only screen and (max-width: 575px) {
 
-.true-icon{
+        th,
+        td {
+            font-size: 12px;
+        }
+
+        .btn-option i {
+            font-size: 24px;
+        }
+    }
+}
+
+
+// ##############################################
+// #
+// #        Estilos para dropdown menu
+// #
+// ##############################################
+
+
+.hover-danger:hover {
+    background: var(--myRed);
+    color: white;
+}
+
+.dropdown-delete {
+    color: var(--myRed);
+    font-weight: 500;
+}
+
+.dropdown-menu a {
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+.dropdown-button {
+    padding-bottom: 9px !important;
+}
+
+
+
+
+
+// ##############################################
+// #
+// #        Estilos para iconos y botones
+// #
+// ##############################################
+
+
+.true-icon {
     color: var(--myGreen);
     font-size: 34px;
 }
 
 
-.false-icon{
+.false-icon {
     color: var(--myRed);
     font-size: 34px;
 }
 
 
-.neutral-icon{
+.neutral-icon {
     color: var(--MyPurple);
     font-size: 34px;
 }
 
 
-.btn-yes-no{
+
+
+.btn-yes-no {
     color: white;
     border-radius: 0px;
     border: none;
@@ -117,42 +204,77 @@ tr:nth-child(even) {
     width: 5vw;
 }
 
-.btn-yes-no:active{
+.btn-yes-no:active {
     border: none;
 }
 
-.btn-accept{
+.btn-accept {
     background: var(--myGreen);
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
 }
 
-.btn-accept:hover{
+.btn-accept:hover {
     background: var(--myGreenHover);
 }
 
-.btn-accept:active{
+.btn-accept:active {
     background: var(--myGreenActive);
 }
 
 
-.btn-denny{
+.btn-denny {
     background: var(--myRed);
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
 }
 
-.btn-denny:hover{
+.btn-denny:hover {
     background: var(--myRedHover);
 }
 
-.btn-denny:active{
+.btn-denny:active {
     background: var(--myRedActive);
 }
 
 
+.btn-option {
+    cursor: pointer;
+}
 
-.medium-screen, .small-screen{
+.btn-option i {
+    font-size: 28px;
+    color: black;
+}
+
+
+.common-bttn {
+    border-radius: 8px;
+    border: none;
+    background-color: var(--buttonBG);
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 7px 30px;
+    letter-spacing: 1px;
+    margin: 10px 0px;
+}
+
+.common-bttn:hover {
+    background-color: var(--buttonHover);
+}
+
+.common-bttn:active {
+    transform: scale(0.95);
+    transition: 0.15s;
+}
+
+
+
+
+
+.medium-screen,
+.small-screen {
     visibility: hidden;
     display: none;
 }
@@ -161,35 +283,43 @@ tr:nth-child(even) {
 // Vistas de teléfono
 
 // Pantalla mediana
-@media only screen and (max-width: 991px){
-    .large-screen{
+@media only screen and (max-width: 991px) {
+    .large-screen {
         visibility: hidden;
         display: none;
     }
-    
-    .medium-screen, .large-medium-screen{
+
+    .medium-screen,
+    .large-medium-screen {
         visibility: visible;
         display: block;
+    }
+
+    .dropdown-button {
+        padding-top: 15px !important;
     }
 }
 
 
 // Pantalla pequeña
-@media only screen and (max-width: 575px){
-    .large-screen, .medium-screen, .large-medium-screen{
+@media only screen and (max-width: 575px) {
+
+    .large-screen,
+    .medium-screen,
+    .large-medium-screen {
         visibility: hidden;
         display: none;
     }
 
 
-    .small-screen{
+    .small-screen {
         visibility: visible;
         display: block;
     }
 
-    option{
+    option {
         font-size: 14px;
     }
-    
-}
 
+
+}

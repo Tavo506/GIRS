@@ -64,21 +64,3 @@ a{
 	color: black;
 	margin: 10px;
 }
-
-.common-bttn{
-	border-radius: 8px;
-	border: 1px solid #3D556A;
-	background-color: #3D556A;
-	color: #FFFFFF;
-	font-size: 16px;
-	font-weight: bold;
-	width: 70%;
-	padding: 4px;
-	letter-spacing: 1px;
-    margin: 10px;
-}
-
-.common-bttn:active {
-	transform: scale(0.95);
-	transition: 1s;
-}

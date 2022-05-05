@@ -1,7 +1,8 @@
 export interface Contacto{
-    apellido_1 : String,
-    apellido_2 : String,
-    correo : String,
-    nombre : String,
-    telefono : String
+    $key? : string;
+    apellido_1 : string,
+    apellido_2 : string,
+    correo : string,
+    nombre : string,
+    telefono : string
 }

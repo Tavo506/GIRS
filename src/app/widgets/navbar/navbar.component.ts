@@ -16,9 +16,7 @@ export class NavbarComponent implements OnInit {
     // Esto es un observer que obtiene la ruta en cada momento
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
-        this.currentRoute = event.url;
-        console.log(this.currentRoute);
-        
+        this.currentRoute = event.url;       
       }
     });
 

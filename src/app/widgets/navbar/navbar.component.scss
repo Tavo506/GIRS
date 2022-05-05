@@ -20,13 +20,6 @@ nav{
     justify-content: right;
 }
 
-.dropdown-toggle::after {
-    display:none;
-}
-
-.dropdown-button{
-    padding-bottom: 9px !important;
-}
 
 .icon{
     font-size: 35px;
@@ -56,24 +49,13 @@ nav{
 }
 
 
-.hover-danger:hover{
-    background: var(--myRed);
-    color: white;
-}
 
-.dropdown-menu a{
-    font-size: 18px;
-}
 
 // Responsive
 @media only screen and (max-width: 991px){
     .nav-link{
         padding-top: 5px;
         padding-bottom: 5px;
-    }
-
-    .dropdown-button{
-        padding-top: 15px !important;
     }
 
     li{

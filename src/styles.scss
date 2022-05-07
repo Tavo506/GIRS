@@ -45,6 +45,14 @@
 
 
 
+.form-control:focus {
+    box-shadow: none;
+    border-color: var(--mainBlue);
+}
+
+
+
+
 // Estilos para textos
 
 .titulo-1 {
@@ -77,15 +85,19 @@ select {
     cursor: pointer;
 }
 
-
-
-.swal2-html-container {
-    margin: 0px !important;
+.required:after {
+    content: " *";
+    color: red;
 }
 
-.swal2-html-container input{
-    width: 70%;
-}
+
+
+// ##############################################
+// #
+// #        Estilos para modals
+// #
+// ##############################################
+
 
 
 

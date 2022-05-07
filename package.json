@@ -38,6 +38,7 @@
     "firebase": "^9.6.9",
     "font-awesome": "^4.7.0",
     "leaflet": "^1.7.1",
+    "libphonenumber-js": "^1.9.52",
     "mdb-angular-ui-kit": "^2.0.0",
     "ng2-charts": "^3.0.10",
     "rxjs": "~7.5.0",

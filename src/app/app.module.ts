@@ -54,7 +54,8 @@ import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
 import { faStar as fasStar } from '@fortawesome/free-solid-svg-icons';
 import { ExcelService } from './services/excel.service';
 import { NgChartsModule } from 'ng2-charts';
-import { ModalContactoComponent } from './widgets/modal-contacto/modal-contacto.component';
+import { ModalContacto } from './widgets/modal-contacto/modal-contacto.component';
+import { PhonePipe } from './pipes/phone.pipe';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import { ModalContactoComponent } from './widgets/modal-contacto/modal-contacto.
     SortDirective,
     MapComponent,
     GraficoPlotComponent,
-    ModalContactoComponent
+    ModalContacto,
+    PhonePipe
   ],
   imports: [
     BrowserModule,

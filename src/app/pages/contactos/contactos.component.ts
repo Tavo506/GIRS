@@ -4,6 +4,7 @@ import { Contacto } from 'src/app/models/contacto.model';
 import { getSortIcon } from "src/app/util/sortIcons";
 import { AuthService } from 'src/app/services/auth.service';
 import Swal from 'sweetalert2';
+import { ModalService } from 'src/app/services/modal.service';
 
 @Component({
   selector: 'app-contactos',
@@ -16,15 +17,17 @@ export class ContactosComponent implements OnInit {
 
   contactos: Contacto[] = [];
 
-  constructor(private ContactosService: ContactosService, private authService: AuthService) { }
+  constructor(
+    private ContactosService: ContactosService,
+    private authService: AuthService,
+    private modalService: ModalService
+  ) { }
 
   ngOnInit(): void {
 
     this.ContactosService.getContactos().subscribe(
       datoContacto => {
         this.contactos = datoContacto as Contacto[];
-        console.log(this.contactos);
-
       }
     );
   }
@@ -49,7 +52,7 @@ export class ContactosComponent implements OnInit {
    */
   crearContacto() {
     let nuevoContacto: Contacto = { nombre: "", apellido_1: "", apellido_2: "", telefono: "", correo: "" }
-    this.formContacto(nuevoContacto, "Crear Contacto", "Crear");
+    this.formContacto(nuevoContacto, "Crear Contacto", "Guardar");
   }
 
 
@@ -70,28 +73,10 @@ export class ContactosComponent implements OnInit {
    * @returns Contacto con las modificaciones
    */
   private async formContacto(contacto: Contacto, titulo: string, textoConfirmar: string) {
-    
 
+    this.modalService.modalContactoOpen(contacto, titulo, textoConfirmar);
     return contacto;
   }
-
-
-
-  /**
-   * Función para evaluar las entradas del formulario para que no sean vacías
-   * @param value Valor a evaluar si es vacío
-   * @returns true | false
-   */
-  private validEmpty(value: string): Promise<string | null> {
-    return new Promise((resolve) => {
-      if (value.trim() !== "") {
-        resolve(null);
-      } else {
-        resolve("El campo no puede ser vacío");
-      }
-    })
-  }
-
 
 
   /**

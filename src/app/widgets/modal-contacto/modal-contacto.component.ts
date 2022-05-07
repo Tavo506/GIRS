@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { Contacto } from 'src/app/models/contacto.model';
 
 
@@ -11,8 +11,8 @@ import { Contacto } from 'src/app/models/contacto.model';
 })
 export class ModalContacto implements OnInit {
 
-  titulo: string = '';
-  textoConfirmar: string = ''
+  titulo: string = "";
+  accion!: "Guardar" | "Editar";
   contacto!: Contacto;
   form: FormGroup;
 
@@ -73,10 +73,14 @@ export class ModalContacto implements OnInit {
   guardar() {
     if(this.validarInput()){
       
+      this.contacto.nombre = this.form.value.nombre;
+      this.contacto.apellido_1 = this.form.value.apellido_1;
+      this.contacto.apellido_2 = this.form.value.apellido_2;
+      this.contacto.telefono = this.form.value.telefono;
+      this.contacto.correo = this.form.value.correo;
       
-      
-    }else{
-      
+      this.activeModal.close({status: "OK", value: this.contacto})
+       
     }
   }
 

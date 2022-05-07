@@ -25,9 +25,8 @@ export class ContactosService {
    * Agrega a la base de datos el contacto ingresado
    * @param contacto Contacto a crear
    */
-  async addContacto(contacto: Contacto){
-    const res = await this.db.collection('contactos').add(contacto);
-    console.log(res);
+  addContacto(contacto: Contacto){
+    return this.db.collection('contactos').add(contacto);
   }
 
 
@@ -35,11 +34,10 @@ export class ContactosService {
    * Actualiza en la base de datos el contacto ingresado
    * @param contacto Contacto a modificar
    */
-  async updateContacto(contacto: Contacto){
+  updateContacto(contacto: Contacto){
     const id = contacto.$key;
     delete contacto.$key;
-    const res = await this.db.collection('contactos').doc(id).set(contacto);
-    console.log(res);
+    return this.db.collection('contactos').doc(id).set(contacto);
   }
 
 
@@ -48,7 +46,7 @@ export class ContactosService {
    * @param id ID del contacto a eliminar
    */
   async deleteContacto(id: string){
-    const res = await this.db.collection('contactos').doc(id).delete();
+    return this.db.collection('contactos').doc(id).delete();
   }
 
 

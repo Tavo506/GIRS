@@ -9,6 +9,7 @@ import { FormularioComponent } from './pages/formulario/formulario.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MisReportesComponent } from './pages/mis-reportes/mis-reportes.component';
+import { MunicipalidadesComponent } from './pages/municipalidades/municipalidades.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ReportesUsuarioComponent } from './pages/reportes-usuario/reportes-usuario.component';
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: "comparativas", component: ComparativasComponent},
   {path: "contactos", component: ContactosComponent},
   {path: "home", component: HomeComponent},
+  {path: "municipalidades", component: MunicipalidadesComponent},
   {path: "login", component: LoginComponent},
   {path: "register", component: RegisterComponent},
   {path: "reportes", component: ReportesComponent},

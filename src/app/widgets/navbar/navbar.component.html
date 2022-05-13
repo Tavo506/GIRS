@@ -21,10 +21,13 @@
                     <a class="nav-link" [routerLink]="['comparativas']">Comparativas</a>
                 </li>
                 <li class="nav-item px-1" [routerLinkActive]="['active']">
-                    <a class="nav-link" [routerLink]="['municipalidades']">Calculadora</a>
+                    <a class="nav-link" [routerLink]="['calculadora']">Calculadora</a>
                 </li>
                 <li class="nav-item px-1" [routerLinkActive]="['active']">
                     <a class="nav-link" [routerLink]="['contactos']">Contactos</a>
+                </li>
+                <li *ngIf="isLoggedIn" class="nav-item px-1" [routerLinkActive]="['active']">
+                    <a class="nav-link" [routerLink]="['municipalidades']"><span>Municipalidades</span></a>
                 </li>
                 <li *ngIf="isLoggedIn" class="nav-item px-1" [routerLinkActive]="['active']">
                     <a class="nav-link" [routerLink]="['usuarios']">

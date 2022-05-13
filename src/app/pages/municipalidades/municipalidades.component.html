@@ -1,1 +1,57 @@
-<p>Patata works!</p>
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" type="text/css"
+    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+<body>
+    <div class="container-fluid" style="margin-top: 2%;">
+        <div class="text-center">
+            <h1 id="main_title">Editor de municipalidades</h1>
+        </div>
+
+        <!-- Este es el div de los títulos -->
+        <div class="shadow rounded p-3 mb-5">
+            <div class="row" style="width: 100%;">
+                <div class="col text-center">
+                    <h4>Municipalidad</h4>
+                </div>
+                <div class="col text-center">
+                    <h4>Cargar</h4>
+                </div>
+
+            </div>
+            <div class="row">
+                <select class="form-select col" name="Select Municipalidad" #select_municipalidad>
+                    <option value="Ninguno">Ninguno</option>
+                    <option *ngFor="let municipalidad of municipalidades" value="{{municipalidad.canton}}">{{municipalidad.canton}}</option>
+                </select>
+                <div class="col text-center">
+                    <button class="btn btn-success" style="width: 50%; font-weight: 600; font-size: 20px" (click)="getColumnas(select_municipalidad.value)">Agregar <i class="fa-regular fa-square-check"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="shadow rounded p-3">
+            <span class="row">Año</span>
+            <span class="row">Cantón</span>
+            <span class="row">Forma Disposición</span>
+            <span class="row">Gastos en servicio de recoleción</span>
+            <span class="row">Gastos en aseo de vías públicas</span>
+            <span class="row">Ingreso de servicio de recoleción RSM</span>
+            <span class="row">Lugar de disposicion</span>
+            <span class="row">Habitantes</span>
+            <span class="row">P.P.C</span>
+            <span class="row">Programa de reciclaje</span>
+            <span class="row">Provincia</span>
+            <span class="row">Recoleción de residuos sólidos valorizables</span>
+            <span class="row">Ingreso total de servicio de aseo de vias</span>
+            <span class="row">Unidades habitacionales atendidas</span>
+            <span class="row">Unidades habitacionales en el canton</span>
+        </div>
+
+
+    </div>
+
+</body>
+
+
+</html>

@@ -36,7 +36,7 @@
                 </div>
             </div>
             <div class="row p-3 mb-5">
-                <table class="table text-center">
+                <table class="table text-center girs-table reduce-sm">
                     <thead>
                         <tr>
                             <th scope="col">Municipalidad</th>
@@ -45,7 +45,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let reporte of selectedReports; let i = index" scope="row">
+                        <tr *ngFor="let reporte of selectedReports; let i = index" scope="row table-elem">
                             <td>{{reporte.canton}}</td>
                             <td>{{reporte.anno}}</td>
                             <td>

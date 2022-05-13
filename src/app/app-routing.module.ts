@@ -9,21 +9,21 @@ import { FormularioComponent } from './pages/formulario/formulario.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MisReportesComponent } from './pages/mis-reportes/mis-reportes.component';
-import { MunicipalidadesComponent } from './pages/municipalidades/municipalidades.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ReportesUsuarioComponent } from './pages/reportes-usuario/reportes-usuario.component';
 import { ReportesComponent } from './pages/reportes/reportes.component';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
+import { MunicipalidadesComponent } from './pages/municipalidades/municipalidades.component';
 
 
 const routes: Routes = [
   {path: "calculadora", component: CalculadoraComponent},
   {path: "comparativas", component: ComparativasComponent},
+  {path: "calculadora", component: CalculadoraComponent},
   {path: "contactos", component: ContactosComponent},
   {path: "home", component: HomeComponent},
-  {path: "municipalidades", component: MunicipalidadesComponent},
   {path: "login", component: LoginComponent},
   {path: "register", component: RegisterComponent},
   {path: "reportes", component: ReportesComponent},
@@ -34,6 +34,7 @@ const routes: Routes = [
   {path: "perfil", component: PerfilComponent, canActivate: [AuthGuardGuard]},
   {path: "reportesUsuario/:idUser", component: ReportesUsuarioComponent, canActivate: [AuthGuardGuard]},
   {path: "usuarios", component: UsuariosComponent, canActivate: [AuthGuardGuard]},
+  {path: "municipalidades", component: MunicipalidadesComponent, canActivate: [AuthGuardGuard]},
   
   {path: "**", pathMatch:"full", redirectTo: "home"}
 ];

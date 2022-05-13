@@ -20,6 +20,7 @@ export class MunicipalidadesComponent implements OnInit {
     let getR = this.municipalidadesService.getMunicipalidades().subscribe(res => {
       this.municipalidades = res as Municipalidad[];
       getR.unsubscribe();
+      this.municipalidades.sort((a,b) => a.canton.localeCompare(b.canton))
       
     })
   }
@@ -31,7 +32,6 @@ export class MunicipalidadesComponent implements OnInit {
     this.columnas = Object.getOwnPropertyNames(this.municipalidad_en_edicion)
     this.columnas = this.columnas.sort()
     
-    console.log(this.columnas)
   }
 
 

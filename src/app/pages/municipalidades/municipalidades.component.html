@@ -26,13 +26,13 @@
                     <option *ngFor="let municipalidad of municipalidades" value="{{municipalidad.canton}}">Municipalidad de {{municipalidad.canton}}</option>
                 </select>
                 <div class="col-5 px-3 text-center">    
-                    <button class="btn btn-success text-center" style="width:90%   ;">
+                    <button class="btn btn-success text-center" style="width:90% ; font-size: large; font-weight: 600;">
                         Guardar
                     </button>
                 </div>
             </div>
         </div>
-        <div class="shadow rounded p-3" *ngIf="columnas.length > 0">
+        <div class="shadow rounded p-3" *ngIf="municipalidad_en_edicion">
 
             <div class="row ps-5 py-3 elemn-row bg-black bg-opacity-10"> 
                 <span class="col-5 muni_property_name py-1" >Cantón</span>

@@ -10,7 +10,7 @@ import { Municipalidad } from 'src/app/models/municipalidad.model';
 export class MunicipalidadesComponent implements OnInit {
 
   municipalidades : Municipalidad[] = []
-  columnas : String[] = []
+
   municipalidad_en_edicion: Municipalidad | undefined = undefined;
 
 
@@ -26,11 +26,13 @@ export class MunicipalidadesComponent implements OnInit {
   }
 
   getColumnas(selected_municipalidad:string): void {
+    
+    if(selected_municipalidad == "Ninguno"){
+      this.municipalidad_en_edicion = undefined;
+    }
 
     this.municipalidad_en_edicion = this.municipalidades.find(element => element.canton == selected_municipalidad)
 
-    this.columnas = Object.getOwnPropertyNames(this.municipalidad_en_edicion)
-    this.columnas = this.columnas.sort()
     
   }
 

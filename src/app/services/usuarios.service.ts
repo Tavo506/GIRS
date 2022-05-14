@@ -14,4 +14,11 @@ export class UsuariosService {
   insertUser(userInput : Usuario){
     return this.db.collection('usuarios').doc(userInput.uid).set(userInput);
   }
+
+
+  getUser(userID : string){
+    return this.db.collection('usuarios').doc(userID).valueChanges();
+  }
+
+
 }

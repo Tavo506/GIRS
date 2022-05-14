@@ -10,73 +10,89 @@
         </div>
 
         <!-- Este es el div de los títulos -->
-        <div class="shadow rounded p-3 mb-5">
+        <div class="shadow rounded p-3 mb-5 ">
             <div class="row" style="width: 100%;">
                 <div class="col text-center">
                     <h4>Municipalidad</h4>
                 </div>
-                <div class="col text-center">
-                    <h4>Cargar</h4>
-                </div>
 
             </div>
             <div class="row">
-                <select class="form-select col" name="Select Municipalidad" #select_municipalidad>
+                <div class="col-3"></div>
+                <select class="form-select col" style="width: 50%;" name="Select Municipalidad" (click)="getColumnas(select_municipalidad.value)" #select_municipalidad>
                     <option value="Ninguno">Ninguno</option>
-                    <option *ngFor="let municipalidad of municipalidades" value="{{municipalidad.canton}}">{{municipalidad.canton}}</option>
+                    <option *ngFor="let municipalidad of municipalidades" value="{{municipalidad.canton}}">Municipalidad de {{municipalidad.canton}}</option>
                 </select>
-                <div class="col text-center">
-                    <button class="btn btn-success" style="width: 50%; font-weight: 600; font-size: 20px" (click)="getColumnas(select_municipalidad.value)">Agregar <i class="fa-regular fa-square-check"></i></button>
-                </div>
+                <div class="col-3"></div>
             </div>
         </div>
-        <div class="shadow rounded p-3">
-            <div class="row">
-                <span class="col-3" >Año</span>
-                <input type="number" class="col">
+        <div class="shadow rounded p-3" *ngIf="columnas.length > 0">
+
+            <div class="row ps-5"> 
+                <span class="col-3 muni_property_name py-1" >Año</span>
+                <input type="number" class="col muni_property_value form-control">
             </div>
-            <div class="row">
-                <span class="col-3">Cantón</span>
+            <hr>
+            <div class="row ps-5">
+                <span class="col-3 muni_property_name py-1" >Cantón</span>
+                <input type="number" class="col muni_property_value form-control">
             </div>
-            <div class="row">
-                <span class="col-3">Forma Disposición</span>
+            <hr>
+            <div class="row ps-5">
+                <span class="col-3 muni_property_name py-1" >Forma Disposición</span>
+                <input type="number" class="col muni_property_value form-control">
             </div>
-            <div class="row">
-                <span class="col-3">Gastos en servicio de recoleción</span>
+            <hr>
+            <div class="row ps-5">
+                <span class="col-3 muni_property_name py-1" >Gastos en servicio de recoleción</span>
+                <input type="number" class="col muni_property_value form-control">
             </div>
-            <div class="row">
-                <span class="col-3"> en aseo de vías públicas</span>
+            <hr>
+            <div class="row ps-5">
+                <span class="col-3 muni_property_name py-1" >Gastos en aseo de vías públicas</span>
+                <input type="number" class="col muni_property_value form-control">
             </div>
+            <hr>
             <div class="row">
                 <span class="col-3">Ingreso de servicio de recoleción RSM</span>
             </div>
+            <hr>
             <div class="row">
                 <span class="col-3">Lugar de disposicion</span>
             </div>
+            <hr>
             <div class="row">
                 <span class="col-3">Habitantes</span>
             </div>
+            <hr>
             <div class="row">
                 <span class="col-3">P.P.C</span>
             </div>
+            <hr>
             <div class="row">
                 <span class="col-3">Programa de reciclaje</span>
             </div>
+            <hr>
             <div class="row">
                 <span class="col-3">Provincia</span>
             </div>
+            <hr>
             <div class="row">
                 <span class="col-3">Recoleción de residuos sólidos valorizables</span>
             </div>
+            <hr>
             <div class="row">
                 <span class="col-3">Ingreso total de servicio de aseo de vias</span>
             </div>
+            <hr>
             <div class="row">
                 <span class="col-3">Unidades habitacionales atendidas</span>
             </div>
+            <hr>
             <div class="row">
                 <span class="col-3">Unidades habitacionales en el canton</span>
             </div>
+
         </div>
 
 

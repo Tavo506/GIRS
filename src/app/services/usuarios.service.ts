@@ -14,4 +14,25 @@ export class UsuariosService {
   insertUser(userInput : Usuario){
     return this.db.collection('usuarios').doc(userInput.uid).set(userInput);
   }
+
+  getUser(userId : string){
+    
+    return this.db.collection('usuarios').doc(userId).ref.get()
+    .then(
+
+      (doc) => {
+        if (doc.exists) {
+          return doc.data();
+        }
+        else{
+          return undefined;
+        }
+      }
+    );
+  }
+
+  getUsers(){
+    const users = this.db.collection('usuarios').valueChanges();
+    return users;
+  }
 }

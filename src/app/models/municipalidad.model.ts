@@ -1,5 +1,5 @@
 export interface Municipalidad{
-    $key: string;
+    $key?: string;
     anno: number;
     canton: string;
     formaDisposicion: string;

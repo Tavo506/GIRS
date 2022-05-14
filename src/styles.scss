@@ -243,6 +243,19 @@ tr:nth-child(even) {
     border: none;
 }
 
+
+.btn-success {
+    background: var(--myGreen);
+}
+
+.btn-success:hover {
+    background: var(--myGreenHover);
+}
+
+.btn-success:active {
+    background: var(--myGreenActive);
+}
+
 .btn-accept {
     background: var(--myGreen);
     border-top-left-radius: 15px;

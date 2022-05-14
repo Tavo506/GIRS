@@ -14,4 +14,8 @@ export class UsuariosService {
   insertUser(userInput : Usuario){
     return this.db.collection('usuarios').doc(userInput.uid).set(userInput);
   }
+
+  deleteUser(uid : string){
+    return this.db.collection('usuarios').doc(uid).delete();
+  }
 }

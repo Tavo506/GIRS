@@ -8,6 +8,7 @@ export interface Reporte{
     aspectosFinancieros: aspectosFinancieros;
     disposicion: disposicion;
     informacionCalculada: informacionCalculada;
+    id : string;
 }
 
 interface datosGenerales {

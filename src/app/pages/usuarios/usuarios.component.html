@@ -1,1 +1,41 @@
-<p>usuarios works!</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+    <div class="container" style="margin-top: 2%; ">
+        <div class="row">
+            <div class="col-md-6 col-12 text-center" >
+                <button type="button" class="btn button-usuario">Lista de usuarios
+                    <i *ngIf="bitActive" class="fa-solid fa-circle"></i>
+                    <i *ngIf="!bitActive" class="fa-regular fa-circle"></i>
+                </button>
+                
+                
+            </div>
+            <div class="col-md-6 col-12 text-center">
+                <button type="button" class="btn button-usuario">Solicitudes de registro
+                    <i *ngIf="!bitActive" class="fa-solid fa-circle"></i>
+                    <i *ngIf="bitActive" class="fa-regular fa-circle"></i>
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <table class="table girs-table table-margin">
+                <thead>
+                    <th><span>Nombre completo</span></th>
+                    <th><span>Correo electrónico</span></th>
+                    <th><span>{{getTheadThree()}}</span></th>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

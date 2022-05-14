@@ -30,6 +30,7 @@ export class ReportesComponent implements OnInit{
         this.completeSelects((this.filters['annos']),(this.filters['municipalidades']));
       }
     );
+    
   };
 
   sendReportToService(document: any): void {

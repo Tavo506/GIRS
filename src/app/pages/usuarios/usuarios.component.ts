@@ -23,7 +23,6 @@ export class UsuariosComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.getBitActive())
   }
 
   getBitActive(): boolean {

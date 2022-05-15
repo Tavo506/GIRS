@@ -1,0 +1,43 @@
+.button-usuario{
+    background-color: #3D556A;
+    color: white;
+    width: 100%;
+    font-style: Roboto;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+span{
+    font-size:xx-large;
+}
+
+i{
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+
+
+@media only screen and (max-width: 992px){
+
+    .center-small{
+              text-align: center;
+              align-content: center;
+              align-items: center;
+              justify-content: center;
+     
+    }
+
+    h5 {
+        font-size: smaller
+    }
+
+    span {
+        font-size: x-large
+    }
+    i{
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    
+}

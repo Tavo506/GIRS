@@ -34,7 +34,7 @@ export class ExcelService {
     const data: Blob = new Blob([buffer], {
       type: EXCEL_TYPE
     });
-    FileSaver.saveAs(data, fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION);
+    FileSaver.saveAs(data, fileName + '__' + new Date().getTime() + EXCEL_EXTENSION);
   }
 
   private createWorkSheet(json: any): XLSX.WorkSheet {                       //Esta funcion crea una hoja de trabajo en funcion de un json enviado

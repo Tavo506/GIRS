@@ -9,9 +9,17 @@ import { UsuariosService } from 'src/app/services/usuarios.service';
 export class UsuariosComponent implements OnInit {
 
   bitActive : boolean;
+  users : any[] = [];
+  listToUse : any[] = [];
 
   constructor(private usersService: UsuariosService) { 
     this.bitActive = true;
+    this.usersService.getUsers().subscribe( 
+      users => {
+        this.users = users;
+        this.listToUse = [...users];
+      }
+    )
   }
 
   ngOnInit(): void {
@@ -19,7 +27,6 @@ export class UsuariosComponent implements OnInit {
   }
 
   getBitActive(): boolean {
-    
     return this.bitActive;
   }
 
@@ -31,5 +38,26 @@ export class UsuariosComponent implements OnInit {
       return "Aceptar/Rechazar";
     }
   }
+
+  getCompleteName(user : any) : string {
+    return user.nombre + ' ' + user.apellido 
+  }
+
+  deleteUser(uid : string) : void {
+    this.usersService.deleteUser(uid);
+    this.listToUse = [...this.users];
+  }
+
+  changeState() : void {
+    if(this.bitActive){
+      this.bitActive = false;
+    }
+    else{
+      this.listToUse = [...this.users];
+      this.bitActive = true;
+    }
+  }
+
+
 
 }

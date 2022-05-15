@@ -10,7 +10,7 @@
     <div class="container" style="margin-top: 2%; ">
         <div class="row">
             <div class="col-md-6 col-12 text-center" >
-                <button type="button" class="btn button-usuario">Lista de usuarios
+                <button type="button" class="btn button-usuario" (click)="changeState()">Lista de usuarios
                     <i *ngIf="bitActive" class="fa-solid fa-circle"></i>
                     <i *ngIf="!bitActive" class="fa-regular fa-circle"></i>
                 </button>
@@ -18,7 +18,7 @@
                 
             </div>
             <div class="col-md-6 col-12 text-center">
-                <button type="button" class="btn button-usuario">Solicitudes de registro
+                <button type="button" class="btn button-usuario" (click)="changeState()">Solicitudes de registro
                     <i *ngIf="!bitActive" class="fa-solid fa-circle"></i>
                     <i *ngIf="bitActive" class="fa-regular fa-circle"></i>
                 </button>
@@ -32,7 +32,24 @@
                     <th><span>{{getTheadThree()}}</span></th>
                 </thead>
                 <tbody>
-
+                    <tr class="table-elem" *ngFor="let user of listToUse">
+                        <td class="text-center">{{getCompleteName(user)}}</td>
+                        <td class="text-center">{{user.email}}</td>
+                        <td class="text-center">
+                            <div *ngIf="bitActive" ngbDropdown display="dynamic" placement="bottom">
+                                <div class="btn-option " tabindex="0" ngbDropdownToggle id="navbarDropdown4" role="button">
+                                    <i class="fa fa-ellipsis-h fa-2x"></i>
+                                </div>
+                                <div ngbDropdownMenu aria-labelledby="navbarDropdown4" class="dropdown-menu">
+                                    <a ngbDropdownItem [routerLink]="['/reportesUsuario', user.uid]">Ver reportes</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a ngbDropdownItem class="hover-danger dropdown-delete" (click)="deleteUser(user.uid)">Eliminar</a>
+                                </div>
+                            </div>
+                            <!--Para Tavo *ngIf = '!bitActive' Agregas esto y metes ahi ya los botones de check y X que te tocan -->
+                            <!--Cambiar la lista "listToUse" por la que vos tengas que usar y en teoria deberian cambiar todo de manera dinamica -->
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>

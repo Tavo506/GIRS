@@ -19,6 +19,6 @@ export class MunicipalidadService {
   updateMunicipalidad(Municipalidad: Municipalidad){
     const id = Municipalidad.$key;
     delete Municipalidad.$key;
-    return this.db.collection('contactos').doc(id).set(Municipalidad);
+    return this.db.collection('girsData').doc(id).set(Municipalidad);
   }
 }

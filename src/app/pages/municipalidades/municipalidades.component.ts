@@ -121,11 +121,9 @@ export class MunicipalidadesComponent implements OnInit {
       this.municipalidad_en_edicion!.totalIngresoServicioAseoDeVias = this.form.value.totalIngresoServicioAseoDeVias;
       this.municipalidad_en_edicion!.unidadesHabitacionalesAtendidas = this.form.value.unidadesHabitacionalesAtendidas;
       this.municipalidad_en_edicion!.unidadesHabitacionalesCanton = this.form.value.unidadesHabitacionalesCanton;
+      this.municipalidadesService.updateMunicipalidad(this.municipalidad_en_edicion!)
        
     }
-
-    this.municipalidadesService.updateMunicipalidad(this.municipalidad_en_edicion!)
-    console.log("patata")
 
   }
 

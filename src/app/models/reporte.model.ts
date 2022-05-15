@@ -1,11 +1,13 @@
 export interface Reporte{
     $key?: string;
+    estado?: "Completado" | "Sin completar";
     anno: number;
     provincia: string;
     canton: string;
     datosGenerales: datosGenerales;
     caracteristicasServicio: caracteristicasServicio;
     aspectosFinancieros: aspectosFinancieros;
+    fechaModificacion: Date;
     disposicion: disposicion;
     informacionCalculada: informacionCalculada;
     id : string;
@@ -65,5 +67,5 @@ interface informacionCalculada{
 }
 
 export function newReporte(){
-
+    
 }

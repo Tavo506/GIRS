@@ -10,7 +10,9 @@ export class ExcelService {
 
   constructor() { }
 
-  public exportAsExcelFile(json: any[], excelFileName: string): void {
+  public exportAsExcelFile(json: any, excelFileName: string): void {
+    delete json["$key"];
+    
     json = { ...json }                                                        //Clonar JSON para no afectar los datos originales
     var objectWorkSheets = this.spliceJson(json);
     const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet([json]);       //Se crea la hoja de trabajo principal

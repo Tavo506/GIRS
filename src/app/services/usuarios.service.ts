@@ -39,4 +39,10 @@ export class UsuariosService {
     const users = this.db.collection('usuarios').valueChanges();
     return users;
   }
+
+  getUserTavo(userID : string){
+    return this.db.collection('usuarios').doc(userID).valueChanges();
+  }
+
+
 }

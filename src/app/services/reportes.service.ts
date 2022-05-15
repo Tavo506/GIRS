@@ -32,4 +32,27 @@ export class ReportesService {
     
     return this.db.collection('formularios').doc(ID).delete();
   }
+
+
+  /**
+   * Función para obtener los reportes de un usuario dado el email de este
+   * @param userEmail Email del usuarios
+   * @returns Reportes creados por el usuario dueño del email del
+   */
+  getReportesPorUsuario(userEmail: string): Promise<Reporte[]> {
+    return new Promise(resolve => {
+
+      this.getReportes().subscribe(res => {
+       
+        let reports = (res as unknown as Reporte[]);
+       
+        reports = reports.filter(res => res.datosGenerales.email === userEmail);        
+        resolve(reports as Reporte[]);
+      });
+    });
+  }
+
+  getLastReportUpdated(){
+    return this.db.collection('formularios', ref => ref.orderBy('fechaModificacion', 'desc')).valueChanges();
+  }
 }

@@ -28,7 +28,8 @@ export class ReportesUsuarioComponent implements OnInit {
       this.idUser = params['idUser'];
         
       // Teniendo el id se puede buscar el usuario
-      this.usuariosService.getUser(this.idUser).subscribe(async res => {
+      console.log(params)
+      this.usuariosService.getUserTavo(this.idUser).subscribe(async res => {
         this.usuario = res as Usuario;
 
         // this.reportes = 

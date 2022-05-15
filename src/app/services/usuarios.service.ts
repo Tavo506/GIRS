@@ -15,8 +15,32 @@ export class UsuariosService {
     return this.db.collection('usuarios').doc(userInput.uid).set(userInput);
   }
 
+  deleteUser(uid : string){
+    return this.db.collection('usuarios').doc(uid).delete();
+  }
 
-  getUser(userID : string){
+  getUser(userId : string){
+    
+    return this.db.collection('usuarios').doc(userId).ref.get()
+    .then(
+
+      (doc) => {
+        if (doc.exists) {
+          return doc.data();
+        }
+        else{
+          return undefined;
+        }
+      }
+    );
+  }
+
+  getUsers(){
+    const users = this.db.collection('usuarios').valueChanges();
+    return users;
+  }
+
+  getUserTavo(userID : string){
     return this.db.collection('usuarios').doc(userID).valueChanges();
   }
 

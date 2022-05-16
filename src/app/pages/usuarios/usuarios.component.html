@@ -1,1 +1,58 @@
-<p>usuarios works!</p>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+    <div class="container" style="margin-top: 2%; ">
+        <div class="row">
+            <div class="col-md-6 col-12 text-center" >
+                <button type="button" class="btn button-usuario" (click)="changeState()">Lista de usuarios
+                    <i *ngIf="bitActive" class="fa-solid fa-circle"></i>
+                    <i *ngIf="!bitActive" class="fa-regular fa-circle"></i>
+                </button>
+                
+                
+            </div>
+            <div class="col-md-6 col-12 text-center">
+                <button type="button" class="btn button-usuario" (click)="changeState()">Solicitudes de registro
+                    <i *ngIf="!bitActive" class="fa-solid fa-circle"></i>
+                    <i *ngIf="bitActive" class="fa-regular fa-circle"></i>
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <table class="table girs-table table-margin">
+                <thead>
+                    <th><span>Nombre completo</span></th>
+                    <th><span>Correo electrónico</span></th>
+                    <th><span>{{getTheadThree()}}</span></th>
+                </thead>
+                <tbody>
+                    <tr class="table-elem" *ngFor="let user of listToUse">
+                        <td class="text-center">{{getCompleteName(user)}}</td>
+                        <td class="text-center">{{user.email}}</td>
+                        <td class="text-center">
+                            <div *ngIf="bitActive" ngbDropdown display="dynamic" placement="bottom">
+                                <div class="btn-option " tabindex="0" ngbDropdownToggle id="navbarDropdown4" role="button">
+                                    <i class="fa fa-ellipsis-h fa-2x"></i>
+                                </div>
+                                <div ngbDropdownMenu aria-labelledby="navbarDropdown4" class="dropdown-menu">
+                                    <a ngbDropdownItem [routerLink]="['/reportesUsuario', user.uid]">Ver reportes</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a ngbDropdownItem class="hover-danger dropdown-delete" (click)="deleteUser(user.uid)">Eliminar</a>
+                                </div>
+                            </div>
+                            <!--Para Tavo *ngIf = '!bitActive' Agregas esto y metes ahi ya los botones de check y X que te tocan -->
+                            <!--Cambiar la lista "listToUse" por la que vos tengas que usar y en teoria deberia cambiar todo de manera dinamica -->
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

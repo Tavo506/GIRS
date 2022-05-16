@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as FileSaver from 'file-saver';
+import * as JSZip from 'jszip';
 import * as XLSX from 'xlsx';
 
 const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
@@ -10,7 +11,29 @@ export class ExcelService {
 
   constructor() { }
 
+  public downloadAll(reports : any[]) : void{
+    var zip = this.transformZIP(reports); 
+    zip.generateAsync({type:"blob"})
+    .then( (result: any) =>{
+      this.saveAsZIPFile(result, 'Formularios');
+    });
+  }
+
   public exportAsExcelFile(json: any, excelFileName: string): void {
+    const excelBuffer: any = this.transformExcelFile(json);
+    this.saveAsExcelFile(excelBuffer, excelFileName);                         //Se guarda el archivo en el PC
+  }
+
+  private transformZIP(reports : any[]) : any{
+    var zip = new JSZip();
+    for (let report of reports){
+      var blobXLSX = this.transformExcelFile(report);
+      zip.file(report.datosGenerales.municipalidad+".xlsx", blobXLSX, {binary: true});
+    }
+    return zip;
+  }
+
+  private transformExcelFile(json : any){
     delete json["$key"];
     
     json = { ...json }                                                        //Clonar JSON para no afectar los datos originales
@@ -26,15 +49,18 @@ export class ExcelService {
     }
     objectWorkSheets['nombres'].unshift('Informacion General')                //Se agrega a la lista de nombre la hoja de trabajo principal
     const workbook: XLSX.WorkBook = { Sheets: resultObject, SheetNames: objectWorkSheets['nombres'] };    //Se crea el excel, los parametros corresponden a cada una de las hojas de trabajo en un objeto y cada uno de los nombres correspondientes a esas hojas de trabajo
-    const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
-    this.saveAsExcelFile(excelBuffer, excelFileName);                         //Se guarda el archivo en el PC
+    return XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
   }
 
   private saveAsExcelFile(buffer: any, fileName: string): void {
     const data: Blob = new Blob([buffer], {
       type: EXCEL_TYPE
     });
-    FileSaver.saveAs(data, fileName + '_export_' + new Date().getTime() + EXCEL_EXTENSION);
+    FileSaver.saveAs(data, fileName + '__' + new Date().getTime() + EXCEL_EXTENSION);
+  }
+
+  private saveAsZIPFile(buffer: any, fileName: string): void {
+    FileSaver.saveAs(buffer, fileName + '__' + new Date().getTime() + '.zip');
   }
 
   private createWorkSheet(json: any): XLSX.WorkSheet {                       //Esta funcion crea una hoja de trabajo en funcion de un json enviado

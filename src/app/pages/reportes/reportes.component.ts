@@ -4,6 +4,7 @@ import { Reporte } from 'src/app/models/reporte.model';
 import { ReportesService } from 'src/app/services/reportes.service';
 import { sortJson } from 'src/app/util/sort';
 import { ExcelService } from 'src/app/services/excel.service'; 
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-reportes',
@@ -16,7 +17,7 @@ export class ReportesComponent implements OnInit{
   private filters: any = { 'municipalidades': [], 'annos': [] };
   public reportes: Reporte[] = [];
 
-  constructor(private reportService: ReportesService, private excelService: ExcelService) { }
+  constructor(private reportService: ReportesService, private excelService: ExcelService, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.reportService.getReportes().subscribe(
@@ -36,6 +37,9 @@ export class ReportesComponent implements OnInit{
     this.excelService.exportAsExcelFile(document, 'reporte')
   }
 
+  get isLoggedIn(){
+    return this.authService.isLoggedIn
+  }
  
 
   private completeSelects(setYears: any[], setMunicipalities: any[]) {

@@ -12,51 +12,28 @@
             </div>
         </div>
         <div class="row" style="margin-top: 25px;">
-            <div class="col-md-3 col-sm-12" style="margin-left: 2%;">
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <h1 id="filter_title">Filtros</h1>
+
+            <div class="col-md-3 col-sm-12 filter-div">
+                <h1 id="filter_title">Filtros</h1>
+                <div style="margin-top: 20px;">
+                    <div class="shadow-lg p-3 mb-5 bg-white rounded">
+
+                        <div>
+                            <h4 class="default_margin filter-title">Municipalidades</h4>
+
+                            <select class="form-select default_margin" aria-label="Default select example"
+                                id="filter_municipality" style="background-color: #F8F8F8;" (change)="filter()">
+                                <option>Ninguno</option>
+                            </select>
+
+                            <h4 class="default_margin filter-title">Años</h4>
+
+                            <select class="form-select default_margin" aria-label="Default select example"
+                                id="filter_year" style="background-color: #F8F8F8;" (change)="filter()">
+                                <option>Ninguno</option>
+                            </select>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col" style="margin-top: 20px;">
-                            <div class="shadow-lg p-3 mb-5 bg-white rounded">
-
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col">
-                                            <h4 class="default_margin">Municipalidades</h4>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <select class="form-select default_margin" aria-label="Default select example"
-                                            id="filter_municipality" style="background-color: #F8F8F8;"
-                                            (change)="filter()">
-                                            <option>Ninguno</option>
-                                        </select>
-
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <h4 class="default_margin">Años</h4>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <select class="form-select default_margin" aria-label="Default select example"
-                                            id="filter_year" style="background-color: #F8F8F8;" (change)="filter()">
-                                            <option>Ninguno</option>
-                                        </select>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
 
@@ -72,7 +49,7 @@
                                 <h4 style="margin-top: 35px;">Municipalidad</h4>
                             </div>
                             <div class="col-4 ">
-                                <h4 style="margin-top: 35px;">Descargar</h4>
+                                <h4 style="margin-top: 35px;">Acciones</h4>
                             </div>
                         </div>
                         <div id="groupRows">
@@ -83,9 +60,17 @@
                                 <div class="col-4 content-text column">
                                     <h5 class="content-text">{{reporte.datosGenerales.municipalidad}}</h5>
                                 </div>
-                                <div class="col-4 content-text column">
-                                    <i class="download-icon fas fa-arrow-alt-circle-down fa-lg" (click)="sendReportToService(reporte)"></i>
+
+                                <div *ngIf="isLoggedIn" class="col-2 content-text text-end column">
+                                    <i class="clickeable fa-solid fa-pen-to-square fa-lg"
+                                        [routerLink]="['/formulario/' + reporte.$key]"></i>
                                 </div>
+
+                                <div [class]="{'col-4': !isLoggedIn, 'col-2': isLoggedIn}" class="content-text column">
+                                    <i class="download-icon fas fa-arrow-alt-circle-down fa-lg"
+                                        (click)="sendReportToService(reporte)"></i>
+                                </div>
+
                             </div>
                         </div>
                     </div>

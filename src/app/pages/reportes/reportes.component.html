@@ -39,6 +39,9 @@
 
             <div class="col-md-1 col-sm-0"></div>
             <div class="col-sm-12 col-md-7 ">
+                <div class="text-end">
+                    <button class="common-bttn" (click)="descargarTodo()">Descargar todos</button>
+                </div>
                 <div class="shadow-lg p-3 mb-5 bg-white rounded">
                     <div class="container" style="height: 77vh; overflow-y: scroll;" id="workflow_forms">
                         <div class="row" style="text-align: center;">
@@ -63,7 +66,7 @@
 
                                 <div *ngIf="isLoggedIn" class="col-2 content-text text-end column">
                                     <i class="clickeable fa-solid fa-pen-to-square fa-lg"
-                                        [routerLink]="['/formulario/' + reporte.$key]"></i>
+                                        [routerLink]="['/formulario/' + reporte.ID]"></i>
                                 </div>
 
                                 <div [class]="{'col-4': !isLoggedIn, 'col-2': isLoggedIn}" class="content-text column">

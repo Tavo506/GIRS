@@ -1,5 +1,5 @@
 export interface Reporte{
-    $key?: string;
+    ID?: string;
     estado?: "Completado" | "Sin completar";
     anno: number;
     provincia: string;

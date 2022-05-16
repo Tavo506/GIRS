@@ -28,15 +28,11 @@ export class ReportesUsuarioComponent implements OnInit {
       this.idUser = params['idUser'];
         
       // Teniendo el id se puede buscar el usuario
-      console.log(params)
       this.usuariosService.getUserTavo(this.idUser).subscribe(async res => {
         this.usuario = res as Usuario;
 
         // this.reportes = 
         this.reportes = await this.reportesService.getReportesPorUsuario(this.usuario.email);
-        
-        
-        
       })
     });
 
@@ -46,11 +42,11 @@ export class ReportesUsuarioComponent implements OnInit {
 
 
   sendReportToService(document: any): void {
-    this.excelService.exportAsExcelFile(document, 'reporte')
+    this.excelService.exportAsExcelFile(document, 'reporte');
   }
 
   descargarTodo(){
-    
+    this.excelService.downloadAll(this.reportes);
   }
 
 }

@@ -5,7 +5,6 @@
             <span class="titulo-1">Reportes de {{usuario.nombre}}</span>
         </div>
         <div class="col-sm-5 col-12 text-end">
-            <!-- TODO Descarga múltiple -->
             <button class="common-bttn" (click)="descargarTodo()">Descargar todos</button>
         </div>
     </div>
@@ -40,10 +39,10 @@
                 <h5 class="content-text">{{reporte.datosGenerales.municipalidad}}</h5>
             </div>
             <div class="col-2 content-text column">
-                <h5 class="content-text">{{reporte.estado ? reporte.estado : "???"}}</h5>
+                <h5 class="content-text">{{reporte.estado ? reporte.estado : "Completado"}}</h5>
             </div>
             <div class="col-1 content-text column">
-                <i class="clickeable fa-solid fa-pen-to-square fa-lg" [routerLink]="['/formulario/' + reporte.$key]"></i>
+                <i class="clickeable fa-solid fa-pen-to-square fa-lg" [routerLink]="['/formulario/' + reporte.ID]"></i>
             </div>
             <div class="col-1 content-text column">
                 <i class="clickeable fas fa-arrow-alt-circle-down fa-lg" (click)="sendReportToService(reporte)"></i>

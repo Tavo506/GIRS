@@ -38,6 +38,10 @@ export class ReportesComponent implements OnInit{
     this.excelService.exportAsExcelFile(document, document.datosGenerales.municipalidad)
   }
 
+  descargarTodo(){
+    this.excelService.downloadAll(this.reportes);
+  }
+
   get isLoggedIn(){
     return this.authService.isLoggedIn
   }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import * as FileSaver from 'file-saver';
 import * as JSZip from 'jszip';
 import * as XLSX from 'xlsx';
+import { Reporte } from '../models/reporte.model';
 
 const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';
 const EXCEL_EXTENSION = '.xlsx';
@@ -24,11 +25,11 @@ export class ExcelService {
     this.saveAsExcelFile(excelBuffer, excelFileName);                         //Se guarda el archivo en el PC
   }
 
-  private transformZIP(reports : any[]) : any{
+  private transformZIP(reports : Reporte[]) : any{
     var zip = new JSZip();
     for (let report of reports){
       var blobXLSX = this.transformExcelFile(report);
-      zip.file(report.datosGenerales.municipalidad+".xlsx", blobXLSX, {binary: true});
+      zip.file(report.datosGenerales.municipalidad + " " + report.anno+ EXCEL_EXTENSION, blobXLSX, {binary: true});
     }
     return zip;
   }

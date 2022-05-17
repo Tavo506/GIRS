@@ -15,11 +15,13 @@ import { ReportesUsuarioComponent } from './pages/reportes-usuario/reportes-usua
 import { ReportesComponent } from './pages/reportes/reportes.component';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
+import { MunicipalidadesComponent } from './pages/municipalidades/municipalidades.component';
 
 
 const routes: Routes = [
   {path: "calculadora", component: CalculadoraComponent},
   {path: "comparativas", component: ComparativasComponent},
+  {path: "calculadora", component: CalculadoraComponent},
   {path: "contactos", component: ContactosComponent},
   {path: "home", component: HomeComponent},
   {path: "login", component: LoginComponent},
@@ -32,6 +34,7 @@ const routes: Routes = [
   {path: "perfil", component: PerfilComponent, canActivate: [AuthGuardGuard]},
   {path: "reportesUsuario/:idUser", component: ReportesUsuarioComponent, canActivate: [AuthGuardGuard]},
   {path: "usuarios", component: UsuariosComponent, canActivate: [AuthGuardGuard]},
+  {path: "municipalidades", component: MunicipalidadesComponent, canActivate: [AuthGuardGuard]},
   
   {path: "**", pathMatch:"full", redirectTo: "home"}
 ];

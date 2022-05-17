@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" id="" type="text/css"
+    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+<body>
+    <div class="container-fluid" style="margin-top: 2%;">
+        <div class="text-center">
+            <h1 id="main_title">Editor de municipalidades</h1>
+        </div>
+
+        <!-- Este es el div de los títulos -->
+        <div class="shadow rounded p-3 mb-5 ">
+            <div class="row" style="width: 100%;">
+                <div class="col-1"></div>
+                <div class="col-4 text-end">
+                    <h4>Municipalidad</h4>
+                </div>
+
+
+            </div>
+            <div class="row">
+                <div class="col-1"></div>
+                <select class="form-select col-4" style="width: 50%;" name="Select Municipalidad"
+                    (click)="getColumnas(select_municipalidad.value)" #select_municipalidad>
+                    <option value="Ninguno">Ninguno</option>
+                    <option *ngFor="let municipalidad of municipalidades" value="{{municipalidad.canton}}">Municipalidad
+                        de {{municipalidad.canton}}</option>
+                </select>
+                <div class="col-5 px-3 text-center">
+                    <button class="btn btn-success text-center" style="width:90% ; font-size: large; font-weight: 600;" (click)="guardar()">
+                        Guardar
+                    </button>
+                </div>
+            </div>
+        </div>
+        <from [formGroup]="form">
+            <div class="shadow rounded p-3" *ngIf="municipalidad_en_edicion">
+
+                <div class="from-group row ps-5 py-3 elemn-row bg-black bg-opacity-10 from-group">
+                    <span class="col-5 muni_property_name py-1">Cantón</span>
+                    <input disabled id="canton" type="text" class="form-control col muni_property_value form-control"
+                        value="{{municipalidad_en_edicion.canton}}">
+                </div>
+
+                <div class="from-group row ps-5 py-3">
+                    <span class="col-5 muni_property_name py-1">Provincia</span>
+                    <input disabled id="provincia" type="text" class="form-control col muni_property_value form-control"
+                        value="{{municipalidad_en_edicion.provincia}}">
+                </div>
+
+                <div class="from-group row ps-5 py-3 elemn-row bg-black bg-opacity-10">
+                    <span class="col-5 muni_property_name py-1">Año</span>
+                    <input id="anno" type="number" class="form-control col muni_property_value form-control"
+                        formControlName="anno" [class.is-invalid]="annoInvalido">
+                        <small *ngIf="annoInvalido" class="text-danger">
+                            Año de municipalidad invalido.
+                          </small>
+                </div>
+
+                <div class="from-group row ps-5 py-3">
+                    <span class="col-5 muni_property_name py-1">Gastos en servicio de recoleción</span>
+                    <input id="gastoServicioRecoleccionResiduos" type="number"
+                        class="form-control col muni_property_value form-control"
+                        formControlName="gastoServicioRecoleccionResiduos"
+                        [class.is-invalid]="gastoServicioRecoleccionResiduosInvalido">
+                        <small *ngIf="gastoServicioRecoleccionResiduosInvalido" class="text-danger">
+                            La cantidad de gastos de servicio de recolección es invalido.
+                        </small>
+                </div>
+
+                <div class="from-group row ps-5 py-3 elemn-row bg-black bg-opacity-10">
+                    <span class="col-5 muni_property_name py-1">Gastos en aseo de vías públicas</span>
+                    <input id="gastosServicioAseoDeVias" type="number"
+                        class="form-control col muni_property_value form-control"
+                        formControlName="gastosServicioAseoDeVias"
+                        [class.is-invalid]="gastosServicioAseoDeViasInvalido">
+                        <small *ngIf="gastosServicioAseoDeViasInvalido" class="text-danger">
+                            La cantidad de gastos en limpieza de vías públicas es invalido.
+                        </small>
+                </div>
+
+                <div class="from-group row ps-5 py-3">
+                    <span class="col-5 muni_property_name py-1">Ingreso de servicio de recoleción RSM</span>
+                    <input id="ingresoServicioRecoleccionRSM" type="number"
+                        class="form-control col muni_property_value form-control"
+                        formControlName="ingresoServicioRecoleccionRSM"
+                        [class.is-invalid]="ingresoServicioRecoleccionRSMInvalido">
+                        <small *ngIf="ingresoServicioRecoleccionRSMInvalido" class="text-danger">
+                            La cantidad de gastos en recolección RSM es invalido.
+                        </small>
+
+                </div>
+
+                <div class="from-group row ps-5 py-3 elemn-row bg-black bg-opacity-10">
+                    <span class="col-5 muni_property_name py-1">Lugar de disposición</span>
+                    <input id="lugarDisposicion" type="text" class="form-control col muni_property_value form-control"
+                        formControlName="lugarDisposicion" 
+                        [class.is-invalid]="lugarDisposicionInvalido">
+                        <small *ngIf="lugarDisposicionInvalido" class="text-danger">
+                            El lugar de recolección es invalido.
+                        </small>
+                </div>
+
+                <div class="from-group row ps-5 py-3">
+                    <span class="col-5 muni_property_name py-1">Promedio de habitantes por hogar</span>
+                    <input id="personasHabitacion" type="number"
+                        class="form-control col muni_property_value form-control"
+                        formControlName="personasHabitacion"
+                        [class.is-invalid]="personasHabitacionInvalido">
+                        <small *ngIf="personasHabitacionInvalido" class="text-danger">
+                            La cantidad de personas promedio en habitaciones no es valida.
+                        </small>
+                </div>
+
+                <div class="from-group row ps-5 py-3 elemn-row bg-black bg-opacity-10">
+                    <span class="col-5 muni_property_name py-1">P.P.C</span>
+                    <input id="ppc" type="number" class="form-control col muni_property_value form-control"
+                        formControlName="ppc" [class.is-invalid]="ppcInvalido"
+                        placeholder="Colocar P.P.C lo que sea que signifique">
+                        <small *ngIf="ppcInvalido" class="text-danger">
+                            El P.P.C colocado no es valido.
+                        </small>
+                </div>
+
+                <div class="from-group row ps-5 py-3">
+                    <span class="col-5 muni_property_name py-1">Programa de reciclaje</span>
+                    <input id="programaDeReciclaje" type="text"
+                        class="form-control col muni_property_value form-control"
+                        formControlName="programaDeReciclaje"
+                        [class.is-invalid]="programaDeReciclajeInvalido">
+                        <small *ngIf="programaDeReciclajeInvalido" class="text-danger">
+                            El programa de reciclaje está incompleto.
+                        </small>
+                </div>
+
+                <div class="from-group row ps-5 py-3 elemn-row bg-black bg-opacity-10">
+                    <span class="col-5 muni_property_name py-1">Forma Disposición</span>
+                    <input id="formaDisposicion" type="text" class="form-control col muni_property_value form-control"
+                        formControlName="formaDisposicion"
+                        [class.is-invalid]="formaDisposicionInvalido">
+                        <small *ngIf="formaDisposicionInvalido" class="text-danger">
+                            La forma de disposicion está incompleto.
+                        </small>
+                </div>
+
+                <div class="from-group row ps-5 py-3">
+                    <span class="col-5 muni_property_name py-1">Recoleción de residuos sólidos valorizables</span>
+                    <input id="recoleccionDeResiduosSolidosValorizables" type="text"
+                        class="form-control col muni_property_value form-control"
+                        formControlName="recoleccionDeResiduosSolidosValorizables"
+                        [class.is-invalid]="recoleccionDeResiduosSolidosValorizablesInvalido">
+                        <small *ngIf="recoleccionDeResiduosSolidosValorizablesInvalido" class="text-danger">
+                            La cantidad de recolección de resiudos sólidos no es válida.
+                        </small>
+                </div>
+
+                <div class="from-group row ps-5 py-3 elemn-row bg-black bg-opacity-10">
+                    <span class="col-5 muni_property_name py-1">Ingreso total de servicio de aseo de vias</span>
+                    <input id="totalIngresoServicioAseoDeVias" type="number"
+                        class="form-control col muni_property_value form-control"
+                        formControlName="totalIngresoServicioAseoDeVias"
+                        [class.is-invalid]="totalIngresoServicioAseoDeViasInvalido">
+                        <small *ngIf="totalIngresoServicioAseoDeViasInvalido" class="text-danger">
+                            La cantidad total en ingresos de servicios de aseo de vías no es válida.
+                        </small>
+                </div>
+
+                <div class="from-group row ps-5 py-3">
+                    <span class="col-5 muni_property_name py-1">Unidades habitacionales atendidas</span>
+                    <input id="unidadesHabitacionalesAtendidas" type="number"
+                        class="form-control col muni_property_value form-control"
+                        formControlName="unidadesHabitacionalesAtendidas"
+                        [class.is-invalid]="unidadesHabitacionalesAtendidasInvalido">
+                        <small *ngIf="unidadesHabitacionalesAtendidasInvalido" class="text-danger">
+                            La cantidad de habitaciones atendidas es invalida.
+                        </small>
+                </div>
+
+                <div class="from-group row ps-5 py-3 elemn-row bg-black bg-opacity-10">
+                    <span class="col-5 muni_property_name py-1">Unidades habitacionales en el canton</span>
+                    <input id="unidadesHabitacionalesCanton" type="number"
+                        class="form-control col muni_property_value form-control"
+                        formControlName="unidadesHabitacionalesCanton"
+                        [class.is-invalid]="unidadesHabitacionalesCantonInvalido">
+                        <small *ngIf="unidadesHabitacionalesCantonInvalido" class="text-danger">
+                            La cantidad de habitaciones atendidas del cantón es invalida.
+                        </small>
+                </div>
+
+                <div class="px-3 text-center py-3">
+                    <button class="btn btn-success text-center" style="width:90% ; font-size: large; font-weight: 600;" (click)="guardar()">
+                        Guardar
+                    </button>
+                </div>
+            </div>
+            
+        </from>
+
+        
+
+
+
+    </div>
+
+</body>
+
+
+</html>

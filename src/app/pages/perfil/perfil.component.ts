@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Usuario } from 'src/app/models/usuario.model';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 
@@ -10,15 +9,23 @@ import { UsuariosService } from 'src/app/services/usuarios.service';
 })
 export class PerfilComponent implements OnInit {
 
-  userId : string;
   userData : any = {'nombre' : "Nombre del usuario", 'municipalidad' : "Municipalidad de ", 'telefono' : "Teléfono", 'email' : ""};
 
   constructor( private localStorage : LocalStorageService, private  userService: UsuariosService ) {
-    this.userId = JSON.parse(localStorage.getLocalStorage("user")).uid;
   }
 
   ngOnInit(): void {
-    this.userService.getUser(this.userId).then(
+    this.getUserData(this.getUserId);
+  }
+
+  //Obtiene el UID del usuarios loggeado del localstorage del browser. 
+  get getUserId() : string{
+    return JSON.parse(this.localStorage.getLocalStorage("user")).uid;
+  }
+
+  //Obtenemos los datos necesarios del usuario para el perfil de la base de datos.
+  getUserData(id : string) : void{
+    this.userService.getUser(id).then(
       (user : any) => {
         try{
           this.userData.nombre = user.nombre + " " + user.apellido;
@@ -29,6 +36,6 @@ export class PerfilComponent implements OnInit {
           console.log("Hubo un error al cargar el usuario");
         }
       }
-    )
+    );
   }
 }

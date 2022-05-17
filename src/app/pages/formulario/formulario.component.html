@@ -1,1 +1,299 @@
-<p>formulario works!</p>
+<div class="container mt-5">
+
+    <div class="titleContainer">
+        <h1 class="title" *ngIf="actualStep === 1">Datos generales</h1>
+        <h1 class="title" *ngIf="actualStep === 2 || actualStep === 3">Características del servicio</h1>
+        <h1 class="title" *ngIf="actualStep === 4 || actualStep === 5">Disposición</h1>
+        <h1 class="title" *ngIf="actualStep === 6">Aspectos financieros</h1>
+        <h1 class="title" *ngIf="actualStep === 7">Información calculada</h1>
+
+        <div style="margin-left: 60%;">
+            <i class="fa-solid fa-trash-can fa-2x" style="color: red" ></i>
+        </div>
+    </div>
+
+    <div class="formContent">
+<!-- STEP 1 -->
+        <div class="step" *ngIf="actualStep === 1">
+            <form [formGroup]="girsForm" class="row formContainer">
+              <div formGroupName="datosGenerales" class="inputContainer col-12 col-sm-6">
+                <label for="municipalidad">Municipalidad</label>
+                <input formControlName="municipalidad" name="municipalidad" type="text" readonly>
+              </div>
+              <div formGroupName="datosGenerales" class="inputContainer col-12 col-sm-6">
+                <label for="telefono">Teléfono</label>
+                <input formControlName="telefono" type="text" readonly>
+              </div>
+              <div formGroupName="datosGenerales" class="inputContainer col-12 col-sm-6">
+                <label for="nombreGestor">Nombre del gestor ambiental</label>
+                <input formControlName="nombreGestor" type="text" readonly>
+              </div>
+              <div formGroupName="datosGenerales" class="inputContainer col-12 col-sm-6">
+                <label for="fecha">Fecha</label>
+                <input formControlName="fecha" type="text" readonly>
+              </div>
+              <div formGroupName="datosGenerales" class="inputContainer col-12 col-sm-6">
+                <label for="email">Correo electrónico</label>
+                <input formControlName="email" type="text" readonly>
+              </div>
+              <div formGroupName="datosGenerales" class="inputContainer col-12 col-sm-6">
+                <label for="poblacionAtendida">Población atendida</label>
+                <input formControlName="poblacionAtendida" type="number" placeholder="0" min="0">
+              </div>
+              <div formGroupName="datosGenerales" class="inputContainer col-12 col-sm-6">
+                <label for="cantidadViviendas">Cantidad de viviendas</label>
+                <input formControlName="cantidadViviendas" type="number" placeholder="0" min="0">
+              </div>
+            </form>
+        </div>
+<!-- STEP 2 -->
+        <div class="step" *ngIf="actualStep === 2">
+            <form [formGroup]="girsForm" class="row formContainer">
+              <div formGroupName="caracteristicasServicio" class="inputContainerInline col-12">
+                <label for="porcentajeRecoleccion">Porcentaje de recolección de residuos sólidos</label>
+                <div class="prefixInputContainer">
+                  <input style="padding-right: 40px;" formControlName="porcentajeRecoleccion" type="number" min="0">
+                  <span>%</span>
+                </div>
+              </div>
+              <div formGroupName="caracteristicasServicio" class="inputContainerInline col-12">
+                <label for="cantidadMensualDisposicion">Cantidad mensual de residuos sólidos recolectados y enviados a
+                  disposición </label>
+                <div class="prefixInputContainer">
+                  <input style="padding-right: 98px;" formControlName="cantidadMensualDisposicion" type="number" min="0">
+                  <span>toneladas</span>
+                </div>
+              </div>
+              <div formGroupName="caracteristicasServicio" class="inputContainerInline col-12">
+                <label for="recoleccionSeparada">¿Posee recolección separada para materiales valorizables?</label>
+                <select name="recoleccionSeparada" formControlName="recoleccionSeparada">
+                  <option value="true">Sí</option>
+                  <option value="false">No</option>
+                </select>
+              </div>
+              <div formGroupName="caracteristicasServicio" class="inputContainerInline col-12">
+                <label for="cantidadMensualRecolectados">Cantidad mensual de residuos sólidos valorizables
+                  recolectados</label>
+                <div class="prefixInputContainer">
+                  <input style="padding-right: 98px;" formControlName="cantidadMensualRecolectados" type="number" min="0">
+                  <span>toneladas</span>
+                </div>
+              </div>
+              <div formGroupName="caracteristicasServicio" class="inputContainerInline col-12">
+                <label for="recoleccionBiodegradables">¿Posee recolección de residuos biodegradables?</label>
+                <select name="recoleccionBiodegradables" formControlName="recoleccionBiodegradables">
+                  <option value="true">Sí</option>
+                  <option value="false">No</option>
+                </select>
+              </div>
+              <div formGroupName="caracteristicasServicio" class="inputContainerInline col-12">
+                <label for="cantidadCamiones">Cantidad de camiones utilizados en la recolección</label>
+                <input formControlName="cantidadCamiones" type="number" min="0">
+              </div>
+            </form>
+        </div>
+<!-- STEP 3 -->
+        <div class="step" *ngIf="actualStep === 3">
+            <form [formGroup]="girsForm" class="row formContainer">
+              <div formGroupName="caracteristicasServicio" class="inputContainerInline col-12">
+                <label for="rutasRecoleccion">¿Posee rutas de recolección?</label>
+                <select name="rutasRecoleccion" formControlName="rutasRecoleccion">
+                  <option value="true">Sí</option>
+                  <option value="false">No</option>
+                </select>
+              </div>
+              <div formGroupName="caracteristicasServicio" class="inputContainerInline col-12">
+                <label for="mapasRutas">¿Posee mapas de rutas de recolección?</label>
+                <select name="mapasRutas" formControlName="mapasRutas">
+                  <option value="true">Sí</option>
+                  <option value="false">No</option>
+                </select>
+              </div>
+              <div formGroupName="caracteristicasServicio" class="inputContainerInline col-12">
+                <label for="cantidadSemanaRecoleccionNoValorizables">¿Cuántas veces por semana recolecta residuos sólidos no
+                  valorizables?</label>
+                <input formControlName="cantidadSemanaRecoleccionNoValorizables" type="number" min="0">
+              </div>
+              <div formGroupName="caracteristicasServicio" class="inputContainerInline col-12">
+                <label for="cantidadSemanaRecoleccionValorizables">¿Cuántas veces por semana o por quincena recolecta residuos
+                  sólidos
+                  valorizables?</label>
+                <input formControlName="cantidadSemanaRecoleccionValorizables" type="number" min="0">
+              </div>
+              <div formGroupName="caracteristicasServicio" class="inputContainerInline col-12">
+                <label for="barridoCalles">¿Realiza barrido de calles y áreas comunes?</label>
+                <select name="barridoCalles" formControlName="barridoCalles">
+                  <option value="true">Sí</option>
+                  <option value="false">No</option>
+                </select>
+              </div>
+            </form>
+        </div>
+<!-- STEP 4 -->
+        <div class="step" *ngIf="actualStep === 4">
+            <form [formGroup]="girsForm" class="row formContainer">
+            <div formGroupName="disposicion" class="inputContainerInline col-12">
+                <label for="tipoLugarDisposicion">La disposición de los residuos la realiza en:</label>
+                <select name="tipoLugarDisposicion" formControlName="tipoLugarDisposicion">
+                <option *ngFor="let op of tipoLugarDisposicionOption" [value]="op.value">{{op.displayName}}</option>
+                </select>
+            </div>
+            <div formGroupName="disposicion" class="inputContainerInline col-12">
+                <label for="lugarDisposicion">Lugar donde dispone los residuos sólidos:</label>
+                <input formControlName="lugarDisposicion" type="text">
+            </div>
+            <div formGroupName="disposicion" class="inputContainerInline col-12">
+                <label for="distanciaPromedioSitio">Distancia promedio de los camiones hasta el sitio de vertido:</label>
+                <div class="prefixInputContainer">
+                <input style="padding-right: 50px;" formControlName="distanciaPromedioSitio" type="number" min="0">
+                <span>km</span>
+                </div>
+            </div>
+            <div formGroupName="disposicion" class="inputContainerInline col-12">
+                <label for="cantidadViajesMes">Cantidad de viajes por mes, por camión que se realizan al sitio de
+                vertido:</label>
+                <input formControlName="cantidadViajesMes" type="number" min="0">
+            </div>
+            <div formGroupName="disposicion" class="inputContainerInline col-12">
+                <label for="cantidadVolumetricaCamiones">Capacidad volumétrica de los camiones:</label>
+                <div class="prefixInputContainer">
+                <input style="padding-right: 50px;" formControlName="cantidadVolumetricaCamiones" type="number" min="0">
+                <span>m<sup>3</sup></span>
+                </div>
+            </div>
+            <div formGroupName="disposicion" class="inputContainerInline col-12">
+                <label for="cargoUtilCamionViaje">Carga útil del camión por viaje:</label>
+                <div class="prefixInputContainer">
+                <input style="padding-right: 45px;" formControlName="cargoUtilCamionViaje" type="number" min="0">
+                <span>kg</span>
+                </div>
+            </div>
+            </form>
+        </div>
+<!-- STEP 5 -->
+        <div class="step" *ngIf="actualStep === 5">
+            <form [formGroup]="girsForm" class="row formContainer">
+            <div formGroupName="disposicion" class="inputContainerInline col-12">
+                <label for="quemadoresActivosSitio">El sitio de vertido posee quemadores activos de gases:</label>
+                <select name="quemadoresActivosSitio" formControlName="quemadoresActivosSitio">
+                    <option value="true">Sí</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+            <div formGroupName="disposicion" class="inputContainerInline col-12">
+                <label for="quemadoresPasivosSitio">El sitio de vertido posee quemadores pasivos de gases:</label>
+                <select name="quemadoresPasivosSitio" formControlName="quemadoresPasivosSitio">
+                <option value="true">Sí</option>
+                <option value="false">No</option>
+                </select>
+            </div>
+            <div formGroupName="disposicion" class="inputContainerInline col-12">
+                <label for="sitioVertido">El sitio de vertido es:</label>
+                <select name="sitioVertido" formControlName="sitioVertido">
+                <option *ngFor="let op of sitioVertidoOption" [value]="op.value">{{op.displayName}}</option>
+                </select>
+            </div>
+            <div formGroupName="disposicion" class="inputContainerInline col-12">
+                <label for="estudioComposicion">Ha realizado estudios de composición y determinación de indice de generación
+                por habitante:</label>
+                <select name="estudioComposicion" formControlName="estudioComposicion">
+                    <option value="true">Sí</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+            <div formGroupName="disposicion"
+                
+                [ngClass]="{'inputContainerInline': true, 'col-12': true}">
+                <label for="indiceGeneracion">¿Cual es el indice de generación?:</label>
+                <input formControlName="indiceGeneracion" type="number" min="0">
+            </div>
+            <div formGroupName="disposicion" class="inputContainerInline col-12">
+                <label for="consumoCombustibleCamion">Consumo de combustible por mes, por camión:</label>
+                <div class="prefixInputContainer">
+                <input style="padding-right: 40px;" formControlName="consumoCombustibleCamion" type="number" min="0">
+                <span>L</span>
+                </div>
+            </div>
+            </form>
+        </div>
+<!-- STEP 6 -->
+        <div class="step" *ngIf="actualStep === 6">
+            <form [formGroup]="girsForm" class="row formContainer">
+            <div formGroupName="aspectosFinancieros" class="inputContainerInline col-12">
+                <label for="presupuestoInvertidoGirs">Presupuesto invertido en el GIR</label>
+                <div class="sufixInputContainer">
+                <input formControlName="presupuestoInvertidoGirs" type="number" min="0">
+                <span>₡</span>
+                </div>
+            </div>
+            <div formGroupName="aspectosFinancieros" class="inputContainerInline col-12">
+                <label for="presupuestoInvertidoLimpieza">Presupuesto invertido en la limpieza de calles y áreas
+                comunes</label>
+                <div class="sufixInputContainer">
+                <input formControlName="presupuestoInvertidoLimpieza" type="number" min="0">
+                <span>₡</span>
+                </div>
+            </div>
+            <div formGroupName="aspectosFinancieros" class="inputContainerInline col-12">
+                <label for="porcentajeMorosidad">Porcentaje de morisidad</label>
+                <div class="prefixInputContainer">
+                <input style="padding-right: 40px;" formControlName="porcentajeMorosidad" type="number" min="0">
+                <span>%</span>
+                </div>
+            </div>
+            <div formGroupName="aspectosFinancieros" class="inputContainerInline col-12">
+                <label for="inversionCampanasEducacion">Inversión en campañas de educación ambiental</label>
+                <input formControlName="inversionCampanasEducacion" type="number" min="0">
+            </div>
+            </form>
+        </div>
+<!-- STEP 7 -->
+        <div class="step" *ngIf="actualStep === 7">
+            <form [formGroup]="girsForm" class="row formContainer">
+              <div formGroupName="informacionCalculada" class="inputContainerInline col-12">
+                <label for="indiceGeneracion">Índice de generación por habitante</label>
+                <input formControlName="indiceGeneracion" type="number" min="0">
+              </div>
+              <div formGroupName="informacionCalculada" class="inputContainerInline col-12">
+                <label for="gastoPorVivienda">Gastos de operación, servicio y recolección por vivienda</label>
+                <div class="sufixInputContainer">
+                  <input formControlName="gastoPorVivienda" type="number" min="0">
+                  <span>₡</span>
+                </div>
+              </div>
+              <div formGroupName="informacionCalculada" class="inputContainerInline col-12">
+                <label for="gastoPorAseo">Gastos por aseo, limpieza de vías y viviendas</label>
+                <div class="sufixInputContainer">
+                  <input formControlName="gastoPorAseo" type="number" min="0">
+                  <span>₡</span>
+                </div>
+              </div>
+            </form>
+        </div>
+<!-- Bttns -->
+        <div class="indicatorContent">
+            <div class="stepButtons">
+              <button [ngClass]="{'hide': actualStep == 1, 'common-bttn':true, 'btnBack' : true}"
+                (click)="movePage(-1)">Atrás</button>
+              <div class="indicators" style="margin: 0;">
+                <span [ngClass]="{'active': actualStep >= 1}"></span>
+                <span [ngClass]="{'active': actualStep >= 2}"></span>
+                <span [ngClass]="{'active': actualStep >= 3}"></span>
+                <span [ngClass]="{'active': actualStep >= 4}"></span>
+                <span [ngClass]="{'active': actualStep >= 5}"></span>
+                <span [ngClass]="{'active': actualStep >= 6}"></span>
+                <span [ngClass]="{'active': actualStep >= 7}"></span>
+              </div>
+              <button *ngIf="actualStep !== totalSteps" (click)="movePage(1)"
+                class="common-bttn">{{(actualStep === totalSteps)?'Guardar':'Siguiente'}}</button>
+              <button *ngIf="actualStep === totalSteps"
+                class="common-bttn">{{(actualStep === totalSteps)?'Guardar':'Siguiente'}}</button>
+            </div>
+        </div>
+
+    </div>
+
+        
+
+
+</div>

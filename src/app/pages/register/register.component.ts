@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Usuario } from 'src/app/models/usuario.model';
+import { UsuariosService } from 'src/app/services/usuarios.service';
 
 import { Municipalidad } from 'src/app/models/municipalidad.model';
 import { MunicipalidadService } from 'src/app/services/municipalidad.service';
@@ -25,7 +26,8 @@ export class RegisterComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder, 
     private MunicipalidadService:MunicipalidadService,
-    private auth: AuthService
+    private auth: AuthService,
+    private usuariosServices: UsuariosService
   ) 
   {
     this.form = this.formBuilder.group({
@@ -59,7 +61,7 @@ export class RegisterComponent implements OnInit {
     this.usuario.telefono = this.form?.get('telefono')?.value;
 
     //Sign In User
-    this.auth.newUser(this.usuario);
+    this.usuariosServices.insertTempUser(this.usuario);
   }
 
   //User Model

@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Usuario } from '../models/usuario.model';
+import Swal from "sweetalert2"
+import { Observable } from 'rxjs';
+import { USE_EMULATOR } from '@angular/fire/compat/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +15,38 @@ export class UsuariosService {
   }
 
   insertTempUser(userInput: Usuario){
-    return this.db.collection('solicitudUsuarios').doc(userInput.uid).set(userInput);
+
+    Swal.fire({
+      allowOutsideClick: false,
+      icon: 'info',
+      text: 'Espere por favor...'
+    });
+
+    Swal.showLoading();
+
+    this.getTempUsersByMail(userInput.email).then(res => {
+      if(res.length>0){
+        Swal.close();
+        Swal.fire({
+            icon: 'error',
+            title: 'Error al solicitar registro',
+            text: "Correo ya utilizado"
+          });
+      } else {
+        Swal.close();
+        this.db.collection('solicitudUsuarios').add(userInput)
+          Swal.fire({
+            allowOutsideClick: false,
+            icon: 'success',
+            text: '¡Se ha registrado tu solicitud con exito!'
+          });
+      }
+    })
+    
+    
+    
+   
+    
   }
 
   deleteTempUser(uid : string){
@@ -29,10 +63,23 @@ export class UsuariosService {
           return doc.data();
         }
         else{
-          return undefined;
+          return [];
         }
       }
     );
+  }
+
+  getTempUsersByMail(userEmail: string): Promise<Usuario[]> {
+    return new Promise(resolve => {
+
+        let datos = this.getTempUsers().subscribe(res => {
+       
+        let reports = (res as unknown as Usuario[]);
+       
+        reports = reports.filter(res => res.email === userEmail);        
+        resolve(reports as Usuario[]);
+      });
+    });
   }
 
   getTempUsers(){

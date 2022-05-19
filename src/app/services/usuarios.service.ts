@@ -42,9 +42,6 @@ export class UsuariosService {
           });
       }
     })
-    
-    
-    
    
     
   }
@@ -83,7 +80,7 @@ export class UsuariosService {
   }
 
   getTempUsers(){
-    const users = this.db.collection('solicitudUsuarios').valueChanges();
+    const users = this.db.collection('solicitudUsuarios').valueChanges({idField:"uid"});
     return users;
   }
 

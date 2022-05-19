@@ -45,7 +45,7 @@ export class AuthService {
         Swal.fire({
           allowOutsideClick: false,
           icon: 'success',
-          text: '¡Se ha registrado con éxito!'
+          text: '¡Se ha aceptado el registro con éxito!'
         });
 
       })
@@ -54,7 +54,7 @@ export class AuthService {
         Swal.fire({
           icon: 'error',
           title: 'Error al autenticar',
-          text: error.message
+          text: "Solicite que a la persona que corrija el siguiente error e intente de nuevo" + error.message
         });
       });
   }

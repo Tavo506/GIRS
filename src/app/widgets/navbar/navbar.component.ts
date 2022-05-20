@@ -13,6 +13,7 @@ import { UsuariosService } from 'src/app/services/usuarios.service';
 export class NavbarComponent implements OnInit {
 
   public currentRoute = "/";
+  haySolicitudes = false;
 
   constructor(private authService: AuthService, private router: Router, private usuariosService: UsuariosService) {
 
@@ -22,6 +23,10 @@ export class NavbarComponent implements OnInit {
         this.currentRoute = event.url;       
       }
     });
+
+    this.usuariosService.usuariosEnEspera().then(res => {
+      this.haySolicitudes = res;
+    })
 
   }
 
@@ -39,14 +44,6 @@ export class NavbarComponent implements OnInit {
 
   get isLoggedIn(): boolean {
     return this.authService.isLoggedIn;
-  }
-
-
-  // Para manejar si mostrar o no la campana de notificaciones
-  async haySolicitudes() {
-    
-    
-    return await this.usuariosService.usuariosEnEspera()
   }
 
 }

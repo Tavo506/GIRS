@@ -16,3 +16,12 @@
 th{
     text-align: center;
 }
+
+.nombre-link{
+    text-decoration: none;
+    color: black;
+}
+
+.nombre-link:hover {
+    text-decoration: underline;
+}

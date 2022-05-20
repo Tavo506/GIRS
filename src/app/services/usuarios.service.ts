@@ -26,14 +26,12 @@ export class UsuariosService {
 
     this.getTempUsersByMail(userInput.email).then(res => {
       if(res.length>0){
-        Swal.close();
         Swal.fire({
             icon: 'error',
             title: 'Error al solicitar registro',
             text: "Correo ya utilizado"
           });
       } else {
-        Swal.close();
         this.db.collection('solicitudUsuarios').add(userInput)
           Swal.fire({
             allowOutsideClick: false,
@@ -45,7 +43,7 @@ export class UsuariosService {
    
   }
 
-  async usuariosEnEspera(){
+  async usuariosEnEspera() {
     let solicitudes = new Promise<Usuario[]>(resolve => {
 
       this.getTempUsers().subscribe(res => {
@@ -56,6 +54,7 @@ export class UsuariosService {
       });
     });
     
+    let res = await solicitudes
     return (await solicitudes).length>0
   }
 

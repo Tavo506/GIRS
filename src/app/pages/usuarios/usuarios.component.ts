@@ -83,7 +83,7 @@ export class UsuariosComponent implements OnInit {
 
   createUser(user : any) : void {
     this.authService.newUser(user)
-    this.deleteTempUser(user.uid)
+    this.usersService.deleteTempUser(user.uid)
   }
 
 

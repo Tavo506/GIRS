@@ -18,7 +18,9 @@
                 
             </div>
             <div class="col-md-6 col-12 text-center">
-                <button type="button" class="btn button-usuario" (click)="changeState()">Solicitudes de registro
+                <button type="button" class="btn button-usuario" (click)="changeState()">
+                    <i *ngIf="tempUsers.length > 0" class="bell fa-solid fa-bell"></i>
+                    Solicitudes de registro
                     <i *ngIf="!bitActive" class="fa-solid fa-circle"></i>
                     <i *ngIf="bitActive" class="fa-regular fa-circle"></i>
                 </button>
@@ -33,7 +35,11 @@
                 </thead>
                 <tbody *ngIf="bitActive">
                     <tr class="table-elem" *ngFor="let user of listToUse">
-                        <td class="text-center">{{getCompleteName(user)}}</td>
+                        <td class="text-center" >
+                            <a class="nombre-link" [routerLink]="['/reportesUsuario', user.uid]">
+                                {{getCompleteName(user)}}
+                            </a>
+                        </td>
                         <td class="text-center">{{user.email}}</td>
                         <td class="text-center">
                             <div *ngIf="bitActive" ngbDropdown display="dynamic" placement="bottom">

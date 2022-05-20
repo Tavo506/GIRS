@@ -31,7 +31,7 @@
                     <th class="noselect"><span>Correo electrónico</span></th>
                     <th class="noselect"><span>{{getTheadThree()}}</span></th>
                 </thead>
-                <tbody>
+                <tbody *ngIf="bitActive">
                     <tr class="table-elem" *ngFor="let user of listToUse">
                         <td class="text-center">{{getCompleteName(user)}}</td>
                         <td class="text-center">{{user.email}}</td>
@@ -48,6 +48,26 @@
                             </div>
                             <!--Para Tavo *ngIf = '!bitActive' Agregas esto y metes ahi ya los botones de check y X que te tocan -->
                             <!--Cambiar la lista "listToUse" por la que vos tengas que usar y en teoria deberia cambiar todo de manera dinamica -->
+                        </td>
+                    </tr>
+                </tbody>
+
+
+
+                <tbody *ngIf="!bitActive">
+                    <tr class="table-elem" *ngFor="let user of tempList">
+                        <td class="text-center">{{getCompleteName(user)}}</td>
+                        <td class="text-center">{{user.email}}</td>
+                        <td class="text-center">
+                            <button (click)="createUser(user)"class="btn-accept btn-yes-no">
+                                <i class="fa-solid fa-check">
+                                </i>
+                            </button>
+                            <button (click)="deleteTempUser(user.uid)" class="btn-denny btn-yes-no">
+                                <i class="fa-solid fa-x">
+                                </i>
+                                
+                            </button>
                         </td>
                     </tr>
                 </tbody>

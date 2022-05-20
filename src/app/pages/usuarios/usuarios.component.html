@@ -59,11 +59,14 @@
                         <td class="text-center">{{getCompleteName(user)}}</td>
                         <td class="text-center">{{user.email}}</td>
                         <td class="text-center">
-                            <button (click)="createUser(user)">
-                                Si
+                            <button (click)="createUser(user)"class="btn-accept btn-yes-no">
+                                <i class="fa-solid fa-check">
+                                </i>
                             </button>
-                            <button (click)="deleteTempUser(user.uid)">
-                                No
+                            <button (click)="deleteTempUser(user.uid)" class="btn-denny btn-yes-no">
+                                <i class="fa-solid fa-x">
+                                </i>
+                                
                             </button>
                         </td>
                     </tr>

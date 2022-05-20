@@ -43,7 +43,20 @@ export class UsuariosService {
       }
     })
    
+  }
+
+  async usuariosEnEspera(){
+    let solicitudes = new Promise<Usuario[]>(resolve => {
+
+      this.getTempUsers().subscribe(res => {
+       
+        let usuarios = (res as unknown as Usuario[]);
+         
+        resolve(usuarios as Usuario[]);
+      });
+    });
     
+    return (await solicitudes).length>0
   }
 
   deleteTempUser(uid : string){

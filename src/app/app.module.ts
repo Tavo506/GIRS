@@ -56,6 +56,7 @@ import { ExcelService } from './services/excel.service';
 import { NgChartsModule } from 'ng2-charts';
 import { ModalContacto } from './widgets/modal-contacto/modal-contacto.component';
 import { PhonePipe } from './pipes/phone.pipe';
+import { ModalPerfil } from './widgets/modal-perfil/modal-perfil.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { PhonePipe } from './pipes/phone.pipe';
     MapComponent,
     GraficoPlotComponent,
     ModalContacto,
-    PhonePipe
+    ModalPerfil,
+    PhonePipe,
   ],
   imports: [
     BrowserModule,
@@ -96,8 +98,8 @@ import { PhonePipe } from './pipes/phone.pipe';
   providers: [
     AuthService,
     ContactosService,
-    MunicipalidadService, 
-    ReportesService, 
+    MunicipalidadService,
+    ReportesService,
     UsuariosService,
     MarkerService,
     PopupService,

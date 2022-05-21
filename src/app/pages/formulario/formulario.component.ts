@@ -5,7 +5,8 @@ import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { ReportesService } from 'src/app/services/reportes.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import {Reporte} from 'src/app/models/reporte.model';
-import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { municipalidades } from 'src/assets/data/municipalidades';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-formulario',
@@ -24,7 +25,7 @@ export class FormularioComponent implements OnInit {
 
   formID: string;
 
-  reporte : any;
+  reporte : any = {};
 
   // OPTIONS FOR SELECT
 
@@ -55,7 +56,7 @@ export class FormularioComponent implements OnInit {
               ) { 
 
     //Debemos crear el FormGroup aunque sea sin datos, ya que el HTML carga más rápido que el async query.
-    this.initFormGirs('');
+    this.initFormGirs('new');
     this.formID = this.route.snapshot.paramMap.get('idForm') || '';
   }
 
@@ -74,10 +75,13 @@ export class FormularioComponent implements OnInit {
       }
     )
   }
-
+/**
+ * Funcion para inicializar el FormGroup del formulario.
+ * @param id ID que pasaron por la ruta. Puede ser solo '' 
+ */
   initFormGirs (id : string ) : void {
 
-    if (id==''){
+    if (id=='new'){
       this.girsForm = new FormGroup({
         datosGenerales : this.initDatosGenerales({}),
         caracteristicasServicio : this.initCaracteristicasServicio({}),
@@ -297,19 +301,54 @@ export class FormularioComponent implements OnInit {
 
 
   //Save Form
-  updateForm(formStatus : boolean){
-    let json = this.girsForm.getRawValue();
+  updateForm(){
 
-    this.reporte.datosGenerales = json.datosGenerales;
-    this.reporte.caracteristicasServicio = json.caracteristicasServicio;
-    this.reporte.disposicion = json.disposicion;
-    this.reporte.aspectosFinancieros = json.aspectosFinancieros;
-    this.reporte.informacionCalculada = json.informacionCalculada;
-    this.reporte.fechaModificacion =   this.getTodayDate();
-    //this.reporte.anno =   this.getTodayDate();
-    this.reporte.completado = formStatus;
+    // Ventana de confirmación para eliminar el contacto
+    Swal.fire({
+      title: "Guardar formulario",
+      icon: "warning",
+      text: "El formulario se va a guardar. Presione 'Completado', si considera que el formular está completo. En caso que no, presione 'Incompleto'",
+      showDenyButton: true,
+      showCancelButton: true,
+      cancelButtonText: "Cancelar",
+      confirmButtonText: "Completado",
+      denyButtonText: "Incompleto",
 
-    this.reporteService.updateReporte(this.formID, this.reporte as Reporte);
+    }).then((result) => { 
+      //Presionó "Cancelar"
+      if(result.isDismissed){
+        return
+      }
+
+      let json = this.girsForm.getRawValue();
+
+      this.reporte.datosGenerales = json.datosGenerales;
+      this.reporte.caracteristicasServicio = json.caracteristicasServicio;
+      this.reporte.disposicion = json.disposicion;
+      this.reporte.aspectosFinancieros = json.aspectosFinancieros;
+      this.reporte.informacionCalculada = json.informacionCalculada;
+      this.reporte.fechaModificacion =   this.getTodayDate();
+
+      //Form Completo
+      if(result.isConfirmed){
+        this.reporte.completado = true;
+      }
+      //Form Incompleto
+      if(result.isDenied){
+        this.reporte.completado = false;
+      }
+
+      //Si hay que crear el form o actualizarlo
+      if ( this.formID == "new" ){
+        this.reporte.anno = this.reporte.fechaModificacion.split('-')[0];
+        this.reporte.canton = this.userData.municipalidad.split(' ')[2];
+        this.reporte.provincia = this.provinciaOfCanton(this.reporte.canton);
+        this.reporteService.insertReporte(this.reporte as Reporte);
+      }
+      else{
+        console.log(this.reporteService.updateReporte(this.formID, this.reporte as Reporte));
+      }
+    });
   }
 
   //Obtiene la fecha de hoy
@@ -321,6 +360,16 @@ export class FormularioComponent implements OnInit {
   //Obtiene el UID del usuarios loggeado del localstorage del browser. 
   get getUserId() : string{
     return JSON.parse(this.localStorage.getLocalStorage("user")).uid;
+  }
+
+  provinciaOfCanton(canton : string) {
+    for ( let i=0; i < municipalidades.length; i++){
+
+      if ( municipalidades[i].canton == canton ){
+        return municipalidades[i].province;
+      }
+
+    }
   }
 
 //String to int parser

@@ -1,14 +1,16 @@
 <div class="container mt-5">
 
-    <div class="titleContainer">
-        <h1 class="title" *ngIf="actualStep === 1">Datos generales</h1>
-        <h1 class="title" *ngIf="actualStep === 2 || actualStep === 3">Características del servicio</h1>
-        <h1 class="title" *ngIf="actualStep === 4 || actualStep === 5">Disposición</h1>
-        <h1 class="title" *ngIf="actualStep === 6">Aspectos financieros</h1>
-        <h1 class="title" *ngIf="actualStep === 7">Información calculada</h1>
+    <div class="titleContainer row" >
+        <div class="col">
+          <h1 class="title" *ngIf="actualStep === 1">Datos generales</h1>
+          <h1 class="title" *ngIf="actualStep === 2 || actualStep === 3">Características del servicio</h1>
+          <h1 class="title" *ngIf="actualStep === 4 || actualStep === 5">Disposición</h1>
+          <h1 class="title" *ngIf="actualStep === 6">Aspectos financieros</h1>
+          <h1 class="title" *ngIf="actualStep === 7">Información calculada</h1>
+        </div>
 
-        <div style="align-self: flex-end;">
-            <i class="fa-solid fa-pen-to-square fa-2x" (click)="updateForm(false)"></i>
+        <div class="col text-end">
+            <i class="fa-solid fa-floppy-disk fa-2x" (click)="updateForm()"></i>
             <i class="fa-solid fa-trash-can fa-2x" style="color: red" ></i>
         </div>
     </div>
@@ -35,7 +37,7 @@
               </div>
               <div formGroupName="datosGenerales" class="inputContainer col-12 col-sm-6">
                 <label for="email">Correo electrónico</label>
-                <input formControlName="email" type="text">
+                <input formControlName="email" type="text" required>
               </div>
               <div formGroupName="datosGenerales" class="inputContainer col-12 col-sm-6">
                 <label for="poblacionAtendida">Población atendida</label>
@@ -288,26 +290,9 @@
               <button *ngIf="actualStep !== totalSteps" (click)="movePage(1)"
                 class="common-bttn">{{(actualStep === totalSteps)?'Guardar':'Siguiente'}}</button>
               <button *ngIf="actualStep === totalSteps"
-                class="common-bttn">{{(actualStep === totalSteps)?'Guardar':'Siguiente'}}</button>
+                class="common-bttn" (onclick)="updateForm()">{{(actualStep === totalSteps)?'Guardar':'Siguiente'}}</button>
             </div>
         </div>
 
     </div>
-<!-- Bttns 
-    <div class="modal-header">
-      <h4 class="modal-title" id="modal-title">Modo del guardado del formulario</h4>
-      <button type="button" class="btn-close" aria-describedby="modal-title" (click)="modal.dismiss('Cross click')"></button>
-    </div>
-    <div class="modal-body">
-      <p><strong>El reporte se guardará.</strong> Presione <span class="text-primary">"Sí"</span>
-        , si considera que el formular está completo. En caso que no, presione <span class="text-primary">"No"</span> </p>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline-secondary" >No</button>
-      <button type="button" class="btn btn-danger">Sí</button>
-    </div> -->
-
-        
-
-
 </div>

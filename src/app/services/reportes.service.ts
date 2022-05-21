@@ -29,9 +29,12 @@ export class ReportesService {
   }
 
   updateReporte(idForm : string, form : Reporte){
-    
     //Si no permite actualizar el registro existente, entonces toca borrar el doc y recrearlo con la nueva info.
+    return this.db.collection('contactos').doc(idForm).set(form);
+  }
 
+  insertReporte(form : Reporte){
+    return this.db.collection('formularios').add(form);
   }
 
 }

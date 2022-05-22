@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Contacto } from '../models/contacto.model';
+import { Usuario } from '../models/usuario.model';
 import { ModalContacto } from '../widgets/modal-contacto/modal-contacto.component';
+import { ModalPerfil } from '../widgets/modal-perfil/modal-perfil.component';
 import { ContactosService } from './contactos.service';
 
 @Injectable({
@@ -27,6 +29,14 @@ export class ModalService {
     modalRef.componentInstance.titulo = titulo;
     modalRef.componentInstance.accion = accion;
     modalRef.componentInstance.contacto = { ...contacto };  // Se clona el contacto para no actualizar la misma referencia
+    modalRef.componentInstance.buildForm();
+
+    return await modalRef.result;
+  }
+
+  async modalPerfilOpen(usuario: Usuario) {
+    const modalRef = this.modal.open(ModalPerfil, { centered: true });
+    modalRef.componentInstance.usuario = { ...usuario };  // Se clona el contacto para no actualizar la misma referencia
     modalRef.componentInstance.buildForm();
 
     return await modalRef.result;

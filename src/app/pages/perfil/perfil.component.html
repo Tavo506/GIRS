@@ -4,7 +4,7 @@
         <h1 class="titulo-1">Mi perfil</h1>
 
         <div style="margin-left: 70%;">
-            <i class="fa-solid fa-pen-to-square fa-3x"></i>
+            <i class="fa-solid fa-pen-to-square fa-3x" (click)="editarUsuario()"></i>
 
             <i class="fa-solid fa-trash-can fa-3x" style="color: red" ></i>
         </div>
@@ -41,6 +41,16 @@
                     <td>
                         <h2 class="content-text">
                             {{userData.telefono}}
+                        </h2>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <i class="fa-solid fa-envelope fa-4x"></i>
+                    </td>
+                    <td>
+                        <h2 class="content-text">
+                            {{userData.email}}
                         </h2>
                     </td>
                 </tr>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, Form } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { ReportesService } from 'src/app/services/reportes.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
@@ -53,6 +53,7 @@ export class FormularioComponent implements OnInit {
               private localStorage : LocalStorageService, 
               private  userService: UsuariosService,
               private reporteService : ReportesService,
+              private router: Router
               ) { 
 
     //Debemos crear el FormGroup aunque sea sin datos, ya que el HTML carga más rápido que el async query.
@@ -107,7 +108,10 @@ export class FormularioComponent implements OnInit {
       );
     }
   }
-
+/**
+ * Inicializar los datos necesarios para el form del usuario
+ * @param user Datos del usuario loggeado
+ */
 
   initDatosUsuario( user : any ) : void {
     this.userData.nombre = user.nombre + " " + user.apellido;
@@ -115,7 +119,10 @@ export class FormularioComponent implements OnInit {
     this.userData.telefono = user.telefono;
     this.userData.email = user.email;
   }
-
+/**
+ * Inicializar el FormGroup para Datos Generales
+ * @param user Datos del form cargado
+ */
   initDatosGenerales(data : any) : FormGroup{
 
     data.poblacionAtendida = this.parseNumber(data.poblacionAtendida);
@@ -146,7 +153,10 @@ export class FormularioComponent implements OnInit {
       ]),
     });
   }
-
+/**
+ * Inicializar el FormGroup para Características de Servicio
+ * @param user Datos del form cargado
+ */
   initCaracteristicasServicio(data : any) : FormGroup {
 
     data.porcentajeRecoleccion = this.parseNumber(data.porcentajeRecoleccion);
@@ -197,7 +207,10 @@ export class FormularioComponent implements OnInit {
       ])
     })
   }
-
+/**
+ * Inicializar el FormGroup para Disposición
+ * @param user Datos del form cargado
+ */
   initDisposicion(data : any) : FormGroup {
 
     data.distanciaPromedioSitio = this.parseNumber(data.distanciaPromedioSitio);
@@ -251,7 +264,10 @@ export class FormularioComponent implements OnInit {
       ])
     });
   }
-
+/**
+ * Inicializar el FormGroup para Aspectos Financieros
+ * @param user Datos del form cargado
+ */
   initAspectosFinancieros(data : any) : FormGroup {
 
     data.presupuestoInvertidoGirs = this.parseNumber(data.presupuestoInvertidoGirs);
@@ -277,7 +293,10 @@ export class FormularioComponent implements OnInit {
       ])
     });
   }
-
+/**
+ * Inicializar el FormGroup para Información Calculada
+ * @param user Datos del form cargado
+ */
   initInformacionCalculada(data : any) : FormGroup {
 
     data.indiceGeneracion = this.parseNumber(data.indiceGeneracion);
@@ -300,7 +319,9 @@ export class FormularioComponent implements OnInit {
   }
 
 
-  //Save Form
+/**
+ * Actualizar el formulario o crear uno nuevo
+ */
   updateForm(){
 
     // Ventana de confirmación para eliminar el contacto
@@ -348,20 +369,86 @@ export class FormularioComponent implements OnInit {
       else{
         console.log(this.reporteService.updateReporte(this.formID, this.reporte as Reporte));
       }
+
+      this.router.navigate(['/misReportes']);
+
     });
   }
+/**
+ * Eliminar el form actual
+ */
+  deleteForm(){
 
-  //Obtiene la fecha de hoy
-  getTodayDate() {
+    // Ventana de confirmación para eliminar el contacto
+    Swal.fire({
+      title: "Eliminar reporte",
+      icon: "warning",
+      text: "¿Seguro que desea eliminar el reporte?",
+      showCancelButton: true,
+      cancelButtonText: "Cancelar",
+      confirmButtonText: "Eliminar",
+
+    }).then((result) => {
+
+      if (result.isConfirmed) { // Si se confirmó la eliminación
+
+        // Ventana de carga mientras se elimina
+        Swal.fire({
+          title: 'Por favor espera',
+          text: 'Eliminando el reporte',
+          allowOutsideClick: false
+        });
+        Swal.showLoading();
+
+        // Manda a eliminar el contacto en base al ID
+        /*
+        this.reporteService.deleteReporte(this.formID).then(res => {
+
+          // Ventana de eliminación exitosa
+          Swal.fire(
+            '¡Eliminado!',
+            'El reporte ha sido eliminado',
+            'success'
+          )
+          
+          this.router.navigate(['/misReportes']);
+
+        }).catch(err => {
+
+          // Ventana de error al eliminar
+          Swal.fire(
+            'Erorr al eliminar',
+            err,
+            "error"
+          )
+        });*/
+      }
+    })
+  }
+
+  /**
+   * Obtiene la fecha de hoy
+   * @returns La fecha actual con el formato YYYY-MM-DD
+   */
+  getTodayDate() : string {
     let date = new Date();
     return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
   }
 
-  //Obtiene el UID del usuarios loggeado del localstorage del browser. 
+
+  /** 
+   * Obtiene el UID del usuarios loggeado del localstorage del browser
+   * @returns El UUID del usuario loggeado
+  */ 
   get getUserId() : string{
     return JSON.parse(this.localStorage.getLocalStorage("user")).uid;
   }
 
+  /**
+   * Función para obtener la provincia de un cantón dado. La información es de un JSON en assests/data
+   * @param canton Cantón
+   * @returns Provincia del cantón
+   */
   provinciaOfCanton(canton : string) {
     for ( let i=0; i < municipalidades.length; i++){
 
@@ -372,7 +459,11 @@ export class FormularioComponent implements OnInit {
     }
   }
 
-//String to int parser
+/**
+ * Función para convertir números o decimales en string a Number
+ * @param number El número puede que sea de tipo string o number, porque así está en algunos formularios viejos
+ * @returns El número como Number
+ */
   parseNumber(number : any) {
     if ( number != '' && number != undefined){
       return Number(number.toString().replace(' ', '').replace(',','.'));
@@ -382,7 +473,11 @@ export class FormularioComponent implements OnInit {
     }
   }
 
-//Cambiar de página. Recibe 1 o -1 . 
+//
+/**
+ * Cambiar de página del formulario para adelante o atrás
+ * @param action Puede ser -1 o 1. Negativo es atrás y positivo es adelante
+ */ 
   movePage( action : Number ) {
     if (this.actualStep < 7 && action > 0) {
       this.actualStep++;
@@ -393,5 +488,3 @@ export class FormularioComponent implements OnInit {
     }
   }
 }
-
-//https://ng-bootstrap.github.io/#/components/modal/examples

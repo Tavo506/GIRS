@@ -57,6 +57,7 @@ import { NgChartsModule } from 'ng2-charts';
 import { ModalContacto } from './widgets/modal-contacto/modal-contacto.component';
 import { PhonePipe } from './pipes/phone.pipe';
 import { MunicipalidadesComponent } from './pages/municipalidades/municipalidades.component';
+import { ModalPerfil } from './widgets/modal-perfil/modal-perfil.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import { MunicipalidadesComponent } from './pages/municipalidades/municipalidade
     GraficoPlotComponent,
     ModalContacto,
     PhonePipe,
-    MunicipalidadesComponent
+    MunicipalidadesComponent,
+    ModalPerfil,
   ],
   imports: [
     BrowserModule,
@@ -98,8 +100,8 @@ import { MunicipalidadesComponent } from './pages/municipalidades/municipalidade
   providers: [
     AuthService,
     ContactosService,
-    MunicipalidadService, 
-    ReportesService, 
+    MunicipalidadService,
+    ReportesService,
     UsuariosService,
     MarkerService,
     PopupService,

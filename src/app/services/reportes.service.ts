@@ -24,8 +24,17 @@ export class ReportesService {
   }
 
   getReporte(id: string){
-    const reports = this.db.collection('formularios').valueChanges(id);
-    return reports;
+     return this.db.collection('formularios').doc(id).ref.get()
+    .then(
+      (doc) => {
+        if (doc.exists) {
+          return doc.data();
+        }
+        else{
+          return undefined;
+        }
+      }
+    );
   }
 
   deleteReporte(ID: string){
@@ -55,4 +64,15 @@ export class ReportesService {
   getLastReportUpdated(){
     return this.db.collection('formularios', ref => ref.orderBy('fechaModificacion', 'desc')).valueChanges();
   }
+   
+
+  updateReporte(idForm : string, form : Reporte){
+    //Si no permite actualizar el registro existente, entonces toca borrar el doc y recrearlo con la nueva info.
+    return this.db.collection('formularios').doc(idForm).set(form);
+  }
+
+  insertReporte(form : Reporte){
+    return this.db.collection('formularios').add(form);
+  }
+
 }

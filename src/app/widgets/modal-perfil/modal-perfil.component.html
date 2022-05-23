@@ -1,0 +1,66 @@
+<form [formGroup]="form">
+
+    <div class="modal-body px-5">
+      <div class="text-center mb-5">
+        <h2>Editar perfil</h2>
+      </div>
+  
+      <!-- Nombre -->
+      <div class="form-group row">
+        <label for="nombre" class="col-sm-5 col-form-label required">Nombre</label>
+        <div class="col-sm-7">
+          <input 
+            type="text" 
+            id="nombre" 
+            class="form-control" 
+            formControlName="nombre" 
+            aria-label="Nombre"
+            [class.is-invalid]="nombreInvalido">
+            <small *ngIf="nombreInvalido" class="text-danger">
+              El nombre no puede ser vacío
+            </small>
+        </div>
+      </div>
+  
+      <!-- Primer apellido -->
+      <div class="form-group row">
+        <label for="apellido" class="col-sm-5 col-form-label required">Apellidos</label>
+        <div class="col-sm-7">
+          <input 
+            type="text" 
+            id="apellido" 
+            class="form-control" 
+            formControlName="apellido" 
+            aria-label="Apellidos"
+            [class.is-invalid]="apellidoInvalido">
+            <small *ngIf="apellidoInvalido" class="text-danger">
+              Debe tener al menos un apellido o una inicial
+            </small>
+        </div>
+      </div>
+    
+      <!-- Teléfono -->
+      <div class="form-group row">
+        <label for="telefono" class="col-sm-5 col-form-label required">Teléfono</label>
+        <div class="col-sm-7">
+          <input 
+            type="text" 
+            id="telefono" 
+            class="form-control" 
+            formControlName="telefono" 
+            aria-label="Telefono" 
+            placeholder="########"
+            [class.is-invalid]="telefonoInvalido">
+            <small *ngIf="telefonoInvalido" class="text-danger">
+              Teléfono inválido
+            </small>
+        </div>
+      </div>
+  
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-danger"
+        (click)="activeModal.close({status: 'closed', res: {}})">Cerrar</button>
+      <button type="button" class="btn btn-outline-success" (click)="guardar()">Editar</button>
+    </div>
+  </form>

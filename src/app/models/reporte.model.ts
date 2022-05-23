@@ -10,7 +10,7 @@ export interface Reporte{
     fechaModificacion: Date;
     disposicion: disposicion;
     informacionCalculada: informacionCalculada;
-    id : string;
+    completado: boolean;
 }
 
 interface datosGenerales {

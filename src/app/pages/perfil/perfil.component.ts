@@ -41,9 +41,7 @@ export class PerfilComponent implements OnInit {
  * Obtenemos los datos necesarios del usuario para el perfil de la base de datos.
  * @param id Uuid del usuario loggeado
  */
-  getUserData(id : string) : void{
-    console.log(id);
-    
+  getUserData(id : string) : void{   
     this.userService.getUser(id).then(
       (user : any) => {
         try{

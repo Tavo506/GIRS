@@ -82,8 +82,11 @@ export class UsuariosComponent implements OnInit {
   }
 
   createUser(user : any) : void {
-    this.authService.newUser(user)
-    this.usersService.deleteTempUser(user.uid)
+    let resultado = false;
+    this.authService.newUser(user, resultado)
+    if(resultado){
+      this.usersService.deleteTempUser(user.uid)
+    }
   }
 
 

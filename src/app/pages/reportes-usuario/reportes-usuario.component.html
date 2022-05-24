@@ -39,7 +39,7 @@
                 <h5 class="content-text">{{reporte.datosGenerales.municipalidad}}</h5>
             </div>
             <div class="col-2 content-text column">
-                <h5 class="content-text">{{reporte.estado ? reporte.estado : "Incompleto"}}</h5>
+                <h5 class="content-text">{{reporte.estado ? reporte.estado : "Sin completar"}}</h5>
             </div>
             <div class="col-1 content-text column">
                 <i class="clickeable fa-solid fa-pen-to-square fa-lg" [routerLink]="['/formulario/' + reporte.ID]"></i>

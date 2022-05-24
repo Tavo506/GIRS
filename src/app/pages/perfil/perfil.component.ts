@@ -34,7 +34,7 @@ export class PerfilComponent implements OnInit {
  * Obtiene el UID del usuarios loggeado del localstorage del browser.
  */
   get getUserId() : string{
-    return JSON.parse(this.localStorage.getLocalStorage("user")).uid;
+    return JSON.parse(this.localStorage.getLocalStorage("GIRS_user")).uid;
   }
 
 /**
@@ -42,6 +42,8 @@ export class PerfilComponent implements OnInit {
  * @param id Uuid del usuario loggeado
  */
   getUserData(id : string) : void{
+    console.log(id);
+    
     this.userService.getUser(id).then(
       (user : any) => {
         try{
@@ -52,7 +54,7 @@ export class PerfilComponent implements OnInit {
           this.userData.email = user.email;
         }
         catch(e){
-          console.log("Hubo un error al cargar el usuario");
+          console.log(e);       
         }
       }
     );
@@ -149,7 +151,7 @@ export class PerfilComponent implements OnInit {
         Swal.showLoading();
 
         // Manda a eliminar el contacto en base al ID
-        this.userService.deleteUsuario(this.getUserId).then(res => {
+        this.auth.deleteMe().then(res => {
 
           // Ventana de eliminación exitosa
           Swal.fire(
@@ -158,7 +160,7 @@ export class PerfilComponent implements OnInit {
             'success'
           )
           
-          this.auth.logOut();
+          
           this.router.navigate(['/home']);
 
         }).catch(err => {

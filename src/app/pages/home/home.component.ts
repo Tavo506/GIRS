@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
     this.reportesService.getReportes().subscribe( (data: any[]) => {
       
       // Línea para mostrar reportes que no cumplen con la estructura definida
-      console.warn(data.filter(e => !e.canton));
+      // console.warn(data.filter(e => !e.canton));
       
       this.municipalidadesMapa = this.getMunicipalidadesParaMapa(data, muni);     
     })

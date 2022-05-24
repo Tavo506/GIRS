@@ -71,7 +71,7 @@ export class FormularioComponent implements OnInit {
           this.initFormGirs(this.formID);
         }
         catch(e){
-          console.log("Hubo un error al cargar el usuario");
+          console.error("Hubo un error al cargar el usuario");
         }
       }
     )
@@ -94,7 +94,6 @@ export class FormularioComponent implements OnInit {
     else{
       this.reporteService.getReporte(id).then(
         (reporte : any) => {
-          console.log(reporte);
           this.reporte = reporte;
           this.girsForm = new FormGroup({
             datosGenerales : this.initDatosGenerales(reporte.datosGenerales),
@@ -441,7 +440,7 @@ export class FormularioComponent implements OnInit {
    * @returns El UUID del usuario loggeado
   */ 
   get getUserId() : string{
-    return JSON.parse(this.localStorage.getLocalStorage("user")).uid;
+    return JSON.parse(this.localStorage.getLocalStorage("GIRS_user")).uid;
   }
 
   /**

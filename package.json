@@ -36,6 +36,7 @@
     "file-saver": "^2.0.5",
     "file-server": "^2.2.0",
     "firebase": "^9.6.9",
+    "firebase-admin": "^10.2.0",
     "font-awesome": "^4.7.0",
     "jszip": "^3.9.1",
     "leaflet": "^1.7.1",

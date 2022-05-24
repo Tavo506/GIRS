@@ -3,6 +3,7 @@ import { UsuariosService } from 'src/app/services/usuarios.service';
 import { AuthService } from 'src/app/services/auth.service';
 import Swal from 'sweetalert2';
 
+
 @Component({
   selector: 'app-usuarios',
   templateUrl: './usuarios.component.html',

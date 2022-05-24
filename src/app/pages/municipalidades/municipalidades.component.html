@@ -125,10 +125,18 @@
 
                 <div class="from-group row ps-5 py-3">
                     <span class="col-5 muni_property_name py-1">Programa de reciclaje</span>
-                    <input id="programaDeReciclaje" type="text"
-                        class="form-control col muni_property_value form-control"
-                        formControlName="programaDeReciclaje"
-                        [class.is-invalid]="programaDeReciclajeInvalido">
+
+                    <select id="programaDeReciclaje" type="select"
+                    class="form-control col muni_property_value form-control"
+                    formControlName="programaDeReciclaje"
+                    [class.is-invalid]="programaDeReciclajeInvalido">
+                        <option value="Si">
+                            Si
+                        </option>
+                        <option value="No">
+                            No
+                        </option>
+                    </select>
                         <small *ngIf="programaDeReciclajeInvalido" class="text-danger">
                             El programa de reciclaje está incompleto.
                         </small>
@@ -146,10 +154,19 @@
 
                 <div class="from-group row ps-5 py-3">
                     <span class="col-5 muni_property_name py-1">Recoleción de residuos sólidos valorizables</span>
-                    <input id="recoleccionDeResiduosSolidosValorizables" type="text"
-                        class="form-control col muni_property_value form-control"
-                        formControlName="recoleccionDeResiduosSolidosValorizables"
-                        [class.is-invalid]="recoleccionDeResiduosSolidosValorizablesInvalido">
+                    <select 
+                    id="recoleccionDeResiduosSolidosValorizables" type="text"
+                    class="form-control col muni_property_value form-control"
+                    formControlName="recoleccionDeResiduosSolidosValorizables"
+                    [class.is-invalid]="recoleccionDeResiduosSolidosValorizablesInvalido">
+                        <option value="Si">
+                            Si
+                        </option>
+                        <option value="No">
+                            No
+                        </option>
+                    </select>
+
                         <small *ngIf="recoleccionDeResiduosSolidosValorizablesInvalido" class="text-danger">
                             La cantidad de recolección de resiudos sólidos no es válida.
                         </small>

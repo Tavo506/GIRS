@@ -22,43 +22,58 @@
                 type="email" 
                 placeholder="E-mail"
                 formControlName="email"
-                required
+                [class.is-invalid]="correoInvalido"
             >
+            <small *ngIf="correoInvalido" class="text-danger">
+                El formato del correo esta incorrecto
+            </small>
 
             <input 
                 class="input" 
                 type="password" 
                 placeholder="Contraseña"
                 formControlName="password"
-                required
-            >
+                [class.is-invalid]="passwordInvalido">
+            <small *ngIf="passwordInvalido" class="text-danger">
+                La contraseña no cumple el minimo largo de 6 dígitos
+            </small>
 
+            
             <input 
                 class="input" 
                 type="text" 
                 placeholder="Nombre"
                 formControlName="nombre"
-                required
-            >
+                [class.is-invalid]="nombreInvalido">
+            <small *ngIf="nombreInvalido" class="text-danger">
+                Debe colocar un nombre
+            </small>
+            
             <input 
                 class="input" 
                 type="text" 
                 placeholder="Apellido"
                 formControlName="apellido"
-                required
-            >
+                [class.is-invalid]="apellidoInvalido">
+            <small *ngIf="apellidoInvalido" class="text-danger">
+                Debe colocar un apellido
+            </small>
+
             <select name="municipalidad" id="municipalidad" class="input" required formControlName="municipalidad">
 
                 <option *ngFor="let dato of municipalidades" [value]="dato.canton"> Municipalidad de {{dato.canton}} </option>
 
             </select>
+            
             <input 
                 class="input" 
                 type="text" 
                 placeholder="Teléfono"
                 formControlName="telefono"
-                required
-            >
+                [class.is-invalid]="telefonoInvalido">
+            <small *ngIf="telefonoInvalido" class="text-danger">
+                El formato del telefono no es correcto
+            </small>
 
             <button class="common-bttn"  >Inscribirse</button>
 

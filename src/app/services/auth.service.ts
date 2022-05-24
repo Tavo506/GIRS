@@ -7,7 +7,6 @@ import { logInUsuario } from 'src/app/models/logInUsuario.model';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -28,6 +27,13 @@ export class AuthService {
       }
     });
   }
+
+
+  deleteUser(userId: string) {
+    
+  }
+
+
   //Register Nuevo Usuario
   newUser(userInput: Usuario) {
     Swal.fire({

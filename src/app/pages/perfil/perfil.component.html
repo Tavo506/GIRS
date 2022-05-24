@@ -6,9 +6,9 @@
         </div>
 
         <div class="text-end col">
-            <i class="fa-solid fa-pen-to-square fa-3x" (click)="editarUsuario()"></i>
+            <i class="fa-solid fa-pen-to-square fa-3x clickeable" (click)="editarUsuario()"></i>
 
-            <i class="fa-solid fa-trash-can fa-3x" style="color: red" ></i>
+            <i class="fa-solid fa-trash-can fa-3x clickeable" style="color: red" ></i>
         </div>
     </div>
 
@@ -42,7 +42,7 @@
                     </td>
                     <td>
                         <h2 class="content-text">
-                            {{userData.telefono}}
+                            {{userData.telefono | phone:'CR'}}
                         </h2>
                     </td>
                 </tr>

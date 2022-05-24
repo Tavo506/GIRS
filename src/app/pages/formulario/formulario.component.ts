@@ -351,11 +351,11 @@ export class FormularioComponent implements OnInit {
 
       //Form Completo
       if(result.isConfirmed){
-        this.reporte.completado = true;
+        this.reporte.estado = "Completado";
       }
       //Form Incompleto
       if(result.isDenied){
-        this.reporte.completado = false;
+        this.reporte.estado = "Sin completar";
       }
 
       //Si hay que crear el form o actualizarlo
@@ -400,7 +400,7 @@ export class FormularioComponent implements OnInit {
         Swal.showLoading();
 
         // Manda a eliminar el contacto en base al ID
-        /*
+        
         this.reporteService.deleteReporte(this.formID).then(res => {
 
           // Ventana de eliminación exitosa
@@ -420,7 +420,7 @@ export class FormularioComponent implements OnInit {
             err,
             "error"
           )
-        });*/
+        });
       }
     })
   }

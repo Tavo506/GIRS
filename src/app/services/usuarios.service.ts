@@ -4,6 +4,7 @@ import { Usuario } from '../models/usuario.model';
 import Swal from "sweetalert2"
 import { Observable } from 'rxjs';
 import { USE_EMULATOR } from '@angular/fire/compat/auth';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'

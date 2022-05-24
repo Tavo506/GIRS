@@ -440,7 +440,7 @@ export class FormularioComponent implements OnInit {
    * @returns El UUID del usuario loggeado
   */ 
   get getUserId() : string{
-    return JSON.parse(this.localStorage.getLocalStorage("user")).uid;
+    return JSON.parse(this.localStorage.getLocalStorage("GIRS_user")).uid;
   }
 
   /**

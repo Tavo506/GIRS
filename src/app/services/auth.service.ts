@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Usuario } from '../models/usuario.model';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { getAuth, onAuthStateChanged, deleteUser, User } from "firebase/auth";
 
 import { UsuariosService } from './usuarios.service';
 import { logInUsuario } from 'src/app/models/logInUsuario.model';
@@ -19,18 +20,69 @@ export class AuthService {
     this.afAuth.authState.subscribe((user) => {
       if (user) {
         this.userData = user;
-        localStorage.setItem('user', JSON.stringify(this.userData));
-        JSON.parse(localStorage.getItem('user')!);
+        localStorage.setItem('GIRS_user', JSON.stringify(this.userData));
+        JSON.parse(localStorage.getItem('GIRS_user')!);
       } else {
-        localStorage.setItem('user', 'null');
-        JSON.parse(localStorage.getItem('user')!);
+        localStorage.setItem('GIRS_user', 'null');
+        JSON.parse(localStorage.getItem('GIRS_user')!);
       }
     });
   }
 
 
   deleteUser(userId: string) {
-    
+    const auth = getAuth();
+
+    let tempUser : User = {
+      uid: userId,
+      emailVerified: false,
+      isAnonymous: false,
+      metadata: {},
+      providerData: [],
+      refreshToken: '',
+      tenantId: null,
+      delete: function ():any {
+      },
+      getIdToken: function (forceRefresh?: boolean): any {
+      },
+      getIdTokenResult: function (forceRefresh?: boolean): any{
+      },
+      reload: function (): any {
+      },
+      toJSON: function (): any {
+      },
+      displayName: null,
+      email: "pruebasmail@gmail.com",
+      phoneNumber: null,
+      photoURL: null,
+      providerId: ''
+    };
+
+
+    return deleteUser(tempUser).then(res => {
+      console.log(res);
+      
+      Swal.fire("Usuario eliminado", "El usuario ha sido eliminado", "success");
+      //this.userService.deleteUser(userId);
+    }).catch(err => {
+      console.error(err);
+    })
+  }
+
+
+  deleteMe() {
+    const auth = getAuth();
+    const user = auth.currentUser;
+
+    return this.userService.deleteUser(user!.uid).then(res => {
+      
+      deleteUser(user!).then(res => {
+        Swal.fire("Usuario eliminado", "El usuario ha sido eliminado", "success");
+        this.logOut();
+      });
+    }).catch(err => {
+      console.error(err);
+    })
   }
 
 
@@ -42,12 +94,10 @@ export class AuthService {
       text: 'Espere por favor...'
     });
     Swal.showLoading();
-
+    
     return this.afAuth
       .createUserWithEmailAndPassword(userInput.email, userInput.password)
       .then((result) => {
-        this.setUserData(result.user, userInput);
-        Swal.close();
         Swal.fire({
           allowOutsideClick: false,
           icon: 'success',
@@ -56,7 +106,6 @@ export class AuthService {
 
       })
       .catch((error) => {
-        Swal.close();
         Swal.fire({
           icon: 'error',
           title: 'Error al autenticar',
@@ -93,14 +142,14 @@ export class AuthService {
   // Logout
   logOut() {
     return this.afAuth.signOut().then(() => {
-      localStorage.removeItem('user');
+      localStorage.removeItem('GIRS_user');
       //Route
     });
   }
 
   // Returns true when user is looged in and email is verified
   public get isLoggedIn(): boolean {
-    const user = JSON.parse(localStorage.getItem('user')!);
+    const user = JSON.parse(localStorage.getItem('GIRS_user')!);
     return user !== null;
   }
 }

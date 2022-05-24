@@ -16,7 +16,7 @@ export class MisReportesComponent implements OnInit {
   user : any = null;
 
   constructor(private reportesService: ReportesService, private localStorage : LocalStorageService, private excelService : ExcelService) { 
-    this.user = JSON.parse(this.localStorage.getLocalStorage("user"));
+    this.user = JSON.parse(this.localStorage.getLocalStorage("GIRS_user"));
     this.reportesService.getReportesPorUsuario(this.user.email).then( res => {
       this.reportsUser = res;
       this.lastReportUpdated = this.setLastReportUpdated();

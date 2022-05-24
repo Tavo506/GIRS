@@ -16,6 +16,7 @@ import { ReportesComponent } from './pages/reportes/reportes.component';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { MunicipalidadesComponent } from './pages/municipalidades/municipalidades.component';
+import { ViewWelcomeGuard } from './guards/view-welcome.guard';
 
 
 const routes: Routes = [
@@ -23,7 +24,7 @@ const routes: Routes = [
   {path: "comparativas", component: ComparativasComponent},
   {path: "calculadora", component: CalculadoraComponent},
   {path: "contactos", component: ContactosComponent},
-  {path: "home", component: HomeComponent},
+  {path: "home", component: HomeComponent, canActivate: [ViewWelcomeGuard]},
   {path: "login", component: LoginComponent},
   {path: "register", component: RegisterComponent},
   {path: "reportes", component: ReportesComponent},

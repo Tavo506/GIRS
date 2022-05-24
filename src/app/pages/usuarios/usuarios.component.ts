@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { AuthService } from 'src/app/services/auth.service';
 import Swal from 'sweetalert2';
+import { Usuario } from 'src/app/models/usuario.model';
+import { desencriptar } from 'src/app/util/encryptador';
 
 
 @Component({
@@ -72,7 +74,8 @@ export class UsuariosComponent implements OnInit {
     }
   }
 
-
+//TODO De momento no hay manera de hacer que un usuario elimine a otros, ya que nos encontramos errores que hacen que el usuario logeado cambie, o directamente no nos deja.
+//Buena suerte
   deleteTempUser(uid : any) : void {
     this.usersService.deleteTempUser(uid);
     Swal.fire({
@@ -83,11 +86,9 @@ export class UsuariosComponent implements OnInit {
   }
 
   createUser(user : any) : void {
-    let resultado = false;
-    this.authService.newUser(user, resultado)
-    if(resultado){
-      this.usersService.deleteTempUser(user.uid)
-    }
+    let temp = {...user}
+    temp.password = desencriptar("123456$#@$^@2ERF", temp.password)
+    this.authService.newUser(temp)
   }
 
 

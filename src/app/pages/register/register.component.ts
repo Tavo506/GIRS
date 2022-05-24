@@ -10,6 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
 
 import { sortJson } from "src/app/util/sort";
 import Swal from 'sweetalert2';
+import {encriptar} from "src/app/util/encryptador"
 
 @Component({
   selector: 'app-register',
@@ -67,7 +68,7 @@ export class RegisterComponent implements OnInit {
     this.usuario.apellido = this.form?.get('apellido')?.value;
     this.usuario.municipalidad = this.form?.get('municipalidad')?.value;
     this.usuario.email = this.form?.get('email')?.value;
-    this.usuario.password = this.form?.get('password')?.value;
+    this.usuario.password = encriptar("123456$#@$^@2ERF",this.form?.get('password')?.value)
     this.usuario.telefono = this.form?.get('telefono')?.value;
 
     //Sign In User
@@ -111,7 +112,6 @@ export class RegisterComponent implements OnInit {
   // ###################################
 
   campoInvalido(campo: string) : boolean {
-    console.log(campo)
     return this.form.get(campo)!.invalid && this.form.get(campo)!.touched ;
   }
 
@@ -138,5 +138,6 @@ export class RegisterComponent implements OnInit {
   get municipalidadInvalido(){
     return this.campoInvalido("municipalidad");
   }
+
 
 }

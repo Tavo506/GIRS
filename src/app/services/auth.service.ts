@@ -99,7 +99,7 @@ export class AuthService {
 
 
   //Register Nuevo Usuario
-  newUser(userInput: Usuario, resultado:Boolean) {
+  newUser(userInput: Usuario) {
     Swal.fire({
       allowOutsideClick: false,
       icon: 'info',
@@ -116,7 +116,7 @@ export class AuthService {
           icon: 'success',
           text: '¡Se ha aceptado el registro con éxito!'
         });
-        resultado=true;
+        
         
       })
       .catch((error) => {
@@ -125,7 +125,7 @@ export class AuthService {
           title: 'Error al autenticar',
           text: "Solicite que a la persona que corrija el siguiente error e intente de nuevo" + error.message
         });
-        resultado = false;
+        
       });
   }
 

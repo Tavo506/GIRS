@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Usuario } from '../models/usuario.model';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { getAuth, onAuthStateChanged, deleteUser, User } from "firebase/auth";
+import { getAuth, deleteUser, User } from "firebase/auth";
 
 import { UsuariosService } from './usuarios.service';
 import { logInUsuario } from 'src/app/models/logInUsuario.model';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+
+import { LocalStorageService } from './local-storage.service';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,16 +19,24 @@ export class AuthService {
 
   userData: any; // Save logged in user data
 
-  constructor(public afAuth: AngularFireAuth, public userService: UsuariosService, private router: Router) {
+  constructor(
+      public afAuth: AngularFireAuth, 
+      public userService: UsuariosService,
+      private router: Router,
+      private localStorageService: LocalStorageService
+      ) {
     //Guardar en LocalStorage
     this.afAuth.authState.subscribe((user) => {
+      if (this.isLoggedIn) {
+        return;
+      }
       if (user) {
         this.userData = user;
-        localStorage.setItem('GIRS_user', JSON.stringify(this.userData));
-        JSON.parse(localStorage.getItem('GIRS_user')!);
+        localStorageService.setLocalStorage('GIRS_user', JSON.stringify(this.userData));
+        JSON.parse(localStorageService.getLocalStorage('GIRS_user')!);
       } else {
-        localStorage.setItem('GIRS_user', 'null');
-        JSON.parse(localStorage.getItem('GIRS_user')!);
+        localStorageService.setLocalStorage('GIRS_user', 'null');
+        JSON.parse(localStorageService.getLocalStorage('GIRS_user')!);
       }
     });
   }
@@ -98,12 +110,13 @@ export class AuthService {
     return this.afAuth
       .createUserWithEmailAndPassword(userInput.email, userInput.password)
       .then((result) => {
+        this.setUserData(result.user, userInput);
         Swal.fire({
           allowOutsideClick: false,
           icon: 'success',
           text: '¡Se ha aceptado el registro con éxito!'
         });
-
+        
       })
       .catch((error) => {
         Swal.fire({
@@ -126,6 +139,9 @@ export class AuthService {
     return this.afAuth
       .signInWithEmailAndPassword(userInput.email, userInput.password)
       .then((result) => {
+        
+        this.localStorageService.setLocalStorage("GIRS_user", JSON.stringify(result.user));
+        
         //Routing
         this.router.navigate(['/home']);
 
@@ -142,14 +158,14 @@ export class AuthService {
   // Logout
   logOut() {
     return this.afAuth.signOut().then(() => {
-      localStorage.removeItem('GIRS_user');
+      this.localStorageService.removeLocalStorage('GIRS_user');
       //Route
     });
   }
 
   // Returns true when user is looged in and email is verified
   public get isLoggedIn(): boolean {
-    const user = JSON.parse(localStorage.getItem('GIRS_user')!);
+    const user = JSON.parse(this.localStorageService.getLocalStorage('GIRS_user')!);
     return user !== null;
   }
 }

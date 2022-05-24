@@ -42,6 +42,8 @@ export class PerfilComponent implements OnInit {
  * @param id Uuid del usuario loggeado
  */
   getUserData(id : string) : void{
+    console.log(id);
+    
     this.userService.getUser(id).then(
       (user : any) => {
         try{
@@ -52,7 +54,7 @@ export class PerfilComponent implements OnInit {
           this.userData.email = user.email;
         }
         catch(e){
-          console.log("Hubo un error al cargar el usuario");         
+          console.log(e);       
         }
       }
     );

@@ -52,3 +52,14 @@ export function sortJson(data: any[], campo : string, order : 1 | -1 = 1): any[]
     });
 }
 
+export function sortJsonByMuni(data: any[], order : 1 | -1 = -1): any[] {
+    return data.sort((a: any, b: any): number => {
+        let res;
+        if (a.datosGenerales.municipalidad > b.datosGenerales.municipalidad) res = -1;
+        else if (a.datosGenerales.municipalidad < b.datosGenerales.municipalidad) res = 1;
+        else res = 0;
+        return res * order;
+    });
+}
+
+

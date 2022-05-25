@@ -25,7 +25,9 @@
             <form [formGroup]="girsForm" class="row formContainer">
               <div formGroupName="datosGenerales" class="inputContainer col-12 col-sm-6">
                 <label for="municipalidad">Municipalidad</label>
-                <input formControlName="municipalidad" name="municipalidad" type="text">
+                <select name="municipalidad" formControlName="municipalidad">
+                  <option *ngFor="let muni of municipalidades" [value]="muni.displayName">{{muni.displayName}}</option>
+                </select>
               </div>
               <div formGroupName="datosGenerales" class="inputContainer col-12 col-sm-6">
                 <label for="telefono">Teléfono</label>
@@ -37,7 +39,7 @@
               </div>
               <div formGroupName="datosGenerales" class="inputContainer col-12 col-sm-6">
                 <label for="fecha">Fecha</label>
-                <input formControlName="fecha" type="text">
+                <input formControlName="fecha" type="date">
               </div>
               <div formGroupName="datosGenerales" class="inputContainer col-12 col-sm-6">
                 <label for="email">Correo electrónico</label>

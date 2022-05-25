@@ -22,12 +22,12 @@ export class ReportesComponent implements OnInit{
   ngOnInit(): void {
     this.reportService.getReportes().subscribe(
       report => {
-        this.reportsBackUp = sortJson(report, "anno");
+        var reportsSortAnno = sortJson([...report], "anno");
         this.reportsBackUp = sortJsonByMuni(report);
         this.reportes = [...this.reportsBackUp];
         for(let i=0; i<this.reportes.length;i++){
           this.addOptionFilter('municipalidades', this.reportsBackUp[i].datosGenerales.municipalidad);
-          this.addOptionFilter('annos',  this.reportsBackUp[i].anno);
+          this.addOptionFilter('annos',  reportsSortAnno[i].anno);
         }
         this.completeSelects((this.filters['annos']),(this.filters['municipalidades']));
       }
@@ -81,7 +81,7 @@ export class ReportesComponent implements OnInit{
       this.reportes = [...this.reportsBackUp];
     }
     if(filterAnno != 'Ninguno' && 'ninguno'){
-      this.reportes = this.reportes.filter(e => {return e.anno === Number(filterAnno)});
+      this.reportes = this.reportes.filter(e => {return String(e.anno) === filterAnno});
     }
 
   }

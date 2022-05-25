@@ -118,6 +118,7 @@ export class AuthService {
           text: '¡Se ha aceptado el registro con éxito!'
         });
         
+        
       })
       .catch((error) => {
         Swal.fire({
@@ -125,6 +126,7 @@ export class AuthService {
           title: 'Error al autenticar',
           text: "Solicite que a la persona que corrija el siguiente error e intente de nuevo" + error.message
         });
+        
       });
   }
 

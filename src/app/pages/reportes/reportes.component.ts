@@ -2,7 +2,7 @@ import { ReturnStatement } from '@angular/compiler';
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Reporte } from 'src/app/models/reporte.model';
 import { ReportesService } from 'src/app/services/reportes.service';
-import { sortJson } from 'src/app/util/sort';
+import { sortJson, sortJsonByMuni } from 'src/app/util/sort';
 import { ExcelService } from 'src/app/services/excel.service'; 
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -23,6 +23,7 @@ export class ReportesComponent implements OnInit{
     this.reportService.getReportes().subscribe(
       report => {
         this.reportsBackUp = sortJson(report, "anno");
+        this.reportsBackUp = sortJsonByMuni(report);
         this.reportes = [...this.reportsBackUp];
         for(let i=0; i<this.reportes.length;i++){
           this.addOptionFilter('municipalidades', this.reportsBackUp[i].datosGenerales.municipalidad);

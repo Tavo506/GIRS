@@ -30,6 +30,9 @@
                 <li *ngIf="isLoggedIn" class="nav-item px-1" [routerLinkActive]="['active']">
                     <a class="nav-link" [routerLink]="['municipalidades']"><span>Municipalidades</span></a>
                 </li>
+                <li class="nav-item px-1" [routerLinkActive]="['active']">
+                    <a class="nav-link" [routerLink]="['desarrolladores']">Desarrolladores</a>
+                </li>
                 <li *ngIf="isLoggedIn" class="nav-item px-1" [routerLinkActive]="['active']">
                     <a class="nav-link" [routerLink]="['usuarios']">
                         <i *ngIf="haySolicitudes" class="bell fa-solid fa-bell"></i>

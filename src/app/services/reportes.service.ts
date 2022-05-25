@@ -38,7 +38,6 @@ export class ReportesService {
   }
 
   deleteReporte(ID: string){
-    
     return this.db.collection('formularios').doc(ID).delete();
   }
 

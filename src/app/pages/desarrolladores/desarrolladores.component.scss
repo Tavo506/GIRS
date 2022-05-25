@@ -1,0 +1,70 @@
+img {
+    border-radius: 100%;
+    border: 5px solid #002855;
+}
+
+// Pantalla mediana
+@media only screen and (max-width: 1399px) {
+    .nombre {
+        height: 42px !important;
+    }
+}
+
+// Pantalla mediana
+@media only screen and (max-width: 991px) {
+    .nombre {
+        height: 30px !important;
+    }
+}
+
+
+// Pantalla pequeña
+@media only screen and (max-width: 767px) {
+    img {
+        width: 50%;
+    }
+
+    .phone, .email, .linkedIn {
+        text-align: center;
+    }
+}
+
+img {
+    max-width: 90%
+}
+
+.dev {
+    margin-bottom: 30px;
+}
+
+.nombre {
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+}
+
+
+a, i {
+    font-size: 16px;
+}
+
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.phone a:link{
+    color: black;
+}
+
+.email, .phone i{
+    color: #002855;
+}
+
+.linkedIn i{
+    color: #0072b1 ;
+}

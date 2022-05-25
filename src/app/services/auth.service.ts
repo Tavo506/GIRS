@@ -108,8 +108,9 @@ export class AuthService {
     Swal.showLoading();
     
     return this.afAuth
-      .createUserWithEmailAndPassword(userInput.email, userInput.password)
+      .createUserWithEmailAndPassword(userInput.email, userInput.password!)
       .then((result) => {
+        delete userInput.password;
         this.setUserData(result.user, userInput);
         Swal.fire({
           allowOutsideClick: false,

@@ -58,6 +58,7 @@ import { ModalContacto } from './widgets/modal-contacto/modal-contacto.component
 import { PhonePipe } from './pipes/phone.pipe';
 import { MunicipalidadesComponent } from './pages/municipalidades/municipalidades.component';
 import { ModalPerfil } from './widgets/modal-perfil/modal-perfil.component';
+import { DesarrolladoresComponent } from './pages/desarrolladores/desarrolladores.component';
 
 @NgModule({
   declarations: [
@@ -83,6 +84,7 @@ import { ModalPerfil } from './widgets/modal-perfil/modal-perfil.component';
     PhonePipe,
     MunicipalidadesComponent,
     ModalPerfil,
+    DesarrolladoresComponent,
   ],
   imports: [
     BrowserModule,

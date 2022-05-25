@@ -27,6 +27,8 @@ export class FormularioComponent implements OnInit {
 
   reporte : any = {};
 
+  municipalidades = municipalidades;
+
   // OPTIONS FOR SELECT
 
     /**
@@ -361,8 +363,8 @@ export class FormularioComponent implements OnInit {
 
       //Si hay que crear el form o actualizarlo
       if ( this.formID == "new" ){
-        this.reporte.anno = this.reporte.fechaModificacion.split('-')[0];
-        this.reporte.canton = this.userData.municipalidad.split(' ')[2];
+        this.reporte.anno = this.getTodayDate().split('-')[0];
+        this.reporte.canton = this.userData.municipalidad.split(' ').splice(2).join(" ");
         this.reporte.provincia = this.provinciaOfCanton(this.reporte.canton);
         this.reporteService.insertReporte(this.reporte as Reporte);
       }

@@ -141,7 +141,7 @@ export class FormularioComponent implements OnInit {
       nombreGestor: new FormControl(data.nombreGestor || '', [
         Validators.required
       ]),
-      fecha: new FormControl(this.getTodayDate(), [
+      fecha: new FormControl(data.fecha, [
         Validators.required
       ]),
       email: new FormControl(data.email || '', [
@@ -342,7 +342,7 @@ export class FormularioComponent implements OnInit {
       if(result.isDismissed){
         return
       }
-
+      
       let json = this.girsForm.getRawValue();
 
       this.reporte.datosGenerales = json.datosGenerales;
@@ -351,6 +351,11 @@ export class FormularioComponent implements OnInit {
       this.reporte.aspectosFinancieros = json.aspectosFinancieros;
       this.reporte.informacionCalculada = json.informacionCalculada;
       this.reporte.fechaModificacion =   this.getTodayDate();
+
+      this.reporte.canton = this.reporte.datosGenerales.municipalidad.split(' ').splice(2).join(" ");
+      console.log(this.reporte.canton);
+      this.reporte.provincia = this.provinciaOfCanton(this.reporte.canton);
+      console.log(this.reporte.provincia);
 
       //Form Completo
       if(result.isConfirmed){
@@ -364,8 +369,6 @@ export class FormularioComponent implements OnInit {
       //Si hay que crear el form o actualizarlo
       if ( this.formID == "new" ){
         this.reporte.anno = this.getTodayDate().split('-')[0];
-        this.reporte.canton = this.userData.municipalidad.split(' ').splice(2).join(" ");
-        this.reporte.provincia = this.provinciaOfCanton(this.reporte.canton);
         this.reporteService.insertReporte(this.reporte as Reporte);
       }
       else{

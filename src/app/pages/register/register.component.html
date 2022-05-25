@@ -18,46 +18,34 @@
             <h1> Inscribirse </h1>
 
             <input 
-                class="input" 
+                class="form-control input" 
                 type="email" 
                 placeholder="E-mail"
                 formControlName="email"
                 [class.is-invalid]="correoInvalido"
             >
-            <small *ngIf="correoInvalido" class="text-danger">
-                El formato del correo esta incorrecto
-            </small>
 
             <input 
-                class="input" 
+                class="form-control input" 
                 type="password" 
                 placeholder="Contraseña"
                 formControlName="password"
                 [class.is-invalid]="passwordInvalido">
-            <small *ngIf="passwordInvalido" class="text-danger">
-                La contraseña no cumple el minimo largo de 6 dígitos
-            </small>
 
             
             <input 
-                class="input" 
+                class="form-control input" 
                 type="text" 
                 placeholder="Nombre"
                 formControlName="nombre"
                 [class.is-invalid]="nombreInvalido">
-            <small *ngIf="nombreInvalido" class="text-danger">
-                Debe colocar un nombre
-            </small>
             
             <input 
-                class="input" 
+                class="form-control input" 
                 type="text" 
                 placeholder="Apellido"
                 formControlName="apellido"
                 [class.is-invalid]="apellidoInvalido">
-            <small *ngIf="apellidoInvalido" class="text-danger">
-                Debe colocar un apellido
-            </small>
 
             <select name="municipalidad" id="municipalidad" class="input" required formControlName="municipalidad">
 
@@ -66,14 +54,11 @@
             </select>
             
             <input 
-                class="input" 
+                class="form-control input" 
                 type="text" 
                 placeholder="Teléfono"
                 formControlName="telefono"
                 [class.is-invalid]="telefonoInvalido">
-            <small *ngIf="telefonoInvalido" class="text-danger">
-                El formato del telefono no es correcto
-            </small>
 
             <button class="common-bttn"  >Inscribirse</button>
 

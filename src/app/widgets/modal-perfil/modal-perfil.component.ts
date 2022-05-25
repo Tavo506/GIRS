@@ -19,12 +19,12 @@ export class ModalPerfil implements OnInit {
       apellido: ["", Validators.required],
       telefono: ["", [Validators.required, Validators.minLength(8), Validators.pattern("^[0-9]*$")]],
     });
-   }
+  }
 
   ngOnInit(): void {
   }
 
-  
+
   /**
    * Función para settear los datos del form en base al contacto
    */
@@ -38,19 +38,19 @@ export class ModalPerfil implements OnInit {
  * Función que valida si los inputs del form son correctos y los marca como error en caso contrario
  * @returns Si los input son correctos
  */
-  validarInput() : boolean {
-    if(this.form.invalid){
-      Object.values( this.form.controls ).forEach (control =>{
-        if (control instanceof FormGroup){
-              Object.values(control.controls).forEach (innerControl =>{
-              innerControl.markAllAsTouched();
-              })
-        }else {
+  validarInput(): boolean {
+    if (this.form.invalid) {
+      Object.values(this.form.controls).forEach(control => {
+        if (control instanceof FormGroup) {
+          Object.values(control.controls).forEach(innerControl => {
+            innerControl.markAllAsTouched();
+          })
+        } else {
           control.markAsTouched();
         }
       })
       return false;
-    }else{
+    } else {
       return true;
     }
   }
@@ -59,14 +59,14 @@ export class ModalPerfil implements OnInit {
  * Función que guarda los datos del form en la base de datos o los actualiza
  */
   guardar() {
-    if(this.validarInput()){
-      
+    if (this.validarInput()) {
+
       this.usuario.nombre = this.form.value.nombre;
       this.usuario.apellido = this.form.value.apellido;
       this.usuario.telefono = this.form.value.telefono;
-      
-      this.activeModal.close({status: "OK", value: this.usuario})
-        
+
+      this.activeModal.close({ status: "OK", value: this.usuario })
+
     }
   }
 
@@ -74,8 +74,8 @@ export class ModalPerfil implements OnInit {
   // #     Gets de inputs invalidos    #
   // ###################################
 
-  campoInvalido(campo: string) : boolean {
-    return this.form.get(campo)!.invalid && this.form.get(campo)!.touched ;
+  campoInvalido(campo: string): boolean {
+    return this.form.get(campo)!.invalid && this.form.get(campo)!.touched;
   }
 
   get nombreInvalido() {

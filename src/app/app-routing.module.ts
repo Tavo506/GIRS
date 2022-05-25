@@ -17,6 +17,7 @@ import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { MunicipalidadesComponent } from './pages/municipalidades/municipalidades.component';
 import { ViewWelcomeGuard } from './guards/view-welcome.guard';
+import { DesarrolladoresComponent } from './pages/desarrolladores/desarrolladores.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,7 @@ const routes: Routes = [
   {path: "login", component: LoginComponent},
   {path: "register", component: RegisterComponent},
   {path: "reportes", component: ReportesComponent},
+  {path: "desarrolladores", component: DesarrolladoresComponent},
   {path: "welcome", component: WelcomeComponent, canActivate: [WelcomeGuard]},
   
   {path: "formulario/:idForm", component: FormularioComponent, canActivate: [AuthGuardGuard]},

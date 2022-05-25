@@ -4,6 +4,6 @@ export interface Usuario {
     apellido: String,
     municipalidad: String,
     email: string,
-    password: string,
+    password?: string,
     telefono: String
 }
